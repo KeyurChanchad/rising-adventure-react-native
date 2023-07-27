@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "574593264255",
+    "project_id": "risingadventure-9c2f6",
+    "storage_bucket": "risingadventure-9c2f6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574593264255:android:3ca2f1cd748d32524a6d4a",
+        "android_client_info": {
+          "package_name": "com.risingadventure"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574593264255-5e1t610gde3i5f3oinovnoceh9d8h307.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.risingadventure",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "574593264255-gnja60ufkt2aosqk5gu59lfm9jjkledp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHWEBBJ-YW071srKBD6EUcsg1MYtjxKuM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574593264255-eh0vs9gtellog9m4c6s9dp7t4ij3t74v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
