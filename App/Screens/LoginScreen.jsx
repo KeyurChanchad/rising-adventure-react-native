@@ -18,11 +18,12 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import config from '../config';
+import { StackActions } from '@react-navigation/native';
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 const screenHeight = Math.round(Dimensions.get('window').height);
 
-const LoginScreen = ({navigation}) => {
+const LoginScreen = ({ navigation }) => {
   const [loggedIn, setloggedIn] = useState(false);
 
   useEffect(() => {
@@ -30,8 +31,8 @@ const LoginScreen = ({navigation}) => {
       const userInfo = await AsyncStorage.getItem('@loginUser');
       // console.log("Final output ", userInfo);
       userInfo &&
-        navigation.replace('Home', {
-          screen: 'Home',
+        navigation.replace('HomeScreen', {
+          screen: 'HomeScreen',
         });
       GoogleSignin.configure({
         scopes: ['email', 'profile'], // what API you want to access on behalf of the user, default is email and profile
@@ -51,23 +52,24 @@ const LoginScreen = ({navigation}) => {
       setloggedIn(true);
       console.log('Login information ', info);
       console.log('Login EMAIL ', info.user.email);
-      let result = await axios({
-        method: 'get',
-        url: `https://script.google.com/macros/s/AKfycbx1wYrX1YgXRoa5f_ZlBJiAGpiem1ph4A-Ti3X4eh6ZycCa0PazZz0pxEsT1IaMk67cAw/exec?sheet=${config.sheetId}&subsheet=Users&query=select * where A='${info.user.email}'`,
-        data: null,
-      });
-      console.log('Email is exits ', result.data);
-      if (Number(JSON.stringify(result.data.length)) !== 0) {
-        info = {...info, roll: result.data[0].Roll};
-        console.log('Login information ', info);
-        await AsyncStorage.setItem('@loginUser', JSON.stringify(info));
-        navigation.replace('Home', {
-          screen: 'Home',
-        });
-      } else {
-        Alert.alert('The email you loggedIn with is not exited.');
-        await GoogleSignin.signOut();
-      }
+      navigation.replace('HomeScreen', {})
+      // let result = await axios({
+      //   method: 'get',
+      //   url: `https://script.google.com/macros/s/AKfycbx1wYrX1YgXRoa5f_ZlBJiAGpiem1ph4A-Ti3X4eh6ZycCa0PazZz0pxEsT1IaMk67cAw/exec?sheet=${config.sheetId}&subsheet=Users&query=select * where A='${info.user.email}'`,
+      //   data: null,
+      // });
+      // console.log('Email is exits ', result.data);
+      // if (Number(JSON.stringify(result.data.length)) !== 0) {
+      //   info = {...info, roll: result.data[0].Roll};
+      //   console.log('Login information ', info);
+      //   await AsyncStorage.setItem('@loginUser', JSON.stringify(info));
+      //   navigation.replace('HomeScreen', {
+      //     screen: 'HomeScreen',
+      //   });
+      // } else {
+      //   Alert.alert('The email you loggedIn with is not exited.');
+      //   await GoogleSignin.signOut();
+      // }
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         console.log('SIGN_IN_CANCELLED');
@@ -82,25 +84,21 @@ const LoginScreen = ({navigation}) => {
   };
 
   return (
-    <React.Fragment>
+    <View>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <View style={styles.body}>
-            <Text style={styles.addName}> Rising Adventure </Text>
-            <View style={styles.btnLogin}>
-              <GoogleSigninButton
-                size={GoogleSigninButton.Size.Wide}
-                color={GoogleSigninButton.Color.Dark}
-                onPress={signIn}
-              />
-            </View>
+        <View style={styles.body}>
+          <Text style={styles.addName}> Rising Adventure </Text>
+          <View style={styles.btnLogin}>
+            <GoogleSigninButton
+              size={GoogleSigninButton.Size.Wide}
+              color={GoogleSigninButton.Color.Dark}
+              onPress={signIn}
+            />
           </View>
-        </ScrollView>
+        </View>
       </SafeAreaView>
-    </React.Fragment>
+    </View>
   );
 };
 
