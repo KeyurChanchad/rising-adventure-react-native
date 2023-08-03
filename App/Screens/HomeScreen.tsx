@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   heading1: {
     fontWeight: '500',
     color: Colors.primary,
-    fontSize: 20,
+    fontSize: 24,
   },
   eventImg: {
     width: screenWidth / 2 ,

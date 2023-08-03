@@ -9,6 +9,7 @@ import {
 import React from 'react';
 import Colors from '../Resources/styles/Colors';
 import {SliderBox} from 'react-native-image-slider-box';
+import Footer from '../Components/Footer';
 
 const screenHeight = Math.floor(Dimensions.get('window').height);
 const screenWidth = Math.floor(Dimensions.get('window').width);
@@ -48,18 +49,18 @@ const EventsScreen = () => {
     <View style={styles.event}>
       <SliderBox
         images={images}
-        sliderBoxHeight={screenHeight / 3 - 40}
+        sliderBoxHeight={screenHeight / 4 }
         dotColor={Colors.primary}
         circleLoop={true}
         parentWidth={screenWidth - 50}
         ImageComponentStyle={{borderRadius: 15, width: '97%', marginTop: 5}}
-        imageLoadingColor= {Colors.primary}
+        imageLoadingColor={Colors.primary}
       />
       <View>
         <Text style={styles.eventName}> Marvellous Matheran </Text>
-        <View style={styles.eventInfo}> 
-        <Text style={styles.price}> From 5000 /- </Text>
-        <Text style={styles.duration}> 3 days/ 2 nights </Text>
+        <View style={styles.eventInfo}>
+          <Text style={styles.price}> From 5000 /- </Text>
+          <Text style={styles.duration}> 3 days/ 2 nights </Text>
         </View>
       </View>
     </View>
@@ -68,7 +69,7 @@ const EventsScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={{padding: 16}}>
-        <Text style={styles.heading1}> Events </Text>
+        <Text style={styles.heading1}> Our Events </Text>
         <Text style={styles.slogan}>
           Life is either a daring adventure or nothing.
         </Text>
@@ -81,6 +82,7 @@ const EventsScreen = () => {
           showsVerticalScrollIndicator={false}
         />
       </View>
+      <Footer />
     </SafeAreaView>
   );
 };
@@ -94,35 +96,36 @@ const styles = StyleSheet.create({
   heading1: {
     fontWeight: '500',
     color: Colors.primary,
-    fontSize: 20,
+    fontSize: 24,
   },
   slogan: {
     fontSize: 16,
     fontWeight: '300',
   },
   eventsContainer: {
-    marginBottom: 100,
+    marginBottom: 90,
   },
   event: {
-    height: screenHeight / 3,
+    height: screenHeight / 3 + 10,
     width: screenWidth - 40,
-    backgroundColor: Colors.primary,
-    marginVertical: 10,
+    backgroundColor: Colors.white,
+    marginVertical: 7,
     marginHorizontal: 20,
     alignSelf: 'center',
     borderRadius: 20,
     padding: 5,
+    elevation: 3,
   },
   eventName: {
-
+    fontWeight: '400',
+    color: Colors.primary,
+    fontSize: 18,
   },
-  eventIfo: {
-
+  eventInfo: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
-  price: {
-
-  },
-  duration: {
-    
-  }
+  price: {},
+  duration: {},
 });
