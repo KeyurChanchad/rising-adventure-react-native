@@ -3,24 +3,51 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from "../Screens/LoginScreen";
 import HomeScreen from "../Screens/HomeScreen";
 import AppStack from "./App";
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import Colors from "../Resources/styles/Colors";
+import Event from "../Screens/Event";
+import EventsScreen from "../Screens/EventsScreen";
+const Drawer = createDrawerNavigator();
 
 const Stack = createNativeStackNavigator();
 const AuthStack = () => {
     return (
-        <Stack.Navigator>
-            <Stack.Screen
-                name="LoginScreen"
-                component={LoginScreen}
+        <Drawer.Navigator initialRouteName="HomeScreen">
+            <Drawer.Screen 
+                name="HomeScreen" 
+                component={HomeScreen} 
                 options={{
-                    headerShown: false,
+                    headerStyle: {
+                        backgroundColor: Colors.primary,
+                    },
+                    headerTintColor: Colors.white,
+                    
                 }}
             />
-            <Stack.Screen
-                name="HomeScreen"
-                component={HomeScreen}
-                options={{ headerShown: false }}
+            <Drawer.Screen name="LoginScreen" component={LoginScreen} />
+            <Drawer.Screen 
+                name="Events" 
+                component={EventsScreen} 
+                options={{
+                    headerStyle: {
+                        backgroundColor: Colors.primary,
+                    },
+                    headerTintColor: Colors.white,
+                    
+                }}
             />
-        </Stack.Navigator>
+            <Drawer.Screen 
+                name="Event" 
+                component={Event} 
+                options={{
+                    headerStyle: {
+                        backgroundColor: Colors.primary,
+                    },
+                    headerTintColor: Colors.white,
+                    
+                }}
+            />
+        </Drawer.Navigator>
     )
 }
 
