@@ -13,21 +13,21 @@ const Footer = () => {
       values and ethics.
     </Text>
     <View style={{flexDirection: 'row'}}>
-      <TouchableOpacity>
+      <TouchableOpacity style={styles.icon}>
         <MaterialCommunityIcon
           name='facebook'
           size={18}
           color={Colors.white}
           />
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity style={styles.icon}>
         <MaterialCommunityIcon
           name='instagram'
           size={18}
           color={Colors.white}
           />
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity style={styles.icon}>
         <MaterialCommunityIcon
           name='youtube'
           size={18}
