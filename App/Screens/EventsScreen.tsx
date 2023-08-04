@@ -5,6 +5,7 @@ import {
   SafeAreaView,
   FlatList,
   Dimensions,
+  ScrollView,
 } from 'react-native';
 import React from 'react';
 import Colors from '../Resources/styles/Colors';
@@ -68,21 +69,23 @@ const EventsScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={{padding: 16}}>
-        <Text style={styles.heading1}> Our Events </Text>
-        <Text style={styles.slogan}>
-          Life is either a daring adventure or nothing.
-        </Text>
-      </View>
-      <View style={styles.eventsContainer}>
-        <FlatList
-          data={data}
-          renderItem={renderItems}
-          key={item => item}
-          showsVerticalScrollIndicator={false}
-        />
-      </View>
-      <Footer />
+      <ScrollView>
+        <View style={{padding: 16}}>
+          <Text style={styles.heading1}> Our Events </Text>
+          <Text style={styles.slogan}>
+            Life is either a daring adventure or nothing.
+          </Text>
+        </View>
+        <View style={styles.eventsContainer}>
+          <FlatList
+            data={data}
+            renderItem={renderItems}
+            key={item => item}
+            showsVerticalScrollIndicator={false}
+          />
+        </View>
+        <Footer />
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -103,7 +106,7 @@ const styles = StyleSheet.create({
     fontWeight: '300',
   },
   eventsContainer: {
-    marginBottom: 90,
+    marginBottom: 20,
   },
   event: {
     height: screenHeight / 3 + 10,

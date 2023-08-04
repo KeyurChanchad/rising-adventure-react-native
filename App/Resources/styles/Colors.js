@@ -1,7 +1,7 @@
 const Colors = {
     primary: '#91C8E4',
     white: '#ffffff',
-    black: '#000000',
+    black: '#1c1c1c',
     red: '#ff0000',
     blue: '#0000FF',
     sliver: '#C0C0C0',
