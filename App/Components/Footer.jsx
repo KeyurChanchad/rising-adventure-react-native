@@ -58,7 +58,7 @@ const Footer = () => {
         </Text>
         <Text style={[styles.secondText, { marginVertical: 3}]}> Office Timings: 11AM to 8PM </Text>
       </View>
-      <View style={{borderWidth: 1, borderColor: Colors.white}}></View>
+      <View style={styles.hr}></View>
       <Text style={styles.copyRight}>
         {' '}
         © 2023-2024 Rising • Privacy Policy • Terms and Conditions{' '}
@@ -108,5 +108,10 @@ const styles = StyleSheet.create({
   },
   contactInfo: {
     marginVertical: 10,
-  }
+  },
+  hr: {
+    borderColor: Colors.black,
+    opacity: 0.5,
+    borderBottomWidth: 1
+  },
 });
