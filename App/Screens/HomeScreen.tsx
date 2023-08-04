@@ -5,11 +5,13 @@ import {
   Dimensions, 
   FlatList, 
   Image,
-  SafeAreaView
+  SafeAreaView,
+  ScrollView
 } from 'react-native';
 import React from 'react';
 import {SliderBox} from 'react-native-image-slider-box';
 import Colors from '../Resources/styles/Colors';
+import Footer from '../Components/Footer';
 
 const screenWidth = Math.floor(Dimensions.get('window').width);
 const screenHeight = Math.floor(Dimensions.get('window').height);
@@ -37,7 +39,9 @@ const HomeScreen = () => {
     )
   return (
     <SafeAreaView style={styles.container}>
-      <SliderBox images={images} sliderBoxHeight={screenHeight / 3} dotColor={Colors.primary} circleLoop={true} autoplayInterval={10000} autoplay={true} />
+      <ScrollView style={{ flex: 1}}>
+
+      <SliderBox images={images} sliderBoxHeight={screenHeight / 3} dotColor={Colors.primary} circleLoop={true} autoplayInterval={10000} autoplay={true} imageLoadingColor={Colors.primary} />
 
       <View style={styles.eventsContainer}>
         <View style={{ padding: 5}}>
@@ -53,6 +57,9 @@ const HomeScreen = () => {
           horizontal={true}
         />
       </View>
+      <Footer />
+      </ScrollView>
+
     </SafeAreaView>
   );
 };
@@ -86,7 +93,6 @@ const styles = StyleSheet.create({
     width: screenWidth / 2 ,
     height: screenHeight / 2 - 30,
     resizeMode: 'stretch',
-    backgroundColor: 'red',
     marginHorizontal: 10,
   },
   slogan: {

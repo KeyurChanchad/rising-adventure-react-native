@@ -24,7 +24,19 @@ const AuthStack = () => {
                     
                 }}
             />
-            <Drawer.Screen name="LoginScreen" component={LoginScreen} />
+            <Drawer.Screen 
+                name="LoginScreen" 
+                component={LoginScreen} 
+                options={{ 
+                    headerShown: false,
+                    drawerItemStyle: {
+                        display: 'none'
+                    },
+                    drawerStyle: {
+                        display: 'none'
+                    }
+                }}
+            />
             <Drawer.Screen 
                 name="Events" 
                 component={EventsScreen} 
