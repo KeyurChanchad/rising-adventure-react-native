@@ -46,43 +46,40 @@ const images = [
 ];
 
 const EventsScreen = () => {
-  const renderItems = ({item}) => (
-    <View style={styles.event}>
-      <SliderBox
-        images={images}
-        sliderBoxHeight={screenHeight / 4 }
-        dotColor={Colors.primary}
-        circleLoop={true}
-        parentWidth={screenWidth - 50}
-        ImageComponentStyle={{borderRadius: 15, width: '97%', marginTop: 5}}
-        imageLoadingColor={Colors.primary}
-      />
-      <View>
-        <Text style={styles.eventName}> Marvellous Matheran </Text>
-        <View style={styles.eventInfo}>
-          <Text style={styles.price}> From 5000 /- </Text>
-          <Text style={styles.duration}> 3 days/ 2 nights </Text>
-        </View>
-      </View>
-    </View>
-  );
-
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={{padding: 16}}>
           <Text style={styles.heading1}> Our Events </Text>
-          <Text style={styles.slogan}>
+          <Text style={styles.tagline}>
             Life is either a daring adventure or nothing.
           </Text>
         </View>
         <View style={styles.eventsContainer}>
-          <FlatList
-            data={data}
-            renderItem={renderItems}
-            key={item => item}
-            showsVerticalScrollIndicator={false}
-          />
+          {data.map((event, index) => (
+            <View style={styles.event} key={index}>
+              <SliderBox
+                images={images}
+                sliderBoxHeight={screenHeight / 4}
+                dotColor={Colors.primary}
+                circleLoop={true}
+                parentWidth={screenWidth - 50}
+                ImageComponentStyle={{
+                  borderRadius: 15,
+                  width: '97%',
+                  marginTop: 5,
+                }}
+                imageLoadingColor={Colors.primary}
+              />
+              <View>
+                <Text style={styles.eventName}> Marvellous Matheran </Text>
+                <View style={styles.eventInfo}>
+                  <Text style={styles.price}> From 5000 /- </Text>
+                  <Text style={styles.duration}> 3 days/ 2 nights </Text>
+                </View>
+              </View>
+            </View>
+          ))}
         </View>
         <Footer />
       </ScrollView>
@@ -101,7 +98,7 @@ const styles = StyleSheet.create({
     color: Colors.primary,
     fontSize: 24,
   },
-  slogan: {
+  tagline: {
     fontSize: 16,
     fontWeight: '300',
   },

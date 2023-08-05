@@ -7,6 +7,8 @@ import {
   Dimensions,
   FlatList,
   Image,
+  Pressable,
+  TouchableOpacity,
 } from 'react-native';
 import React from 'react';
 import Colors from '../Resources/styles/Colors';
@@ -15,6 +17,7 @@ import Footer from '../Components/Footer';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
+import Timeline from 'react-native-timeline-flatlist';
 
 const screenHeight = Math.floor(Dimensions.get('window').height);
 const screenWidth = Math.floor(Dimensions.get('window').width);
@@ -34,52 +37,99 @@ type joinUs = {
   days: number;
 };
 
-
-const joinUsData : joinUs[] = [
+const joinUsData: joinUs[] = [
   {
     from: 'Ahmedabad',
-    image: 'https://imgs.search.brave.com/NzJQ9jpJi5l5Bt43x1_QixscSGzonNWmOR479P3hz7o/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMudHJhdmVsdHJp/YW5nbGUuY29tL2Js/b2cvd3AtY29udGVu/dC91cGxvYWRzLzIw/MTYvMDIvSmFtYS1N/YXNqaWQtaW4tQWht/ZWRhYmFkLmpwZw',
+    image:
+      'https://imgs.search.brave.com/NzJQ9jpJi5l5Bt43x1_QixscSGzonNWmOR479P3hz7o/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMudHJhdmVsdHJp/YW5nbGUuY29tL2Js/b2cvd3AtY29udGVu/dC91cGxvYWRzLzIw/MTYvMDIvSmFtYS1N/YXNqaWQtaW4tQWht/ZWRhYmFkLmpwZw',
     price: 5500,
-    days: 3 
+    days: 3,
   },
   {
     from: 'Baroda',
-    image: 'https://imgs.search.brave.com/NzJQ9jpJi5l5Bt43x1_QixscSGzonNWmOR479P3hz7o/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMudHJhdmVsdHJp/YW5nbGUuY29tL2Js/b2cvd3AtY29udGVu/dC91cGxvYWRzLzIw/MTYvMDIvSmFtYS1N/YXNqaWQtaW4tQWht/ZWRhYmFkLmpwZw',
+    image:
+      'https://imgs.search.brave.com/NzJQ9jpJi5l5Bt43x1_QixscSGzonNWmOR479P3hz7o/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMudHJhdmVsdHJp/YW5nbGUuY29tL2Js/b2cvd3AtY29udGVu/dC91cGxvYWRzLzIw/MTYvMDIvSmFtYS1N/YXNqaWQtaW4tQWht/ZWRhYmFkLmpwZw',
     price: 5500,
-    days: 3 
+    days: 3,
   },
   {
     from: 'Surat',
-    image: 'https://imgs.search.brave.com/NzJQ9jpJi5l5Bt43x1_QixscSGzonNWmOR479P3hz7o/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMudHJhdmVsdHJp/YW5nbGUuY29tL2Js/b2cvd3AtY29udGVu/dC91cGxvYWRzLzIw/MTYvMDIvSmFtYS1N/YXNqaWQtaW4tQWht/ZWRhYmFkLmpwZw',
+    image:
+      'https://imgs.search.brave.com/NzJQ9jpJi5l5Bt43x1_QixscSGzonNWmOR479P3hz7o/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMudHJhdmVsdHJp/YW5nbGUuY29tL2Js/b2cvd3AtY29udGVu/dC91cGxvYWRzLzIw/MTYvMDIvSmFtYS1N/YXNqaWQtaW4tQWht/ZWRhYmFkLmpwZw',
     price: 5500,
-    days: 3 
+    days: 3,
   },
   {
     from: 'Matheran',
-    image: 'https://imgs.search.brave.com/NzJQ9jpJi5l5Bt43x1_QixscSGzonNWmOR479P3hz7o/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMudHJhdmVsdHJp/YW5nbGUuY29tL2Js/b2cvd3AtY29udGVu/dC91cGxvYWRzLzIw/MTYvMDIvSmFtYS1N/YXNqaWQtaW4tQWht/ZWRhYmFkLmpwZw',
+    image:
+      'https://imgs.search.brave.com/NzJQ9jpJi5l5Bt43x1_QixscSGzonNWmOR479P3hz7o/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMudHJhdmVsdHJp/YW5nbGUuY29tL2Js/b2cvd3AtY29udGVu/dC91cGxvYWRzLzIw/MTYvMDIvSmFtYS1N/YXNqaWQtaW4tQWht/ZWRhYmFkLmpwZw',
     price: 3500,
-    days: 3 
+    days: 3,
   },
   {
     from: 'Mumbai',
-    image: 'https://imgs.search.brave.com/NzJQ9jpJi5l5Bt43x1_QixscSGzonNWmOR479P3hz7o/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMudHJhdmVsdHJp/YW5nbGUuY29tL2Js/b2cvd3AtY29udGVu/dC91cGxvYWRzLzIw/MTYvMDIvSmFtYS1N/YXNqaWQtaW4tQWht/ZWRhYmFkLmpwZw',
+    image:
+      'https://imgs.search.brave.com/NzJQ9jpJi5l5Bt43x1_QixscSGzonNWmOR479P3hz7o/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMudHJhdmVsdHJp/YW5nbGUuY29tL2Js/b2cvd3AtY29udGVu/dC91cGxvYWRzLzIw/MTYvMDIvSmFtYS1N/YXNqaWQtaW4tQWht/ZWRhYmFkLmpwZw',
     price: 5000,
-    days: 3 
+    days: 3,
   },
 ];
 
+type datesDataType = {
+  month: string,
+  dates: number[],
+};
+
+const eventDates: datesDataType[] = [
+  {
+    month: 'Auguest',
+    dates: [5, 6, 8, 12, 15, 22, 28]
+  },
+  {
+    month: 'September',
+    dates: [1, 2, 5, 16, 19, 21, 22, 25]
+  },
+  {
+    month: 'October',
+    dates: [4, 9, 11, 15, 18, 20, 24, 29, 30]
+  },
+  {
+    month: 'November',
+    dates: [5, 6, 8, 12, 15, 22, 28]
+  },
+  {
+    month: 'December',
+    dates: [5, 6, 8, 12, 15, 22, 28]
+  },
+];
+
+const shedule = [
+  {time: '09:00', title: 'Event 1', description: 'Event 1 Description'},
+  {time: '10:45', title: 'Event 2', description: 'Event 2 Description'},
+  {time: '12:00', title: 'Event 3', description: 'Event 3 Description'},
+  {time: '14:00', title: 'Event 4', description: 'Event 4 Description'},
+  {time: '16:30', title: 'Event 5', description: 'Event 5 Description'}
+]
+
 const Event = () => {
-  const renderJoinUsItem = ( {item}: { item: joinUs} ) => {
+  const renderJoinUsItem = ({item}: {item: joinUs}) => {
     return (
       <View style={styles.joinUsItem}>
-          <Image source={{ uri: item.image }} style={styles.joinUsImg} />
-          <Text> {item.from} </Text>
-          <View>
-            <Text> {item.price} {item.days} </Text>
+        <Image source={{uri: item.image}} style={styles.joinUsImg} />
+        <Text style={{fontSize: 20, fontWeight: '400'}}> {item.from} </Text>
+        <View style={[styles.row, {justifyContent: 'space-between'}]}>
+          <View style={styles.row}>
+            <MaterialIcon name='currency-rupee' size={18} color={Colors.primary} />
+          <Text> {item.price} /-</Text>
           </View>
+          <View style={styles.row}>
+            <FontAwesome6 name="calendar" size={18} color={Colors.primary} />
+            <Text> {item.days} days</Text>
+          </View>
+        </View>
       </View>
-    )
-  }
+    );
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -97,7 +147,7 @@ const Event = () => {
         <View>
           <View style={styles.header}>
             <Text style={styles.packageName}> Marvellous Matheran </Text>
-            <Text style={styles.slogan}>
+            <Text style={styles.tagline}>
               {' '}
               Experience the finest hill station of Maharashtra!{' '}
             </Text>
@@ -164,63 +214,71 @@ const Event = () => {
         <View style={styles.feeIncludeContainer}>
           <Text style={styles.heading}> Fee Includes </Text>
           <View style={styles.feeItems}>
-            <View style={[styles.row, { justifyContent: 'space-evenly', marginVertical: 5 }]}>
+            <View
+              style={[
+                styles.row,
+                {justifyContent: 'space-evenly', marginVertical: 5},
+              ]}>
               <View style={styles.feeItem}>
                 <MaterialCommunityIcon
-                   name="bus"
-                   size={24}
-                   color={Colors.primary}
-                   style={styles.circle}
-                   />
-                   <Text> Travelling </Text>
+                  name="bus"
+                  size={24}
+                  color={Colors.primary}
+                  style={styles.circle}
+                />
+                <Text> Travelling </Text>
               </View>
               <View style={styles.feeItem}>
                 <MaterialIcon
-                   name="fastfood"
-                   size={24}
-                   color={Colors.primary}
-                   style={styles.circle}
-                   />
-                   <Text> Food </Text>
+                  name="fastfood"
+                  size={24}
+                  color={Colors.primary}
+                  style={styles.circle}
+                />
+                <Text> Food </Text>
               </View>
               <View style={styles.feeItem}>
                 <MaterialIcon
-                   name="sports-football"
-                   size={24}
-                   color={Colors.primary}
-                   style={styles.circle}
-                   />
-                   <Text> Activity </Text>
+                  name="sports-football"
+                  size={24}
+                  color={Colors.primary}
+                  style={styles.circle}
+                />
+                <Text> Activity </Text>
               </View>
             </View>
 
-            <View style={[styles.row, { justifyContent: 'space-evenly', marginVertical: 5 }]}>
+            <View
+              style={[
+                styles.row,
+                {justifyContent: 'space-evenly', marginVertical: 5},
+              ]}>
               <View style={styles.feeItem}>
-              <FontAwesome6
+                <FontAwesome6
                   name="mountain-sun"
                   size={18}
                   color={Colors.primary}
                   style={styles.circle}
                 />
-                   <Text> Stay </Text>
+                <Text> Stay </Text>
               </View>
               <View style={styles.feeItem}>
                 <MaterialIcon
-                   name="local-hospital"
-                   size={24}
-                   color={Colors.primary}
-                   style={styles.circle}
-                   />
-                   <Text> First Aid </Text>
+                  name="local-hospital"
+                  size={24}
+                  color={Colors.primary}
+                  style={styles.circle}
+                />
+                <Text> First Aid </Text>
               </View>
               <View style={styles.feeItem}>
                 <FontAwesome6
-                   name="circle-user"
-                   size={24}
-                   color={Colors.primary}
-                   style={styles.circle}
-                   />
-                   <Text> Guide </Text>
+                  name="circle-user"
+                  size={24}
+                  color={Colors.primary}
+                  style={styles.circle}
+                />
+                <Text> Guide </Text>
               </View>
             </View>
           </View>
@@ -228,14 +286,35 @@ const Event = () => {
 
         <View style={styles.joinUsContainer}>
           <Text style={styles.heading}> Join us from </Text>
-          <View>
-              <FlatList
+          <View style={styles.joinUsPlaces}>
+            <FlatList
               data={joinUsData}
               renderItem={renderJoinUsItem}
               keyExtractor={item => item.from}
               horizontal={true}
-              />
+              showsHorizontalScrollIndicator={false}
+            />
           </View>
+        </View>
+
+        <View style={styles.dateContainer}>
+          <Text style={styles.heading}> Date from Ahmedabad </Text>
+         
+              {
+                eventDates.map((item: datesDataType, index: number) => (
+                  <View style={[styles.row, { flexWrap: 'wrap'}]}>
+                    <Pressable style={styles.month}>
+                      <Text style={{ color: Colors.white, fontSize: 16}}> {item.month} </Text>
+                    </Pressable>
+                  </View>
+                ))
+                }
+                {
+                eventDates[0].map((item: [], index: number) => (
+                  <Text>{ item} </Text>
+                ))
+              }
+
         </View>
 
         <Footer />
@@ -261,7 +340,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
 
-  slogan: {
+  tagline: {
     fontSize: 16,
     fontWeight: '300',
   },
@@ -306,7 +385,7 @@ const styles = StyleSheet.create({
   secondaryText: {
     fontSize: 15,
   },
-  
+
   feeIncludeContainer: {
     padding: 10,
   },
@@ -320,25 +399,54 @@ const styles = StyleSheet.create({
   },
 
   feeItem: {
+    flex: 1,
     display: 'flex',
     alignItems: 'center',
+    marginHorizontal: 5,
   },
 
   feeItems: {
-    marginVertical: 5
+    marginVertical: 5,
   },
 
   joinUsContainer: {
-
+    padding: 10,
   },
 
   joinUsItem: {
-    width: screenWidth / 2,
-    height: 200
+    width: screenWidth / 2 + 20,
+    height: 200,
+    backgroundColor: Colors.white,
+    marginRight: 10,
+    padding: 10,
+    borderRadius: 15,
+    elevation: 3,
   },
 
   joinUsImg: {
-    width: 100,
-    height: 100,
-  }
+    flex: 1,
+    borderRadius: 15,
+  },
+
+  joinUsPlaces: {
+    marginVertical: 5,
+    paddingVertical: 5
+  },
+
+  dateContainer: {
+    marginVertical: 5,
+    paddingVertical: 5
+  },
+
+  month: {
+    backgroundColor: Colors.primary,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 5,
+    margin: 5, 
+    borderWidth: 1,
+    borderColor: Colors.primary,
+  },
+
+
 });

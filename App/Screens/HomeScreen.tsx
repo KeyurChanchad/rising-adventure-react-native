@@ -46,7 +46,7 @@ const HomeScreen = () => {
       <View style={styles.eventsContainer}>
         <View style={{ padding: 5}}>
           <Text style={styles.heading1}> Highlited Events </Text>
-          <Text style={styles.slogan}> Recommended camps by our instructors</Text>
+          <Text style={styles.tagline}> Recommended camps by our instructors</Text>
         </View>
 
 
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     resizeMode: 'stretch',
     marginHorizontal: 10,
   },
-  slogan: {
+  tagline: {
     fontSize: 16,
     fontWeight: '300'
   }
