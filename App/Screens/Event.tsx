@@ -10,7 +10,7 @@ import {
   Pressable,
   TouchableOpacity,
 } from 'react-native';
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import Colors from '../Resources/styles/Colors';
 import {SliderBox} from 'react-native-image-slider-box';
 import Footer from '../Components/Footer';
@@ -18,6 +18,7 @@ import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIc
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import Timeline from 'react-native-timeline-flatlist';
+import CustomButton from '../Components/CustomButton';
 
 const screenHeight = Math.floor(Dimensions.get('window').height);
 const screenWidth = Math.floor(Dimensions.get('window').width);
@@ -103,20 +104,41 @@ const eventDates: datesDataType[] = [
   },
 ];
 
-
-
 const scheduleData = [
-  {time: 'Day 0', date: 'Aug 17, 2023', title: 'Departure from Ahmedabad/Baroda/Surat', description: 'The camp will depart on the previous day evening from Ahmedabad.\ni.e. if the camp start date on Friday, then the camp will depart on Thursday evening.',
-},
-  {time: 'Day 1', date: 'Aug 17, 2023', title: 'Departure from Ahmedabad/Baroda/Surat', description: 'The camp will depart on the previous day evening from Ahmedabad.\ni.e. if the camp start date on Friday, then the camp will depart on Thursday evening',
-  imageUrl: 'https://cloud.githubusercontent.com/assets/21040043/24240405/0ba41234-0fe4-11e7-919b-c3f88ced349c.jpg',
-},
-  {time: 'Day 2', date: 'Aug 17, 2023', title: 'Departure from Ahmedabad/Baroda/Surat', description: 'The camp will depart on the previous day evening from Ahmedabad.\ni.e. if the camp start date on Friday, then the camp will depart on Thursday evening.',
-  imageUrl: 'https://cloud.githubusercontent.com/assets/21040043/24240405/0ba41234-0fe4-11e7-919b-c3f88ced349c.jpg',
-},
-  {time: 'Day 3', date: 'Aug 17, 2023', title: 'Departure from Ahmedabad/Baroda/Surat', description: 'The camp will depart on the previous day evening from Ahmedabad.\ni.e. if the camp start date on Friday, then the camp will depart on Thursday evening.',
-  imageUrl: 'https://cloud.githubusercontent.com/assets/21040043/24240405/0ba41234-0fe4-11e7-919b-c3f88ced349c.jpg',
-},
+  {
+    time: 'Day 0',
+    date: 'Aug 17, 2023',
+    title: 'Departure from Ahmedabad/Baroda/Surat',
+    description:
+      'The camp will depart on the previous day evening from Ahmedabad.\ni.e. if the camp start date on Friday, then the camp will depart on Thursday evening.',
+  },
+  {
+    time: 'Day 1',
+    date: 'Aug 17, 2023',
+    title: 'Departure from Ahmedabad/Baroda/Surat',
+    description:
+      'The camp will depart on the previous day evening from Ahmedabad.\ni.e. if the camp start date on Friday, then the camp will depart on Thursday evening',
+    imageUrl:
+      'https://cloud.githubusercontent.com/assets/21040043/24240405/0ba41234-0fe4-11e7-919b-c3f88ced349c.jpg',
+  },
+  {
+    time: 'Day 2',
+    date: 'Aug 17, 2023',
+    title: 'Departure from Ahmedabad/Baroda/Surat',
+    description:
+      'The camp will depart on the previous day evening from Ahmedabad.\ni.e. if the camp start date on Friday, then the camp will depart on Thursday evening.',
+    imageUrl:
+      'https://cloud.githubusercontent.com/assets/21040043/24240405/0ba41234-0fe4-11e7-919b-c3f88ced349c.jpg',
+  },
+  {
+    time: 'Day 3',
+    date: 'Aug 17, 2023',
+    title: 'Departure from Ahmedabad/Baroda/Surat',
+    description:
+      'The camp will depart on the previous day evening from Ahmedabad.\ni.e. if the camp start date on Friday, then the camp will depart on Thursday evening.',
+    imageUrl:
+      'https://cloud.githubusercontent.com/assets/21040043/24240405/0ba41234-0fe4-11e7-919b-c3f88ced349c.jpg',
+  },
 ];
 
 const Event = () => {
@@ -126,13 +148,16 @@ const Event = () => {
   const monthSelected = (month: string) => {
     console.log('Selected month is ', month);
     setSelectedMonth(month);
-  }
+  };
 
   const dateSelected = (date: number) => {
     console.log('Selected date is ', date);
     setSelectedDate(date);
-  }
+  };
 
+  const bookNow = async () => {
+    console.info('pay 5500');
+  };
 
   const renderJoinUsItem = ({item}: {item: joinUs}) => {
     return (
@@ -187,14 +212,14 @@ const Event = () => {
                   size={26}
                   color={Colors.primary}
                 />
-                <View style={{ marginHorizontal: 7}}>
+                <View style={{marginHorizontal: 7}}>
                   <Text> Duration </Text>
                   <Text> 3 days / 2 nights </Text>
                 </View>
               </View>
               <View style={styles.singleInfo}>
                 <MaterialIcon name="map" size={26} color={Colors.primary} />
-                <View style={{ marginHorizontal: 7}}>
+                <View style={{marginHorizontal: 7}}>
                   <Text> Difficulty </Text>
                   <Text> easy </Text>
                 </View>
@@ -203,7 +228,7 @@ const Event = () => {
             <View style={styles.row}>
               <View style={styles.singleInfo}>
                 <MaterialIcon name="group" size={26} color={Colors.primary} />
-                <View style={{ marginHorizontal: 7}}>
+                <View style={{marginHorizontal: 7}}>
                   <Text> Age group </Text>
                   <Text> 8-35 years </Text>
                 </View>
@@ -214,7 +239,7 @@ const Event = () => {
                   size={24}
                   color={Colors.primary}
                 />
-                <View style={{ marginHorizontal: 7}}>
+                <View style={{marginHorizontal: 7}}>
                   <Text> Max Altitude </Text>
                   <Text> 2500 ft </Text>
                 </View>
@@ -327,16 +352,56 @@ const Event = () => {
 
           <View style={[styles.row, {flexWrap: 'wrap'}]}>
             {eventDates.map((item: datesDataType, index: number) => (
-              <Pressable style={[styles.month, { backgroundColor: selectedMonth===item.month ? Colors.primary : Colors.white}]} key={index} onPress={() => monthSelected(item.month)}>
-                <Text style={[styles.text, { color: selectedMonth===item.month ? Colors.white : Colors.primary }]}>{item.month}</Text>
+              <Pressable
+                style={[
+                  styles.month,
+                  {
+                    backgroundColor:
+                      selectedMonth === item.month
+                        ? Colors.primary
+                        : Colors.white,
+                  },
+                ]}
+                key={index}
+                onPress={() => monthSelected(item.month)}>
+                <Text
+                  style={[
+                    styles.text,
+                    {
+                      color:
+                        selectedMonth === item.month
+                          ? Colors.white
+                          : Colors.primary,
+                    },
+                  ]}>
+                  {item.month}
+                </Text>
               </Pressable>
             ))}
           </View>
 
           <View style={[styles.row, {flexWrap: 'wrap'}]}>
             {eventDates[2].dates.map((date: number, index: number) => (
-              <Pressable style={[styles.date, { backgroundColor: selectedDate===date ? Colors.primary : Colors.white}]} key={index} onPress={() => dateSelected(date)}>
-                <Text style={[styles.text, { color: selectedDate===date ? Colors.white : Colors.primary }]}>{date}</Text>
+              <Pressable
+                style={[
+                  styles.date,
+                  {
+                    backgroundColor:
+                      selectedDate === date ? Colors.primary : Colors.white,
+                  },
+                ]}
+                key={index}
+                onPress={() => dateSelected(date)}>
+                <Text
+                  style={[
+                    styles.text,
+                    {
+                      color:
+                        selectedDate === date ? Colors.white : Colors.primary,
+                    },
+                  ]}>
+                  {date}
+                </Text>
               </Pressable>
             ))}
           </View>
@@ -350,11 +415,77 @@ const Event = () => {
             lineColor={Colors.primary}
             lineWidth={2}
             circleSize={12}
-            timeStyle={{ backgroundColor: Colors.primary, paddingHorizontal: 5, paddingVertical: 5, borderRadius: 20, color: Colors.white }}
-            listViewStyle={{ borderStyle: 'dotted'}}
+            timeStyle={{
+              backgroundColor: Colors.primary,
+              paddingHorizontal: 5,
+              paddingVertical: 5,
+              borderRadius: 20,
+              color: Colors.white,
+            }}
+            listViewStyle={{borderStyle: 'dotted'}}
             separator={true}
-            style={{ width: screenWidth - 50, paddingLeft: 20, marginTop: 10 }}
+            style={{width: screenWidth - 50, paddingLeft: 20, marginTop: 10}}
           />
+        </View>
+
+        <View style={styles.bookCotainer}>
+          <Text style={styles.heading}> Attractions </Text>
+          <View style={[styles.row, { justifyContent: 'space-evenly', marginTop: 5}]}>
+            <View style={styles.row}>
+              <Text style={styles.secondaryText}>From</Text>
+              <MaterialIcon
+                name="currency-rupee"
+                size={16}
+                color={Colors.primary}
+                style={{}}
+              />
+              <Text style={{fontSize: 16}}>5500 / person</Text>
+            </View>
+
+            <CustomButton onclick={bookNow} />
+          </View>
+        </View>
+
+        <View style={{ backgroundColor: 'orange'}}>
+          <View style={[styles.row, { justifyContent: 'space-between', alignItems: 'center'}]}>
+            <Text style={styles.secondaryText}> Things to carry </Text>
+            <MaterialCommunityIcon
+                name="arrow-right-thin"
+                size={28}
+                color={Colors.primary}
+                style={{}}
+              />
+          </View>
+
+          <View style={[styles.row, { justifyContent: 'space-between', alignItems: 'center', marginVertical: 5}]}>
+            <Text style={styles.secondaryText}> Things to carry </Text>
+            <MaterialCommunityIcon
+                name="arrow-right-thin"
+                size={28}
+                color={Colors.primary}
+                style={{}}
+              />
+          </View>
+
+          <View style={[styles.row, { justifyContent: 'space-between', alignItems: 'center'}]}>
+            <Text style={styles.secondaryText}> Things to carry </Text>
+            <MaterialCommunityIcon
+                name="arrow-right-thin"
+                size={28}
+                color={Colors.primary}
+                style={{}}
+              />
+          </View>
+
+          <View style={[styles.row, { justifyContent: 'space-between', alignItems: 'center'}]}>
+            <Text style={styles.secondaryText}> Things to carry </Text>
+            <MaterialCommunityIcon
+                name="arrow-right-thin"
+                size={28}
+                color={Colors.primary}
+                style={{}}
+              />
+          </View>
         </View>
 
         <Footer />
@@ -505,5 +636,10 @@ const styles = StyleSheet.create({
   scheduleContainer: {
     marginVertical: 5,
     paddingVertical: 10,
-  }
+  },
+
+  bookCotainer: {
+    backgroundColor: Colors.sliver,
+    padding: 5,
+  },
 });
