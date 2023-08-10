@@ -1,0 +1,549 @@
+{
+    "data": {
+        "treks": [
+            {
+                "id": 132,
+                "name": "Marvellous Matheran",
+                "slug": "marvelous-mathera",
+                "tagline": "Experience the finest hill station of Maharashtra!",
+                "description": "Matheran is situated near Mumbai in Maharashtra and is known for its misty mountains, toy trains and typical sahyadri weather. Marvelous Matheran is an event where trekkers will enjoy the misty mountains and hilly weather. The place is highly populated on weekends.",
+                "code": "MR",
+                "campsite_id": 4,
+                "altitude": 2500,
+                "difficulty": "Easy",
+                "length": 12,
+                "location": "Matheran",
+                "min_age": 8,
+                "max_age": 35,
+                "status": "Active",
+                "brochure": "package/4c08f57a-bc62-4049-b7d5-92d50eeb0e69",
+                "tips": null,
+                "video": null,
+                "main_package_id": 313,
+                "imp_update": null,
+                "campsite": {
+                    "id": 4,
+                    "name": "Saputara",
+                    "slug": "saputara",
+                    "__typename": "camp_sites"
+                },
+                "images": [
+                    {
+                        "id": 564,
+                        "image": {
+                            "path": "trek/4469ac64-d837-46f2-bc49-34b4f1eb03bb",
+                            "type": 1,
+                            "id": 664,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 565,
+                        "image": {
+                            "path": "trek/384df310-10f8-4933-ba4e-d3cfe5f0f176",
+                            "type": 1,
+                            "id": 665,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 566,
+                        "image": {
+                            "path": "trek/c393bb91-b4df-42f3-bcc1-74a224162574",
+                            "type": 1,
+                            "id": 666,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 568,
+                        "image": {
+                            "path": "trek/c96f7f15-b4bd-4a95-8ce5-847590d93204",
+                            "type": 1,
+                            "id": 668,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 569,
+                        "image": {
+                            "path": "trek/7f40f2f2-f9a6-45b7-b4e9-c9b1d1021964",
+                            "type": 1,
+                            "id": 669,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 570,
+                        "image": {
+                            "path": "trek/c08fe002-b934-465d-a2d4-3e189cfe6247",
+                            "type": 1,
+                            "id": 670,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    }
+                ],
+                "videos": [],
+                "packages": [
+                    {
+                        "id": 313,
+                        "image": "package/7e6c62ce-9359-4686-99e9-c4c52015a368",
+                        "name": "Ahmedabad",
+                        "description": "Join from Ahmedabad",
+                        "price": 5500,
+                        "priority": 1,
+                        "trek_id": 132,
+                        "start_day": 0,
+                        "created_at": "2023-07-25T00:38:29.181098+05:30",
+                        "updated_at": "2023-07-29T19:44:17.941694+05:30",
+                        "schedules": [
+                            {
+                                "id": 13656,
+                                "order": 0,
+                                "schedule": {
+                                    "id": 676,
+                                    "brief": "The journey starts!",
+                                    "name": "Departure from Ahmedabad/Baroda/Surat",
+                                    "image": null,
+                                    "count_as_day": false,
+                                    "description": "The camp will depart on the previous day evening from Ahmedabad.\ni.e. if the camp start date on Friday, then the camp will depart on Thursday evening.\n\nThe Volunteer will share you the train timing which will be mostly after 7 pm from Ahmedabad.\n\n**Reporting Time:**  7:00 PM\n**Departure from Ahmedabad:** [Ahmedabad Junction/Kalupur Railway Station](https://goo.gl/maps/KqAmZfdpPkf1q1e37) | 7 PM\n\nParticipants who will join from **Baroda/Surat** will be notified later as per the train timing.\n\nContact Details of the volunteers will be shared with you one day prior to departure for any kind of querries.",
+                                    "created_at": "2023-07-25T00:40:09.380911+05:30",
+                                    "updated_at": "2023-07-29T19:27:18.850427+05:30",
+                                    "__typename": "schedules"
+                                },
+                                "__typename": "package_schedules"
+                            },
+                            {
+                                "id": 13657,
+                                "order": 1,
+                                "schedule": {
+                                    "id": 677,
+                                    "brief": "Settle down after the overnight travel, introduction and activities",
+                                    "name": "Arrival at Matheran, Trek to Garbett Plateau",
+                                    "image": "schedule/13d0913d-9da2-47a1-8fcf-696bd803603c",
+                                    "count_as_day": true,
+                                    "description": "###### 05:00 AM | Arrival at Mumbai, Transfer to Matheran\nAfter an overnight journey, we will arrive at Mumbai. Then we will shift to Matheran using the road transportation options like road to Neral and Taxi.\n\n###### 09:00 AM | Breakfast & Stay Allotment at Matheran \nThe volunteers will allocate the stay and then we will have breakfast. Briefing of the day. \n\n###### 10:30 AM | Trek to Garbett Plateau\nGarbett Plateau is at an elevation of approx 2500 ft from sea level. The place is famous for the landscapes and panoramic views.\n\n###### 01:30 PM - 03:00 PM | Lunch & Rest\nWe will come back from the Garbett Plateau and have lunch. After lunch, some time for a nap to get refreshed.\n\n###### 03:30 PM | Visit to Waterfall\nMatheran is famous for its Waterfalls. After having some rest, we will go for Waterfall visit.\n\n###### 08:30 PM | Dinner & Freetime\n",
+                                    "created_at": "2023-07-25T00:42:56.541083+05:30",
+                                    "updated_at": "2023-07-29T19:07:00.604534+05:30",
+                                    "__typename": "schedules"
+                                },
+                                "__typename": "package_schedules"
+                            },
+                            {
+                                "id": 13658,
+                                "order": 2,
+                                "schedule": {
+                                    "id": 678,
+                                    "brief": "Favourite destination for one day trekkers",
+                                    "name": "Trek to Vikatgad (Peb Fort)",
+                                    "image": "schedule/0d87f3d1-985a-4b23-9464-2406571c1391",
+                                    "count_as_day": true,
+                                    "description": "###### 07:00 AM | Breakfast & Briefing\nWe will have the briefing of the trek from the guide/volunteer. Then we will have breakfast.\n\n###### 08:00 PM | Departure for Peb Fort Trek\nThe iconic Vikatgad Trek is the attraction and main activity of the day. It will take approx 6 to 8 hours to reach the top and come back. So will be carrying our pack lunch in backpacks.\n\nWe will also visit **Kadyavarcha Ganpati** on our way back to Matheran.\n\n###### 05:30 PM | Arrival Back & Evening Tea\n\n###### 06:30 PM | Team Games & Garba\n\n###### 08:30 PM | Dinner",
+                                    "created_at": "2023-07-25T00:44:48.727427+05:30",
+                                    "updated_at": "2023-07-29T16:24:48.4265+05:30",
+                                    "__typename": "schedules"
+                                },
+                                "__typename": "package_schedules"
+                            },
+                            {
+                                "id": 13659,
+                                "order": 3,
+                                "schedule": {
+                                    "id": 679,
+                                    "brief": "Wander into misty lanes of the hill station",
+                                    "name": "Freetime for Sightseeing, Return Journey",
+                                    "image": "schedule/1005e15c-fa3e-4c54-a787-82b5d04e0783",
+                                    "count_as_day": true,
+                                    "description": "###### 07:30 AM | Pack the Bags & Gather at the Assembly, Breakfast\nToday is for Matheran Sightseeing. So will pack the bags early and then have breakfast.\n\n###### 08:30 AM - 12:30 PM | Freetime to visit Matheran\nMatheran has a lot many things to experience. You can try the local food today and wander in the misty lanes of the tiny hill station. Market which is known as Peth Bazar is kind of tourist attraction and you can feel the ancient vibes there.\n\nYou will enjoy photography and shopping on this day.\n\n###### 01:00 PM | Departure for Neral\nAfter visiting the Hill Station, we will get back to the stay and gather our bags. Then we will start our return journey towards Neral.\n\n###### 02:30 PM | Start Return Journey\nWe will use the road transport up to Mumbai and then we will board the train for Ahmedabad.",
+                                    "created_at": "2023-07-25T00:45:59.53596+05:30",
+                                    "updated_at": "2023-07-29T19:06:30.328821+05:30",
+                                    "__typename": "schedules"
+                                },
+                                "__typename": "package_schedules"
+                            }
+                        ],
+                        "__typename": "packages"
+                    },
+                    {
+                        "id": 316,
+                        "image": "package/b0cfb367-0384-4d4c-adc0-d153fba96141",
+                        "name": "Baroda",
+                        "description": "Board the train from Baroda",
+                        "price": 5500,
+                        "priority": 2,
+                        "trek_id": 132,
+                        "start_day": 0,
+                        "created_at": "2023-07-29T19:22:05.302495+05:30",
+                        "updated_at": "2023-07-30T18:03:13.0356+05:30",
+                        "schedules": [
+                            {
+                                "id": 13678,
+                                "order": 0,
+                                "schedule": {
+                                    "id": 676,
+                                    "brief": "The journey starts!",
+                                    "name": "Departure from Ahmedabad/Baroda/Surat",
+                                    "image": null,
+                                    "count_as_day": false,
+                                    "description": "The camp will depart on the previous day evening from Ahmedabad.\ni.e. if the camp start date on Friday, then the camp will depart on Thursday evening.\n\nThe Volunteer will share you the train timing which will be mostly after 7 pm from Ahmedabad.\n\n**Reporting Time:**  7:00 PM\n**Departure from Ahmedabad:** [Ahmedabad Junction/Kalupur Railway Station](https://goo.gl/maps/KqAmZfdpPkf1q1e37) | 7 PM\n\nParticipants who will join from **Baroda/Surat** will be notified later as per the train timing.\n\nContact Details of the volunteers will be shared with you one day prior to departure for any kind of querries.",
+                                    "created_at": "2023-07-25T00:40:09.380911+05:30",
+                                    "updated_at": "2023-07-29T19:27:18.850427+05:30",
+                                    "__typename": "schedules"
+                                },
+                                "__typename": "package_schedules"
+                            },
+                            {
+                                "id": 13679,
+                                "order": 1,
+                                "schedule": {
+                                    "id": 677,
+                                    "brief": "Settle down after the overnight travel, introduction and activities",
+                                    "name": "Arrival at Matheran, Trek to Garbett Plateau",
+                                    "image": "schedule/13d0913d-9da2-47a1-8fcf-696bd803603c",
+                                    "count_as_day": true,
+                                    "description": "###### 05:00 AM | Arrival at Mumbai, Transfer to Matheran\nAfter an overnight journey, we will arrive at Mumbai. Then we will shift to Matheran using the road transportation options like road to Neral and Taxi.\n\n###### 09:00 AM | Breakfast & Stay Allotment at Matheran \nThe volunteers will allocate the stay and then we will have breakfast. Briefing of the day. \n\n###### 10:30 AM | Trek to Garbett Plateau\nGarbett Plateau is at an elevation of approx 2500 ft from sea level. The place is famous for the landscapes and panoramic views.\n\n###### 01:30 PM - 03:00 PM | Lunch & Rest\nWe will come back from the Garbett Plateau and have lunch. After lunch, some time for a nap to get refreshed.\n\n###### 03:30 PM | Visit to Waterfall\nMatheran is famous for its Waterfalls. After having some rest, we will go for Waterfall visit.\n\n###### 08:30 PM | Dinner & Freetime\n",
+                                    "created_at": "2023-07-25T00:42:56.541083+05:30",
+                                    "updated_at": "2023-07-29T19:07:00.604534+05:30",
+                                    "__typename": "schedules"
+                                },
+                                "__typename": "package_schedules"
+                            },
+                            {
+                                "id": 13680,
+                                "order": 2,
+                                "schedule": {
+                                    "id": 678,
+                                    "brief": "Favourite destination for one day trekkers",
+                                    "name": "Trek to Vikatgad (Peb Fort)",
+                                    "image": "schedule/0d87f3d1-985a-4b23-9464-2406571c1391",
+                                    "count_as_day": true,
+                                    "description": "###### 07:00 AM | Breakfast & Briefing\nWe will have the briefing of the trek from the guide/volunteer. Then we will have breakfast.\n\n###### 08:00 PM | Departure for Peb Fort Trek\nThe iconic Vikatgad Trek is the attraction and main activity of the day. It will take approx 6 to 8 hours to reach the top and come back. So will be carrying our pack lunch in backpacks.\n\nWe will also visit **Kadyavarcha Ganpati** on our way back to Matheran.\n\n###### 05:30 PM | Arrival Back & Evening Tea\n\n###### 06:30 PM | Team Games & Garba\n\n###### 08:30 PM | Dinner",
+                                    "created_at": "2023-07-25T00:44:48.727427+05:30",
+                                    "updated_at": "2023-07-29T16:24:48.4265+05:30",
+                                    "__typename": "schedules"
+                                },
+                                "__typename": "package_schedules"
+                            },
+                            {
+                                "id": 13681,
+                                "order": 3,
+                                "schedule": {
+                                    "id": 679,
+                                    "brief": "Wander into misty lanes of the hill station",
+                                    "name": "Freetime for Sightseeing, Return Journey",
+                                    "image": "schedule/1005e15c-fa3e-4c54-a787-82b5d04e0783",
+                                    "count_as_day": true,
+                                    "description": "###### 07:30 AM | Pack the Bags & Gather at the Assembly, Breakfast\nToday is for Matheran Sightseeing. So will pack the bags early and then have breakfast.\n\n###### 08:30 AM - 12:30 PM | Freetime to visit Matheran\nMatheran has a lot many things to experience. You can try the local food today and wander in the misty lanes of the tiny hill station. Market which is known as Peth Bazar is kind of tourist attraction and you can feel the ancient vibes there.\n\nYou will enjoy photography and shopping on this day.\n\n###### 01:00 PM | Departure for Neral\nAfter visiting the Hill Station, we will get back to the stay and gather our bags. Then we will start our return journey towards Neral.\n\n###### 02:30 PM | Start Return Journey\nWe will use the road transport up to Mumbai and then we will board the train for Ahmedabad.",
+                                    "created_at": "2023-07-25T00:45:59.53596+05:30",
+                                    "updated_at": "2023-07-29T19:06:30.328821+05:30",
+                                    "__typename": "schedules"
+                                },
+                                "__typename": "package_schedules"
+                            }
+                        ],
+                        "__typename": "packages"
+                    },
+                    {
+                        "id": 317,
+                        "image": "package/495ca81d-b98a-4bf9-9940-e3897803d931",
+                        "name": "Surat",
+                        "description": "Board the train from Surat",
+                        "price": 5500,
+                        "priority": 3,
+                        "trek_id": 132,
+                        "start_day": 0,
+                        "created_at": "2023-07-29T19:24:51.1718+05:30",
+                        "updated_at": "2023-07-29T19:44:55.656029+05:30",
+                        "schedules": [
+                            {
+                                "id": 13664,
+                                "order": 0,
+                                "schedule": {
+                                    "id": 676,
+                                    "brief": "The journey starts!",
+                                    "name": "Departure from Ahmedabad/Baroda/Surat",
+                                    "image": null,
+                                    "count_as_day": false,
+                                    "description": "The camp will depart on the previous day evening from Ahmedabad.\ni.e. if the camp start date on Friday, then the camp will depart on Thursday evening.\n\nThe Volunteer will share you the train timing which will be mostly after 7 pm from Ahmedabad.\n\n**Reporting Time:**  7:00 PM\n**Departure from Ahmedabad:** [Ahmedabad Junction/Kalupur Railway Station](https://goo.gl/maps/KqAmZfdpPkf1q1e37) | 7 PM\n\nParticipants who will join from **Baroda/Surat** will be notified later as per the train timing.\n\nContact Details of the volunteers will be shared with you one day prior to departure for any kind of querries.",
+                                    "created_at": "2023-07-25T00:40:09.380911+05:30",
+                                    "updated_at": "2023-07-29T19:27:18.850427+05:30",
+                                    "__typename": "schedules"
+                                },
+                                "__typename": "package_schedules"
+                            },
+                            {
+                                "id": 13665,
+                                "order": 1,
+                                "schedule": {
+                                    "id": 677,
+                                    "brief": "Settle down after the overnight travel, introduction and activities",
+                                    "name": "Arrival at Matheran, Trek to Garbett Plateau",
+                                    "image": "schedule/13d0913d-9da2-47a1-8fcf-696bd803603c",
+                                    "count_as_day": true,
+                                    "description": "###### 05:00 AM | Arrival at Mumbai, Transfer to Matheran\nAfter an overnight journey, we will arrive at Mumbai. Then we will shift to Matheran using the road transportation options like road to Neral and Taxi.\n\n###### 09:00 AM | Breakfast & Stay Allotment at Matheran \nThe volunteers will allocate the stay and then we will have breakfast. Briefing of the day. \n\n###### 10:30 AM | Trek to Garbett Plateau\nGarbett Plateau is at an elevation of approx 2500 ft from sea level. The place is famous for the landscapes and panoramic views.\n\n###### 01:30 PM - 03:00 PM | Lunch & Rest\nWe will come back from the Garbett Plateau and have lunch. After lunch, some time for a nap to get refreshed.\n\n###### 03:30 PM | Visit to Waterfall\nMatheran is famous for its Waterfalls. After having some rest, we will go for Waterfall visit.\n\n###### 08:30 PM | Dinner & Freetime\n",
+                                    "created_at": "2023-07-25T00:42:56.541083+05:30",
+                                    "updated_at": "2023-07-29T19:07:00.604534+05:30",
+                                    "__typename": "schedules"
+                                },
+                                "__typename": "package_schedules"
+                            },
+                            {
+                                "id": 13666,
+                                "order": 2,
+                                "schedule": {
+                                    "id": 678,
+                                    "brief": "Favourite destination for one day trekkers",
+                                    "name": "Trek to Vikatgad (Peb Fort)",
+                                    "image": "schedule/0d87f3d1-985a-4b23-9464-2406571c1391",
+                                    "count_as_day": true,
+                                    "description": "###### 07:00 AM | Breakfast & Briefing\nWe will have the briefing of the trek from the guide/volunteer. Then we will have breakfast.\n\n###### 08:00 PM | Departure for Peb Fort Trek\nThe iconic Vikatgad Trek is the attraction and main activity of the day. It will take approx 6 to 8 hours to reach the top and come back. So will be carrying our pack lunch in backpacks.\n\nWe will also visit **Kadyavarcha Ganpati** on our way back to Matheran.\n\n###### 05:30 PM | Arrival Back & Evening Tea\n\n###### 06:30 PM | Team Games & Garba\n\n###### 08:30 PM | Dinner",
+                                    "created_at": "2023-07-25T00:44:48.727427+05:30",
+                                    "updated_at": "2023-07-29T16:24:48.4265+05:30",
+                                    "__typename": "schedules"
+                                },
+                                "__typename": "package_schedules"
+                            },
+                            {
+                                "id": 13667,
+                                "order": 3,
+                                "schedule": {
+                                    "id": 679,
+                                    "brief": "Wander into misty lanes of the hill station",
+                                    "name": "Freetime for Sightseeing, Return Journey",
+                                    "image": "schedule/1005e15c-fa3e-4c54-a787-82b5d04e0783",
+                                    "count_as_day": true,
+                                    "description": "###### 07:30 AM | Pack the Bags & Gather at the Assembly, Breakfast\nToday is for Matheran Sightseeing. So will pack the bags early and then have breakfast.\n\n###### 08:30 AM - 12:30 PM | Freetime to visit Matheran\nMatheran has a lot many things to experience. You can try the local food today and wander in the misty lanes of the tiny hill station. Market which is known as Peth Bazar is kind of tourist attraction and you can feel the ancient vibes there.\n\nYou will enjoy photography and shopping on this day.\n\n###### 01:00 PM | Departure for Neral\nAfter visiting the Hill Station, we will get back to the stay and gather our bags. Then we will start our return journey towards Neral.\n\n###### 02:30 PM | Start Return Journey\nWe will use the road transport up to Mumbai and then we will board the train for Ahmedabad.",
+                                    "created_at": "2023-07-25T00:45:59.53596+05:30",
+                                    "updated_at": "2023-07-29T19:06:30.328821+05:30",
+                                    "__typename": "schedules"
+                                },
+                                "__typename": "package_schedules"
+                            }
+                        ],
+                        "__typename": "packages"
+                    },
+                    {
+                        "id": 314,
+                        "image": "package/db03e469-52c1-4d9a-a632-1e4e026ef6ce",
+                        "name": "Matheran",
+                        "description": "Join us Directly from Matheran",
+                        "price": 3500,
+                        "priority": 4,
+                        "trek_id": 132,
+                        "start_day": 0,
+                        "created_at": "2023-07-29T16:57:20.69652+05:30",
+                        "updated_at": "2023-07-30T17:24:36.427532+05:30",
+                        "schedules": [
+                            {
+                                "id": 13674,
+                                "order": 0,
+                                "schedule": {
+                                    "id": 680,
+                                    "brief": "Check-in, Breakfast and Trek to Garbett Plateau",
+                                    "name": "Arrival at Matheran",
+                                    "image": "schedule/234b4b27-461c-417e-a618-fce4fac9aae1",
+                                    "count_as_day": true,
+                                    "description": "###### 08:30 AM | Reporting at Matheran Railway Station \n\n###### 09:00 AM | Breakfast & Stay Allotment at Matheran \nThe volunteers will allocate the stay and then we will have breakfast. Briefing of the day. \n\n###### 10:30 AM | Trek to Garbett Plateau\nGarbett Plateau is at an elevation of approx 2500 ft from sea level. The place is famous for the landscapes and panoramic views.\n\n###### 01:30 PM - 03:00 PM | Lunch & Rest\nWe will come back from the Garbett Plateau and have lunch. After lunch, some time for a nap to get refreshed.\n\n###### 03:30 PM | Visit to Waterfall\nMatheran is famous for its Waterfalls. After having some rest, we will go for Waterfall visit.\n\n###### 08:30 PM | Dinner & Freetime",
+                                    "created_at": "2023-07-29T17:01:57.61983+05:30",
+                                    "updated_at": "2023-07-29T17:01:57.61983+05:30",
+                                    "__typename": "schedules"
+                                },
+                                "__typename": "package_schedules"
+                            },
+                            {
+                                "id": 13675,
+                                "order": 1,
+                                "schedule": {
+                                    "id": 678,
+                                    "brief": "Favourite destination for one day trekkers",
+                                    "name": "Trek to Vikatgad (Peb Fort)",
+                                    "image": "schedule/0d87f3d1-985a-4b23-9464-2406571c1391",
+                                    "count_as_day": true,
+                                    "description": "###### 07:00 AM | Breakfast & Briefing\nWe will have the briefing of the trek from the guide/volunteer. Then we will have breakfast.\n\n###### 08:00 PM | Departure for Peb Fort Trek\nThe iconic Vikatgad Trek is the attraction and main activity of the day. It will take approx 6 to 8 hours to reach the top and come back. So will be carrying our pack lunch in backpacks.\n\nWe will also visit **Kadyavarcha Ganpati** on our way back to Matheran.\n\n###### 05:30 PM | Arrival Back & Evening Tea\n\n###### 06:30 PM | Team Games & Garba\n\n###### 08:30 PM | Dinner",
+                                    "created_at": "2023-07-25T00:44:48.727427+05:30",
+                                    "updated_at": "2023-07-29T16:24:48.4265+05:30",
+                                    "__typename": "schedules"
+                                },
+                                "__typename": "package_schedules"
+                            },
+                            {
+                                "id": 13676,
+                                "order": 2,
+                                "schedule": {
+                                    "id": 679,
+                                    "brief": "Wander into misty lanes of the hill station",
+                                    "name": "Freetime for Sightseeing, Return Journey",
+                                    "image": "schedule/1005e15c-fa3e-4c54-a787-82b5d04e0783",
+                                    "count_as_day": true,
+                                    "description": "###### 07:30 AM | Pack the Bags & Gather at the Assembly, Breakfast\nToday is for Matheran Sightseeing. So will pack the bags early and then have breakfast.\n\n###### 08:30 AM - 12:30 PM | Freetime to visit Matheran\nMatheran has a lot many things to experience. You can try the local food today and wander in the misty lanes of the tiny hill station. Market which is known as Peth Bazar is kind of tourist attraction and you can feel the ancient vibes there.\n\nYou will enjoy photography and shopping on this day.\n\n###### 01:00 PM | Departure for Neral\nAfter visiting the Hill Station, we will get back to the stay and gather our bags. Then we will start our return journey towards Neral.\n\n###### 02:30 PM | Start Return Journey\nWe will use the road transport up to Mumbai and then we will board the train for Ahmedabad.",
+                                    "created_at": "2023-07-25T00:45:59.53596+05:30",
+                                    "updated_at": "2023-07-29T19:06:30.328821+05:30",
+                                    "__typename": "schedules"
+                                },
+                                "__typename": "package_schedules"
+                            },
+                            {
+                                "id": 13677,
+                                "order": 3,
+                                "schedule": {
+                                    "id": 676,
+                                    "brief": "The journey starts!",
+                                    "name": "Departure from Ahmedabad/Baroda/Surat",
+                                    "image": null,
+                                    "count_as_day": false,
+                                    "description": "The camp will depart on the previous day evening from Ahmedabad.\ni.e. if the camp start date on Friday, then the camp will depart on Thursday evening.\n\nThe Volunteer will share you the train timing which will be mostly after 7 pm from Ahmedabad.\n\n**Reporting Time:**  7:00 PM\n**Departure from Ahmedabad:** [Ahmedabad Junction/Kalupur Railway Station](https://goo.gl/maps/KqAmZfdpPkf1q1e37) | 7 PM\n\nParticipants who will join from **Baroda/Surat** will be notified later as per the train timing.\n\nContact Details of the volunteers will be shared with you one day prior to departure for any kind of querries.",
+                                    "created_at": "2023-07-25T00:40:09.380911+05:30",
+                                    "updated_at": "2023-07-29T19:27:18.850427+05:30",
+                                    "__typename": "schedules"
+                                },
+                                "__typename": "package_schedules"
+                            }
+                        ],
+                        "__typename": "packages"
+                    },
+                    {
+                        "id": 315,
+                        "image": "package/b316424f-8d07-4963-ba64-ac0829996399",
+                        "name": "Mumbai",
+                        "description": "Join us from Borivali",
+                        "price": 5000,
+                        "priority": 5,
+                        "trek_id": 132,
+                        "start_day": 0,
+                        "created_at": "2023-07-29T19:09:39.928361+05:30",
+                        "updated_at": "2023-07-29T19:45:42.65367+05:30",
+                        "schedules": [
+                            {
+                                "id": 13671,
+                                "order": 0,
+                                "schedule": {
+                                    "id": 677,
+                                    "brief": "Settle down after the overnight travel, introduction and activities",
+                                    "name": "Arrival at Matheran, Trek to Garbett Plateau",
+                                    "image": "schedule/13d0913d-9da2-47a1-8fcf-696bd803603c",
+                                    "count_as_day": true,
+                                    "description": "###### 05:00 AM | Arrival at Mumbai, Transfer to Matheran\nAfter an overnight journey, we will arrive at Mumbai. Then we will shift to Matheran using the road transportation options like road to Neral and Taxi.\n\n###### 09:00 AM | Breakfast & Stay Allotment at Matheran \nThe volunteers will allocate the stay and then we will have breakfast. Briefing of the day. \n\n###### 10:30 AM | Trek to Garbett Plateau\nGarbett Plateau is at an elevation of approx 2500 ft from sea level. The place is famous for the landscapes and panoramic views.\n\n###### 01:30 PM - 03:00 PM | Lunch & Rest\nWe will come back from the Garbett Plateau and have lunch. After lunch, some time for a nap to get refreshed.\n\n###### 03:30 PM | Visit to Waterfall\nMatheran is famous for its Waterfalls. After having some rest, we will go for Waterfall visit.\n\n###### 08:30 PM | Dinner & Freetime\n",
+                                    "created_at": "2023-07-25T00:42:56.541083+05:30",
+                                    "updated_at": "2023-07-29T19:07:00.604534+05:30",
+                                    "__typename": "schedules"
+                                },
+                                "__typename": "package_schedules"
+                            },
+                            {
+                                "id": 13672,
+                                "order": 1,
+                                "schedule": {
+                                    "id": 678,
+                                    "brief": "Favourite destination for one day trekkers",
+                                    "name": "Trek to Vikatgad (Peb Fort)",
+                                    "image": "schedule/0d87f3d1-985a-4b23-9464-2406571c1391",
+                                    "count_as_day": true,
+                                    "description": "###### 07:00 AM | Breakfast & Briefing\nWe will have the briefing of the trek from the guide/volunteer. Then we will have breakfast.\n\n###### 08:00 PM | Departure for Peb Fort Trek\nThe iconic Vikatgad Trek is the attraction and main activity of the day. It will take approx 6 to 8 hours to reach the top and come back. So will be carrying our pack lunch in backpacks.\n\nWe will also visit **Kadyavarcha Ganpati** on our way back to Matheran.\n\n###### 05:30 PM | Arrival Back & Evening Tea\n\n###### 06:30 PM | Team Games & Garba\n\n###### 08:30 PM | Dinner",
+                                    "created_at": "2023-07-25T00:44:48.727427+05:30",
+                                    "updated_at": "2023-07-29T16:24:48.4265+05:30",
+                                    "__typename": "schedules"
+                                },
+                                "__typename": "package_schedules"
+                            },
+                            {
+                                "id": 13673,
+                                "order": 2,
+                                "schedule": {
+                                    "id": 679,
+                                    "brief": "Wander into misty lanes of the hill station",
+                                    "name": "Freetime for Sightseeing, Return Journey",
+                                    "image": "schedule/1005e15c-fa3e-4c54-a787-82b5d04e0783",
+                                    "count_as_day": true,
+                                    "description": "###### 07:30 AM | Pack the Bags & Gather at the Assembly, Breakfast\nToday is for Matheran Sightseeing. So will pack the bags early and then have breakfast.\n\n###### 08:30 AM - 12:30 PM | Freetime to visit Matheran\nMatheran has a lot many things to experience. You can try the local food today and wander in the misty lanes of the tiny hill station. Market which is known as Peth Bazar is kind of tourist attraction and you can feel the ancient vibes there.\n\nYou will enjoy photography and shopping on this day.\n\n###### 01:00 PM | Departure for Neral\nAfter visiting the Hill Station, we will get back to the stay and gather our bags. Then we will start our return journey towards Neral.\n\n###### 02:30 PM | Start Return Journey\nWe will use the road transport up to Mumbai and then we will board the train for Ahmedabad.",
+                                    "created_at": "2023-07-25T00:45:59.53596+05:30",
+                                    "updated_at": "2023-07-29T19:06:30.328821+05:30",
+                                    "__typename": "schedules"
+                                },
+                                "__typename": "package_schedules"
+                            }
+                        ],
+                        "__typename": "packages"
+                    }
+                ],
+                "attractions": [],
+                "includes": [
+                    {
+                        "id": 272,
+                        "name": "Travelling",
+                        "icon": "bus-alt",
+                        "description": "Travel",
+                        "__typename": "trek_includes"
+                    },
+                    {
+                        "id": 273,
+                        "name": "Food",
+                        "icon": "utensils-alt",
+                        "description": "Food",
+                        "__typename": "trek_includes"
+                    },
+                    {
+                        "id": 274,
+                        "name": "Stay",
+                        "icon": "mountains-sun",
+                        "description": "Stay on sharing basis",
+                        "__typename": "trek_includes"
+                    },
+                    {
+                        "id": 275,
+                        "name": "Activities",
+                        "icon": "football-american",
+                        "description": "Activities",
+                        "__typename": "trek_includes"
+                    },
+                    {
+                        "id": 276,
+                        "name": "Guide",
+                        "icon": "user-circle",
+                        "description": "Guide",
+                        "__typename": "trek_includes"
+                    },
+                    {
+                        "id": 277,
+                        "name": "First Aid",
+                        "icon": "band-aid",
+                        "description": "First Aid",
+                        "__typename": "trek_includes"
+                    }
+                ],
+                "instructions": [
+                    {
+                        "id": 248,
+                        "name": "Things to Carry",
+                        "description": "1. Shoes, sandals/chappal/sleepers, socks\n2. Umbrella and raincoat, Plastic bags to carry wet clothes\n3. 5-6 pairs of clothes, mostly full sleeves & underwear\n4. Water-bottle, some snacks or chocolates\n5. Sanitary Items, talcum powder, facewash, sunscreen\n6. Coffee mug, spoon & lunchbox (needed for the trek)\n7. Camera/mobile phone, charger, powerbank\n8. ID proof, ATM, cash\n9. Torch\n10. Screenshot of the payment receipt",
+                        "__typename": "trek_instructions"
+                    },
+                    {
+                        "id": 249,
+                        "name": "Inclusion & Exclusion",
+                        "description": "**Inclusion:**\n* Travelling by SL Train up to Mumbai\n* Road Transport from Mumbai to Matheran\n* Food (Breakfast + Lunch + Dinner)\n* Stay\n* Trekking & Sightseeing\n* Volunteers & Instructors\n* First Aid Support\n* 5% GST\n\n**Exclusion:**\n* Food during travel duration\n* Last day Lunch & Dinner\n* Any kind of Sightseeing or Entry Fees\n* Anything not listed above",
+                        "__typename": "trek_instructions"
+                    },
+                    {
+                        "id": 251,
+                        "name": "Cancellation Policy",
+                        "description": "Cancellation would be granted by the Senior Registration Manager or Higher Authorities on receiving cancellation requests through the website. The cancellation amount will be counted on total camp fees only.\n\n## Cancellation Amount will be as per under \n(the percentage shows the amount on total camp fees)\n\n* Before more than 15 days of Departure, 10%\n* Before 2 to 15 days of Departure, 50%\n* In the last 48 hours of Departure & After departure, 90%\n\n## How to cancel your booking for any Camp/Event\n\n1. Login to our Website & then go to your Dashboard\n2. Find your upcoming camp for which you are cancelling\n3. Click on Cancellation Request & fill the form\n4. Mention your reason for cancelling your Camp\n5. Submit Your Cancellation Request\n6. Cancellation Team will be call you regarding your cancellation within 48 working hours\n7. After Canceled your Booking, you will get your refund by account in 7 to 12 working days\n\n* In case of refund, transcation charges are not refundable by banks/payment gateways.\n\n## Reschedule of the Camp/Event:\n\nIn case of any Emergency Reason situation, we are offering an option of Reschedule your Camp in the next 6 months, only for\n\n1. Academic Curriculum (Sudden Change in Exam Schedule)\n2. Medical Emergency (Any Serious Injury)\n\n* Rescheduling is possible only before 5 days of the camp departure, In the last 5 days of departure rescheduling is not provided\n* For this, you have to submit valid proof for the same including a Call letter from the University & College ID Proof in case of exams and Medical Certificate with all the respective reports from the Hospitals (Signed by MBBS post or higher authorities) in case of medical emergencies\n* Excluding this above mentioned reasons, rescheduling option is not available\n* Also participants will have to pay the cancellation charges for travel/accommodation arrangements.\n* This option is given only to those who have valid proof available, other participants have to continue their Camp as per schedule.\n* The rescheduling options are offered only to those who would be facing the emergency other friends or colleagues of that camp have to continue as per their schedule.\n* Rescheduling is given only 1 time, for the Second time Rescheduling & Cancellation option is not available",
+                        "__typename": "trek_instructions"
+                    },
+                    {
+                        "id": 252,
+                        "name": "Terms & Conditions",
+                        "description": "**Discipline**\n✓ This is an Adventure Camp and not a leisure tour, so we expect a high level of discipline\n✓ Participants will have to follow the instructions clearly given by the volunteer/guide, Misbehave/Arguing with the volunteers/guide/instructors will be considered as disciplinary issues\n✓ Smoking, Alcohol, Tobacco & Abusive Language are strictly prohibited and if anyone found a suspect in such cases, the participation will be terminated and no further service/return traveling/refund will be offered then after\n✓ Accommodation & Sanitary Facilities for Girls & Boys are separate\n✓ Punctuality is taken as a serious matter\n\n**Change Of Schedule**\n✓ In case of unforeseen conditions, the schedule/itinerary or the accommodation style can be modified/canceled\n✓ Invincible reserves all rights to cancel/shorten/modify the itinerary, and the final decision is authorized with the trustee team",
+                        "__typename": "trek_instructions"
+                    }
+                ],
+                "__typename": "treks"
+            }
+        ]
+    }
+}

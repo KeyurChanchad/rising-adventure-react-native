@@ -1,0 +1,1712 @@
+{
+    "data": {
+        "treks": [
+            {
+                "id": 34,
+                "name": "Polo Forest One Day Trek",
+                "slug": "polo-forest-1-day-trek-idar",
+                "images": [
+                    {
+                        "id": 196,
+                        "image": {
+                            "path": "trek/7e4a9f2c-2ad0-48c4-b99c-33529816d90e",
+                            "type": 1,
+                            "id": 211,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 197,
+                        "image": {
+                            "path": "trek/813b4efc-4068-4c33-8086-ec260289c0ac",
+                            "type": 1,
+                            "id": 212,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 198,
+                        "image": {
+                            "path": "trek/cb3a3a53-e4fb-41a7-8586-2dcb6b5db3e8",
+                            "type": 1,
+                            "id": 213,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    }
+                ],
+                "main_package": {
+                    "id": 63,
+                    "image": "package/af85350d-16cf-47b5-8bfa-535241ff332e",
+                    "name": "Polo Forest",
+                    "description": "Without Any Transportation!",
+                    "price": 450,
+                    "schedules": [
+                        {
+                            "id": 13443,
+                            "order": 0,
+                            "schedule": {
+                                "id": 209,
+                                "name": "Report at Invincible Polo Forest Campsite",
+                                "count_as_day": true,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        }
+                    ],
+                    "__typename": "packages"
+                },
+                "__typename": "treks"
+            },
+            {
+                "id": 50,
+                "name": "Bakor Nature Camp",
+                "slug": "bakor-nature-camp-mahisagar",
+                "images": [
+                    {
+                        "id": 73,
+                        "image": {
+                            "path": "trek/044b3ff6-8678-469c-87f1-f249048fab6f",
+                            "type": 1,
+                            "id": 75,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 74,
+                        "image": {
+                            "path": "trek/f1203f7f-1d85-4371-a61f-d6162a905fc5",
+                            "type": 1,
+                            "id": 76,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 75,
+                        "image": {
+                            "path": "trek/4cab7ce6-2423-43f4-a8b4-af4f7021c078",
+                            "type": 1,
+                            "id": 77,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 76,
+                        "image": {
+                            "path": "trek/220747f0-5b20-4c31-8aa5-0cac282b9a90",
+                            "type": 1,
+                            "id": 78,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 77,
+                        "image": {
+                            "path": "trek/819e8105-5656-4c30-b992-2b4acbfe78d8",
+                            "type": 1,
+                            "id": 79,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    }
+                ],
+                "main_package": {
+                    "id": 22,
+                    "image": "package/70ff47f3-bcca-4c07-91c7-00352d0ce51a",
+                    "name": "Ahmedabad",
+                    "description": "By Non AC Seater Bus/Taxi!",
+                    "price": 1499,
+                    "schedules": [
+                        {
+                            "id": 8836,
+                            "order": 0,
+                            "schedule": {
+                                "id": 60,
+                                "name": "Departure & Activities, Kadana Dam Visit",
+                                "count_as_day": true,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        },
+                        {
+                            "id": 8837,
+                            "order": 1,
+                            "schedule": {
+                                "id": 63,
+                                "name": "Trek to Dodavanta Lake & Returning",
+                                "count_as_day": true,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        }
+                    ],
+                    "__typename": "packages"
+                },
+                "__typename": "treks"
+            },
+            {
+                "id": 130,
+                "name": "Ride the Rain",
+                "slug": "ride-the-rain",
+                "images": [
+                    {
+                        "id": 539,
+                        "image": {
+                            "path": "trek/37fefbad-4004-42d0-a6cf-7fb18853eae7",
+                            "type": 1,
+                            "id": 630,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 540,
+                        "image": {
+                            "path": "trek/653b816b-e5a0-408c-b8fd-f78cf922bba8",
+                            "type": 1,
+                            "id": 631,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 541,
+                        "image": {
+                            "path": "trek/9b2edc81-cd6d-4b28-855e-b20767483ada",
+                            "type": 1,
+                            "id": 632,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 542,
+                        "image": {
+                            "path": "trek/f2c374c1-067d-4a23-b2c4-bbdbbd105c30",
+                            "type": 1,
+                            "id": 633,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 543,
+                        "image": {
+                            "path": "trek/ce8f981c-b8ad-4fa6-b77e-858e4d9a7c7d",
+                            "type": 1,
+                            "id": 634,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    }
+                ],
+                "main_package": {
+                    "id": 304,
+                    "image": "package/7c98a83c-c0f7-4602-806f-d01e3e80fcdc",
+                    "name": "Volunteer Entry",
+                    "description": "Specially for Invincible Team Members",
+                    "price": 500,
+                    "schedules": [
+                        {
+                            "id": 13285,
+                            "order": 0,
+                            "schedule": {
+                                "id": 667,
+                                "name": "Ride towards Saputara",
+                                "count_as_day": true,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        },
+                        {
+                            "id": 13286,
+                            "order": 1,
+                            "schedule": {
+                                "id": 668,
+                                "name": "Explore Saputara & Hatgad Fort",
+                                "count_as_day": true,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        },
+                        {
+                            "id": 13287,
+                            "order": 2,
+                            "schedule": {
+                                "id": 669,
+                                "name": "Don Waterfalls & Girmal Falls",
+                                "count_as_day": true,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        },
+                        {
+                            "id": 13288,
+                            "order": 3,
+                            "schedule": {
+                                "id": 670,
+                                "name": "Ride Back to Home",
+                                "count_as_day": true,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        }
+                    ],
+                    "__typename": "packages"
+                },
+                "__typename": "treks"
+            },
+            {
+                "id": 69,
+                "name": "Bakor One Day Camp",
+                "slug": "bakor-1-day-trek-mahisagar",
+                "images": [
+                    {
+                        "id": 188,
+                        "image": {
+                            "path": "trek/61c77b9b-b069-4a2e-929e-ba72216b6aaa",
+                            "type": 1,
+                            "id": 201,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 431,
+                        "image": {
+                            "path": "trek/eaa83227-b99f-4983-989d-9bbfe5600013",
+                            "type": 1,
+                            "id": 484,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 432,
+                        "image": {
+                            "path": "trek/74902e76-cc93-4107-aafc-dbe4ea728d91",
+                            "type": 1,
+                            "id": 485,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    }
+                ],
+                "main_package": {
+                    "id": 34,
+                    "image": "package/acd847cd-63cf-46ac-8b88-335171041d11",
+                    "name": "Bakor",
+                    "description": "Without Any Transportation!",
+                    "price": 499,
+                    "schedules": [
+                        {
+                            "id": 8839,
+                            "order": 0,
+                            "schedule": {
+                                "id": 173,
+                                "name": "Bakor Visit & Adventure Activities",
+                                "count_as_day": true,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        }
+                    ],
+                    "__typename": "packages"
+                },
+                "__typename": "treks"
+            },
+            {
+                "id": 1,
+                "name": "Polo Forest Trekking Camp",
+                "slug": "polo-forest-trekking-camp-north-gujarat",
+                "images": [
+                    {
+                        "id": 7,
+                        "image": {
+                            "path": "trek/b015769f-dea3-4e19-8705-1dc8bd72c147",
+                            "type": 1,
+                            "id": 8,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 2,
+                        "image": {
+                            "path": "trek/71193b20-6aeb-4d5a-96be-daa3efd1ebd7",
+                            "type": 1,
+                            "id": 3,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 3,
+                        "image": {
+                            "path": "trek/648dfc00-1f09-434b-8a56-b04f41563d4f",
+                            "type": 1,
+                            "id": 4,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 4,
+                        "image": {
+                            "path": "trek/db98275f-d7d2-43be-9938-138ecd71fe02",
+                            "type": 1,
+                            "id": 5,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 5,
+                        "image": {
+                            "path": "trek/da6301a4-588e-464c-8cb6-f0c098f14e09",
+                            "type": 1,
+                            "id": 6,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    }
+                ],
+                "main_package": {
+                    "id": 1,
+                    "image": "package/68a3e071-4288-43c7-8b90-e623bac7a16a",
+                    "name": "Ahmedabad",
+                    "description": "Board bus from Ahmedabad/Gandhinagar",
+                    "price": 1399,
+                    "schedules": [
+                        {
+                            "id": 8858,
+                            "order": 0,
+                            "schedule": {
+                                "id": 259,
+                                "name": "Departure & Sunrise Trek",
+                                "count_as_day": true,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        },
+                        {
+                            "id": 8859,
+                            "order": 1,
+                            "schedule": {
+                                "id": 30,
+                                "name": "Trekking & Adventure Activities at Idar",
+                                "count_as_day": true,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        }
+                    ],
+                    "__typename": "packages"
+                },
+                "__typename": "treks"
+            },
+            {
+                "id": 82,
+                "name": "Magical Maharashtra",
+                "slug": "magical-maharashtra",
+                "images": [
+                    {
+                        "id": 496,
+                        "image": {
+                            "path": "trek/a685bc53-aac7-415f-999d-8540b61d85fd",
+                            "type": 1,
+                            "id": 578,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 434,
+                        "image": {
+                            "path": "trek/8fbd0f26-bb68-4204-8212-dd0ca68e3268",
+                            "type": 1,
+                            "id": 487,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 493,
+                        "image": {
+                            "path": "trek/33f714af-6f05-458e-a488-adcfd20cb18b",
+                            "type": 1,
+                            "id": 575,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 435,
+                        "image": {
+                            "path": "trek/f0db69fb-5c08-4a65-8fa7-1d267d9887ae",
+                            "type": 1,
+                            "id": 488,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 494,
+                        "image": {
+                            "path": "trek/7679f02d-4e6a-4f1a-93c1-3029f13017c9",
+                            "type": 1,
+                            "id": 576,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    }
+                ],
+                "main_package": {
+                    "id": 108,
+                    "image": "package/9c4b8263-eace-40e1-a100-36ed27f90068",
+                    "name": "Harihar Trek",
+                    "description": "By Non AC Seater Bus",
+                    "price": 3599,
+                    "schedules": [
+                        {
+                            "id": 13006,
+                            "order": 0,
+                            "schedule": {
+                                "id": 272,
+                                "name": "Depart from Ahmedabad",
+                                "count_as_day": false,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        },
+                        {
+                            "id": 13007,
+                            "order": 1,
+                            "schedule": {
+                                "id": 273,
+                                "name": "Arrival at Saputara & Activities",
+                                "count_as_day": true,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        },
+                        {
+                            "id": 13008,
+                            "order": 2,
+                            "schedule": {
+                                "id": 276,
+                                "name": "Departure for Basecamp Harihar",
+                                "count_as_day": true,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        },
+                        {
+                            "id": 13009,
+                            "order": 3,
+                            "schedule": {
+                                "id": 275,
+                                "name": "Sightseeing & Start Return Journey",
+                                "count_as_day": true,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        }
+                    ],
+                    "__typename": "packages"
+                },
+                "__typename": "treks"
+            },
+            {
+                "id": 2,
+                "name": "Saputara Adventure Camp",
+                "slug": "saputara-adventure-camp-saputara-hill-station-the-danges-south-gujarat",
+                "images": [
+                    {
+                        "id": 25,
+                        "image": {
+                            "path": "trek/3744df65-c3f2-4f7c-b75f-095e77eb59f8",
+                            "type": 1,
+                            "id": 27,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 215,
+                        "image": {
+                            "path": "trek/a440d2ef-f51a-4cd3-9f19-e4e0310f0bed",
+                            "type": 1,
+                            "id": 230,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 26,
+                        "image": {
+                            "path": "trek/598a18c6-a2e4-4e26-af82-889f0eddd3c0",
+                            "type": 1,
+                            "id": 28,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 217,
+                        "image": {
+                            "path": "trek/cb52a39d-44be-43a9-9340-89d3b8b95ef9",
+                            "type": 1,
+                            "id": 232,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 28,
+                        "image": {
+                            "path": "trek/074df92f-19a1-4a3d-9544-e9022135b58e",
+                            "type": 1,
+                            "id": 30,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    }
+                ],
+                "main_package": {
+                    "id": 4,
+                    "image": "package/90cba8a8-3874-4d20-90f7-a1aeb7c8fd5b",
+                    "name": "Ahmedabad",
+                    "description": "By Non AC Seater Bus!",
+                    "price": 2499,
+                    "schedules": [
+                        {
+                            "id": 12960,
+                            "order": 0,
+                            "schedule": {
+                                "id": 4,
+                                "name": "Depart from Ahmedabad",
+                                "count_as_day": false,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        },
+                        {
+                            "id": 12961,
+                            "order": 1,
+                            "schedule": {
+                                "id": 5,
+                                "name": "Arrival at Saputara & Activities",
+                                "count_as_day": true,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        },
+                        {
+                            "id": 12962,
+                            "order": 2,
+                            "schedule": {
+                                "id": 6,
+                                "name": "Trekking",
+                                "count_as_day": true,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        },
+                        {
+                            "id": 12963,
+                            "order": 3,
+                            "schedule": {
+                                "id": 7,
+                                "name": "Sightseeing & Start Return Journey",
+                                "count_as_day": true,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        }
+                    ],
+                    "__typename": "packages"
+                },
+                "__typename": "treks"
+            },
+            {
+                "id": 24,
+                "name": "Jaisalmer Desert Camping",
+                "slug": "jaisalmer-desert-camping-jaisalmer",
+                "images": [
+                    {
+                        "id": 48,
+                        "image": {
+                            "path": "trek/7bb9fc53-e89c-4978-9520-c7faca32edae",
+                            "type": 1,
+                            "id": 50,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 318,
+                        "image": {
+                            "path": "trek/4a5c92e9-7de9-4e1e-b085-d1bb4ffa925d",
+                            "type": 1,
+                            "id": 341,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 319,
+                        "image": {
+                            "path": "trek/f71f29c8-aecf-435d-b264-4e16e0ef3cf7",
+                            "type": 1,
+                            "id": 342,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 62,
+                        "image": {
+                            "path": "trek/5c7b4571-63d8-4a7a-b727-2174caec1c82",
+                            "type": 1,
+                            "id": 64,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 451,
+                        "image": {
+                            "path": "trek/770ead14-4d5e-4c4c-894d-c647b2f0a4fb",
+                            "type": 1,
+                            "id": 513,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    }
+                ],
+                "main_package": {
+                    "id": 18,
+                    "image": "package/f08f451f-8985-464a-9c39-ac15753972c0",
+                    "name": "Ahmedabad",
+                    "description": "Non AC Seater Bus",
+                    "price": 4999,
+                    "schedules": [
+                        {
+                            "id": 13686,
+                            "order": 0,
+                            "schedule": {
+                                "id": 45,
+                                "name": "Departure from Ahmedabad",
+                                "count_as_day": false,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        },
+                        {
+                            "id": 13687,
+                            "order": 1,
+                            "schedule": {
+                                "id": 47,
+                                "name": "Arrival at Jaisalmer",
+                                "count_as_day": true,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        },
+                        {
+                            "id": 13688,
+                            "order": 2,
+                            "schedule": {
+                                "id": 50,
+                                "name": "Day for Trekking & Camel Safari",
+                                "count_as_day": true,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        },
+                        {
+                            "id": 13689,
+                            "order": 3,
+                            "schedule": {
+                                "id": 49,
+                                "name": "Day for Adventure Activities ",
+                                "count_as_day": true,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        },
+                        {
+                            "id": 13690,
+                            "order": 4,
+                            "schedule": {
+                                "id": 51,
+                                "name": "Free Day for Jaisalmer Sightseeing",
+                                "count_as_day": true,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        }
+                    ],
+                    "__typename": "packages"
+                },
+                "__typename": "treks"
+            },
+            {
+                "id": 66,
+                "name": "Discover The Dangs",
+                "slug": "discover-the-dangs-dang",
+                "images": [
+                    {
+                        "id": 423,
+                        "image": {
+                            "path": "trek/03c0bce7-1701-4803-9c48-6be97927d498",
+                            "type": 1,
+                            "id": 476,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 424,
+                        "image": {
+                            "path": "trek/f85f12e4-972b-45f7-aa91-c40507c4d63f",
+                            "type": 1,
+                            "id": 477,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 425,
+                        "image": {
+                            "path": "trek/214e0574-1c6d-493d-84f4-76da006c08ed",
+                            "type": 1,
+                            "id": 478,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 426,
+                        "image": {
+                            "path": "trek/b1fc350c-089c-46b2-a755-5eaaaeadda7f",
+                            "type": 1,
+                            "id": 479,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    },
+                    {
+                        "id": 430,
+                        "image": {
+                            "path": "trek/d5efee6c-7118-42c4-90a5-819fc8df5421",
+                            "type": 1,
+                            "id": 483,
+                            "__typename": "images"
+                        },
+                        "__typename": "trek_images"
+                    }
+                ],
+                "main_package": {
+                    "id": 193,
+                    "image": "package/214e00f3-62fa-4ddd-9050-0b4e40acce1e",
+                    "name": "Ahmedabad",
+                    "description": "By Non AC Seater Bus",
+                    "price": 2999,
+                    "schedules": [
+                        {
+                            "id": 13014,
+                            "order": 0,
+                            "schedule": {
+                                "id": 521,
+                                "name": "Depart from Ahmedabad",
+                                "count_as_day": false,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        },
+                        {
+                            "id": 13015,
+                            "order": 1,
+                            "schedule": {
+                                "id": 522,
+                                "name": "Day for Gira Waterfall & Saputara Visit",
+                                "count_as_day": true,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        },
+                        {
+                            "id": 13016,
+                            "order": 2,
+                            "schedule": {
+                                "id": 523,
+                                "name": "Trek to the Hidden Waterfalls of Don",
+                                "count_as_day": true,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        },
+                        {
+                            "id": 13017,
+                            "order": 3,
+                            "schedule": {
+                                "id": 524,
+                                "name": "Explore the Highest Waterfall of Gujarat - Girmal",
+                                "count_as_day": true,
+                                "__typename": "schedules"
+                            },
+                            "__typename": "package_schedules"
+                        }
+                    ],
+                    "__typename": "packages"
+                },
+                "__typename": "treks"
+            }
+        ]
+    }
+}
+
+{
+    "data": {
+        "events": [
+            {
+                "id": 7202,
+                "end_date": "2023-08-20",
+                "start_date": "2023-08-18",
+                "vacancy": 60,
+                "available_seats": 3,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7203,
+                "end_date": "2023-08-27",
+                "start_date": "2023-08-25",
+                "vacancy": 60,
+                "available_seats": 34,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7204,
+                "end_date": "2023-09-03",
+                "start_date": "2023-09-01",
+                "vacancy": 60,
+                "available_seats": 56,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7205,
+                "end_date": "2023-09-10",
+                "start_date": "2023-09-08",
+                "vacancy": 60,
+                "available_seats": 42,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7206,
+                "end_date": "2023-09-17",
+                "start_date": "2023-09-15",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7207,
+                "end_date": "2023-09-24",
+                "start_date": "2023-09-22",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7208,
+                "end_date": "2023-10-01",
+                "start_date": "2023-09-29",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7209,
+                "end_date": "2023-10-08",
+                "start_date": "2023-10-06",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7210,
+                "end_date": "2023-10-15",
+                "start_date": "2023-10-13",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7211,
+                "end_date": "2023-10-22",
+                "start_date": "2023-10-20",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7212,
+                "end_date": "2023-10-29",
+                "start_date": "2023-10-27",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7213,
+                "end_date": "2023-11-05",
+                "start_date": "2023-11-03",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7214,
+                "end_date": "2023-11-12",
+                "start_date": "2023-11-10",
+                "vacancy": 60,
+                "available_seats": 57,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 316,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7215,
+                "end_date": "2023-11-19",
+                "start_date": "2023-11-17",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 316,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 317,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7216,
+                "end_date": "2023-11-26",
+                "start_date": "2023-11-24",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 316,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 317,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7217,
+                "end_date": "2023-12-03",
+                "start_date": "2023-12-01",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 316,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 317,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7230,
+                "end_date": "2023-12-10",
+                "start_date": "2023-12-08",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 316,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 317,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7231,
+                "end_date": "2023-12-17",
+                "start_date": "2023-12-15",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 316,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 317,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7232,
+                "end_date": "2023-12-24",
+                "start_date": "2023-12-22",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 316,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 317,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7233,
+                "end_date": "2023-12-31",
+                "start_date": "2023-12-29",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 316,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 317,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7234,
+                "end_date": "2024-01-07",
+                "start_date": "2024-01-05",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 316,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 317,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7235,
+                "end_date": "2024-01-14",
+                "start_date": "2024-01-12",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 316,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 317,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7236,
+                "end_date": "2024-01-21",
+                "start_date": "2024-01-19",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 316,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 317,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7237,
+                "end_date": "2024-01-28",
+                "start_date": "2024-01-26",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 316,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 317,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7238,
+                "end_date": "2024-02-04",
+                "start_date": "2024-02-02",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 316,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 317,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7239,
+                "end_date": "2024-02-11",
+                "start_date": "2024-02-09",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 316,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 317,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7240,
+                "end_date": "2024-02-18",
+                "start_date": "2024-02-16",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 316,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 317,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7241,
+                "end_date": "2024-02-25",
+                "start_date": "2024-02-23",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 316,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 317,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7242,
+                "end_date": "2024-03-03",
+                "start_date": "2024-03-01",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 316,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 317,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7243,
+                "end_date": "2024-03-10",
+                "start_date": "2024-03-08",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 316,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 317,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            },
+            {
+                "id": 7244,
+                "end_date": "2024-03-17",
+                "start_date": "2024-03-15",
+                "vacancy": 60,
+                "available_seats": 60,
+                "packages": [
+                    {
+                        "package_id": 313,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 314,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 315,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 316,
+                        "__typename": "event_packages"
+                    },
+                    {
+                        "package_id": 317,
+                        "__typename": "event_packages"
+                    }
+                ],
+                "__typename": "events"
+            }
+        ]
+    }
+}

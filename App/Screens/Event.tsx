@@ -105,12 +105,18 @@ const eventDates: datesDataType[] = [
 
 
 
-const shedule = [
-  {time: '09:00', title: 'Event 1', description: 'Event 1 Description'},
-  {time: '10:45', title: 'Event 2', description: 'Event 2 Description'},
-  {time: '12:00', title: 'Event 3', description: 'Event 3 Description'},
-  {time: '14:00', title: 'Event 4', description: 'Event 4 Description'},
-  {time: '16:30', title: 'Event 5', description: 'Event 5 Description'},
+const scheduleData = [
+  {time: 'Day 0', date: 'Aug 17, 2023', title: 'Departure from Ahmedabad/Baroda/Surat', description: 'The camp will depart on the previous day evening from Ahmedabad.\ni.e. if the camp start date on Friday, then the camp will depart on Thursday evening.',
+},
+  {time: 'Day 1', date: 'Aug 17, 2023', title: 'Departure from Ahmedabad/Baroda/Surat', description: 'The camp will depart on the previous day evening from Ahmedabad.\ni.e. if the camp start date on Friday, then the camp will depart on Thursday evening',
+  imageUrl: 'https://cloud.githubusercontent.com/assets/21040043/24240405/0ba41234-0fe4-11e7-919b-c3f88ced349c.jpg',
+},
+  {time: 'Day 2', date: 'Aug 17, 2023', title: 'Departure from Ahmedabad/Baroda/Surat', description: 'The camp will depart on the previous day evening from Ahmedabad.\ni.e. if the camp start date on Friday, then the camp will depart on Thursday evening.',
+  imageUrl: 'https://cloud.githubusercontent.com/assets/21040043/24240405/0ba41234-0fe4-11e7-919b-c3f88ced349c.jpg',
+},
+  {time: 'Day 3', date: 'Aug 17, 2023', title: 'Departure from Ahmedabad/Baroda/Surat', description: 'The camp will depart on the previous day evening from Ahmedabad.\ni.e. if the camp start date on Friday, then the camp will depart on Thursday evening.',
+  imageUrl: 'https://cloud.githubusercontent.com/assets/21040043/24240405/0ba41234-0fe4-11e7-919b-c3f88ced349c.jpg',
+},
 ];
 
 const Event = () => {
@@ -127,7 +133,6 @@ const Event = () => {
     setSelectedDate(date);
   }
 
-  
 
   const renderJoinUsItem = ({item}: {item: joinUs}) => {
     return (
@@ -157,7 +162,7 @@ const Event = () => {
       <ScrollView style={{flex: 1}}>
         <SliderBox
           images={images}
-          sliderBoxHeight={screenHeight / 4}
+          sliderBoxHeight={screenHeight / 2}
           dotColor={Colors.primary}
           circleLoop={true}
           parentWidth={screenWidth}
@@ -179,17 +184,17 @@ const Event = () => {
               <View style={styles.singleInfo}>
                 <FontAwesome6
                   name="calendar"
-                  size={18}
+                  size={26}
                   color={Colors.primary}
                 />
-                <View>
+                <View style={{ marginHorizontal: 7}}>
                   <Text> Duration </Text>
                   <Text> 3 days / 2 nights </Text>
                 </View>
               </View>
               <View style={styles.singleInfo}>
-                <MaterialIcon name="map" size={22} color={Colors.primary} />
-                <View>
+                <MaterialIcon name="map" size={26} color={Colors.primary} />
+                <View style={{ marginHorizontal: 7}}>
                   <Text> Difficulty </Text>
                   <Text> easy </Text>
                 </View>
@@ -197,8 +202,8 @@ const Event = () => {
             </View>
             <View style={styles.row}>
               <View style={styles.singleInfo}>
-                <MaterialIcon name="group" size={22} color={Colors.primary} />
-                <View>
+                <MaterialIcon name="group" size={26} color={Colors.primary} />
+                <View style={{ marginHorizontal: 7}}>
                   <Text> Age group </Text>
                   <Text> 8-35 years </Text>
                 </View>
@@ -206,10 +211,10 @@ const Event = () => {
               <View style={styles.singleInfo}>
                 <FontAwesome6
                   name="mountain-sun"
-                  size={18}
+                  size={24}
                   color={Colors.primary}
                 />
-                <View>
+                <View style={{ marginHorizontal: 7}}>
                   <Text> Max Altitude </Text>
                   <Text> 2500 ft </Text>
                 </View>
@@ -222,12 +227,11 @@ const Event = () => {
           <View style={styles.aboutInfo}>
             <Text style={styles.heading}> About </Text>
             <Text style={styles.secondaryText}>
-              {' '}
               Matheran is situated near Mumbai in Maharashtra and is known for
               its misty mountains, toy trains and typical sahyadri weather.
               Marvelous Matheran is an event where trekkers will enjoy the misty
               mountains and hilly weather. The place is highly populated on
-              weekends.{' '}
+              weekends.
             </Text>
           </View>
         </View>
@@ -330,12 +334,27 @@ const Event = () => {
           </View>
 
           <View style={[styles.row, {flexWrap: 'wrap'}]}>
-            {eventDates[0].dates.map((date: number, index: number) => (
+            {eventDates[2].dates.map((date: number, index: number) => (
               <Pressable style={[styles.date, { backgroundColor: selectedDate===date ? Colors.primary : Colors.white}]} key={index} onPress={() => dateSelected(date)}>
                 <Text style={[styles.text, { color: selectedDate===date ? Colors.white : Colors.primary }]}>{date}</Text>
               </Pressable>
             ))}
           </View>
+        </View>
+
+        <View style={styles.scheduleContainer}>
+          <Text style={styles.heading}> Schedule </Text>
+          <Timeline
+            data={scheduleData}
+            circleColor={Colors.primary}
+            lineColor={Colors.primary}
+            lineWidth={2}
+            circleSize={12}
+            timeStyle={{ backgroundColor: Colors.primary, paddingHorizontal: 5, paddingVertical: 5, borderRadius: 20, color: Colors.white }}
+            listViewStyle={{ borderStyle: 'dotted'}}
+            separator={true}
+            style={{ width: screenWidth - 50, paddingLeft: 20, marginTop: 10 }}
+          />
         </View>
 
         <Footer />
@@ -353,6 +372,7 @@ const styles = StyleSheet.create({
 
   header: {
     marginHorizontal: 10,
+    marginVertical: 10,
   },
 
   packageName: {
@@ -398,13 +418,14 @@ const styles = StyleSheet.create({
   },
 
   heading: {
-    fontSize: 20,
+    fontSize: 23,
     fontStyle: 'normal',
     fontWeight: '500',
   },
 
   secondaryText: {
-    fontSize: 15,
+    fontSize: 16,
+    paddingHorizontal: 10,
   },
 
   feeIncludeContainer: {
@@ -469,9 +490,9 @@ const styles = StyleSheet.create({
   },
   date: {
     padding: 4,
-    width: 35,
-    height: 35,
-    borderRadius: 15,
+    width: 38,
+    height: 38,
+    borderRadius: 19,
     margin: 5,
     borderWidth: 1,
     borderColor: Colors.primary,
@@ -479,5 +500,10 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     textAlign: 'center',
+    textAlignVertical: 'center',
   },
+  scheduleContainer: {
+    marginVertical: 5,
+    paddingVertical: 10,
+  }
 });
