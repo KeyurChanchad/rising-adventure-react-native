@@ -10,7 +10,7 @@ import {
   Pressable,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Colors from '../Resources/styles/Colors';
 import {SliderBox} from 'react-native-image-slider-box';
 import Footer from '../Components/Footer';
@@ -76,42 +76,59 @@ const joinUsData: joinUs[] = [
 ];
 
 type datesDataType = {
-  month: string,
-  dates: number[],
+  month: string;
+  dates: number[];
 };
 
 const eventDates: datesDataType[] = [
   {
     month: 'Auguest',
-    dates: [5, 6, 8, 12, 15, 22, 28]
+    dates: [5, 6, 8, 12, 15, 22, 28],
   },
   {
     month: 'September',
-    dates: [1, 2, 5, 16, 19, 21, 22, 25]
+    dates: [1, 2, 5, 16, 19, 21, 22, 25],
   },
   {
     month: 'October',
-    dates: [4, 9, 11, 15, 18, 20, 24, 29, 30]
+    dates: [4, 9, 11, 15, 18, 20, 24, 29, 30],
   },
   {
     month: 'November',
-    dates: [5, 6, 8, 12, 15, 22, 28]
+    dates: [5, 6, 8, 12, 15, 22, 28],
   },
   {
     month: 'December',
-    dates: [5, 6, 8, 12, 15, 22, 28]
+    dates: [5, 6, 8, 12, 15, 22, 28],
   },
 ];
+
+
 
 const shedule = [
   {time: '09:00', title: 'Event 1', description: 'Event 1 Description'},
   {time: '10:45', title: 'Event 2', description: 'Event 2 Description'},
   {time: '12:00', title: 'Event 3', description: 'Event 3 Description'},
   {time: '14:00', title: 'Event 4', description: 'Event 4 Description'},
-  {time: '16:30', title: 'Event 5', description: 'Event 5 Description'}
-]
+  {time: '16:30', title: 'Event 5', description: 'Event 5 Description'},
+];
 
 const Event = () => {
+  const [selectedMonth, setSelectedMonth] = useState('');
+  const [selectedDate, setSelectedDate] = useState(0);
+
+  const monthSelected = (month: string) => {
+    console.log('Selected month is ', month);
+    setSelectedMonth(month);
+  }
+
+  const dateSelected = (date: number) => {
+    console.log('Selected date is ', date);
+    setSelectedDate(date);
+  }
+
+  
+
   const renderJoinUsItem = ({item}: {item: joinUs}) => {
     return (
       <View style={styles.joinUsItem}>
@@ -119,8 +136,12 @@ const Event = () => {
         <Text style={{fontSize: 20, fontWeight: '400'}}> {item.from} </Text>
         <View style={[styles.row, {justifyContent: 'space-between'}]}>
           <View style={styles.row}>
-            <MaterialIcon name='currency-rupee' size={18} color={Colors.primary} />
-          <Text> {item.price} /-</Text>
+            <MaterialIcon
+              name="currency-rupee"
+              size={18}
+              color={Colors.primary}
+            />
+            <Text> {item.price} /-</Text>
           </View>
           <View style={styles.row}>
             <FontAwesome6 name="calendar" size={18} color={Colors.primary} />
@@ -299,22 +320,22 @@ const Event = () => {
 
         <View style={styles.dateContainer}>
           <Text style={styles.heading}> Date from Ahmedabad </Text>
-         
-              {
-                eventDates.map((item: datesDataType, index: number) => (
-                  <View style={[styles.row, { flexWrap: 'wrap'}]}>
-                    <Pressable style={styles.month}>
-                      <Text style={{ color: Colors.white, fontSize: 16}}> {item.month} </Text>
-                    </Pressable>
-                  </View>
-                ))
-                }
-                {
-                eventDates[0].map((item: [], index: number) => (
-                  <Text>{ item} </Text>
-                ))
-              }
 
+          <View style={[styles.row, {flexWrap: 'wrap'}]}>
+            {eventDates.map((item: datesDataType, index: number) => (
+              <Pressable style={[styles.month, { backgroundColor: selectedMonth===item.month ? Colors.primary : Colors.white}]} key={index} onPress={() => monthSelected(item.month)}>
+                <Text style={[styles.text, { color: selectedMonth===item.month ? Colors.white : Colors.primary }]}>{item.month}</Text>
+              </Pressable>
+            ))}
+          </View>
+
+          <View style={[styles.row, {flexWrap: 'wrap'}]}>
+            {eventDates[0].dates.map((date: number, index: number) => (
+              <Pressable style={[styles.date, { backgroundColor: selectedDate===date ? Colors.primary : Colors.white}]} key={index} onPress={() => dateSelected(date)}>
+                <Text style={[styles.text, { color: selectedDate===date ? Colors.white : Colors.primary }]}>{date}</Text>
+              </Pressable>
+            ))}
+          </View>
         </View>
 
         <Footer />
@@ -430,23 +451,33 @@ const styles = StyleSheet.create({
 
   joinUsPlaces: {
     marginVertical: 5,
-    paddingVertical: 5
+    paddingVertical: 10,
   },
 
   dateContainer: {
     marginVertical: 5,
-    paddingVertical: 5
+    paddingVertical: 10,
   },
 
   month: {
-    backgroundColor: Colors.primary,
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 5,
-    margin: 5, 
+    margin: 5,
     borderWidth: 1,
     borderColor: Colors.primary,
   },
-
-
+  date: {
+    padding: 4,
+    width: 35,
+    height: 35,
+    borderRadius: 15,
+    margin: 5,
+    borderWidth: 1,
+    borderColor: Colors.primary,
+  },
+  text: {
+    fontSize: 16,
+    textAlign: 'center',
+  },
 });
