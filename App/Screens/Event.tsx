@@ -9,6 +9,8 @@ import {
   Image,
   Pressable,
   TouchableOpacity,
+  Modal,
+  Alert,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import Colors from '../Resources/styles/Colors';
@@ -19,6 +21,10 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import Timeline from 'react-native-timeline-flatlist';
 import CustomButton from '../Components/CustomButton';
+import {
+  TouchableWithoutFeedback,
+  TouchableHighlight,
+} from 'react-native-gesture-handler';
 
 const screenHeight = Math.floor(Dimensions.get('window').height);
 const screenWidth = Math.floor(Dimensions.get('window').width);
@@ -144,6 +150,7 @@ const scheduleData = [
 const Event = () => {
   const [selectedMonth, setSelectedMonth] = useState('');
   const [selectedDate, setSelectedDate] = useState(0);
+  const [opentModal, setOpenModal] = useState(false);
 
   const monthSelected = (month: string) => {
     console.log('Selected month is ', month);
@@ -179,6 +186,31 @@ const Event = () => {
           </View>
         </View>
       </View>
+    );
+  };
+
+  const OpenModalComponent = ({
+    title,
+    onPress,
+  }: {
+    title: String;
+    onPress: Function;
+  }) => {
+    return (
+      <TouchableWithoutFeedback
+        style={[styles.row, styles.modalBtn]}
+        onPress={() => {
+          console.log('open modal');
+          setOpenModal(true);
+        }}>
+        <Text style={styles.secondaryText}> {title} </Text>
+        <MaterialCommunityIcon
+          name="arrow-right-thin"
+          size={32}
+          color={Colors.primary}
+          style={{}}
+        />
+      </TouchableWithoutFeedback>
     );
   };
 
@@ -430,7 +462,11 @@ const Event = () => {
 
         <View style={styles.bookCotainer}>
           <Text style={styles.heading}> Attractions </Text>
-          <View style={[styles.row, { justifyContent: 'space-evenly', marginTop: 5}]}>
+          <View
+            style={[
+              styles.row,
+              {justifyContent: 'space-evenly', marginTop: 5},
+            ]}>
             <View style={styles.row}>
               <Text style={styles.secondaryText}>From</Text>
               <MaterialIcon
@@ -446,46 +482,56 @@ const Event = () => {
           </View>
         </View>
 
-        <View style={{ backgroundColor: 'orange'}}>
-          <View style={[styles.row, { justifyContent: 'space-between', alignItems: 'center'}]}>
-            <Text style={styles.secondaryText}> Things to carry </Text>
-            <MaterialCommunityIcon
-                name="arrow-right-thin"
-                size={28}
-                color={Colors.primary}
-                style={{}}
-              />
-          </View>
-
-          <View style={[styles.row, { justifyContent: 'space-between', alignItems: 'center', marginVertical: 5}]}>
-            <Text style={styles.secondaryText}> Things to carry </Text>
-            <MaterialCommunityIcon
-                name="arrow-right-thin"
-                size={28}
-                color={Colors.primary}
-                style={{}}
-              />
-          </View>
-
-          <View style={[styles.row, { justifyContent: 'space-between', alignItems: 'center'}]}>
-            <Text style={styles.secondaryText}> Things to carry </Text>
-            <MaterialCommunityIcon
-                name="arrow-right-thin"
-                size={28}
-                color={Colors.primary}
-                style={{}}
-              />
-          </View>
-
-          <View style={[styles.row, { justifyContent: 'space-between', alignItems: 'center'}]}>
-            <Text style={styles.secondaryText}> Things to carry </Text>
-            <MaterialCommunityIcon
-                name="arrow-right-thin"
-                size={28}
-                color={Colors.primary}
-                style={{}}
-              />
-          </View>
+        <View style={{marginTop: 5}}>
+          <OpenModalComponent title={'Things to carry'} onPress={() => {}} />
+          <OpenModalComponent title={'Things to carry'} onPress={() => {}} />
+          <OpenModalComponent title={'Things to carry'} onPress={() => {}} />
+          <OpenModalComponent title={'Things to carry'} onPress={() => {}} />
+          <OpenModalComponent title={'Things to carry'} onPress={() => {}} />
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={opentModal}
+            onRequestClose={() => {
+              Alert.alert('Modal has been closed.');
+              setOpenModal(!opentModal);
+            }}>
+            <View style={styles.centeredView}>
+              <View style={styles.modalView}>
+                <View style={styles.modalHeader}>
+                  <Text style={styles.modalTitle}>Hello World!</Text>
+                  <TouchableOpacity onPress={()=> { setOpenModal(false)}} >
+                    <MaterialIcon
+                      name="close"
+                      size={24}
+                      color={Colors.primary}
+                      style={{}}
+                    />
+                  </TouchableOpacity>
+                </View>
+                <Text style={styles.modalText}>
+                  {' '}
+                  1.Shoes, sandals/chappal/sleepers, socks{' '}
+                </Text>
+                <Text style={styles.modalText}>
+                  {' '}
+                  2.Shoes, sandals/chappal/sleepers, socks{' '}
+                </Text>
+                <Text style={styles.modalText}>
+                  {' '}
+                  3.Shoes, sandals/chappal/sleepers, socks{' '}
+                </Text>
+                <Text style={styles.modalText}>
+                  {' '}
+                  4.Shoes, sandals/chappal/sleepers, socks{' '}
+                </Text>
+                <Text style={styles.modalText}>
+                  {' '}
+                  5.Shoes, sandals/chappal/sleepers, socks{' '}
+                </Text>
+              </View>
+            </View>
+          </Modal>
         </View>
 
         <Footer />
@@ -639,7 +685,58 @@ const styles = StyleSheet.create({
   },
 
   bookCotainer: {
-    backgroundColor: Colors.sliver,
     padding: 5,
+  },
+
+  modalBtn: {
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: 50,
+    marginBottom: 3,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.black,
+    borderStyle: 'solid',
+  },
+
+  centeredView: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalView: {
+    width: screenWidth - 20,
+    margin: 10,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 20,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+
+  modalTitle: {
+    marginBottom: 15,
+    textAlign: 'center',
+    fontWeight: '700',
+    fontSize: 18,
+  },
+
+  modalText: {
+    fontSize: 15,
+    marginBottom: 5,
+  },
+
+  modalHeader: {
+    width: '95%',
+    flexDirection: 'row',
+    alignItems:'flex-start',
+    justifyContent: 'space-between',
   },
 });
