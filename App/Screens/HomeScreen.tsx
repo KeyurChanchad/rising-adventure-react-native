@@ -6,7 +6,8 @@ import {
   FlatList, 
   Image,
   SafeAreaView,
-  ScrollView
+  ScrollView,
+  Pressable,
 } from 'react-native';
 import React from 'react';
 import {SliderBox} from 'react-native-image-slider-box';
@@ -33,11 +34,11 @@ const events = [
   require('../Assets/Images/bakor.jpg'),
   require('../Assets/Images/saputara.jpg'),
 ]
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }: { navigation: any }) => {
   const renderItems = ({item}) => (
-      <View style={styles.highlitedEvent}>
+      <Pressable style={styles.highlitedEvent} onPress={()=> navigation.navigate('Event')}>
         <Image source={item} style={styles.eventImg} />
-      </View>
+      </Pressable>
     )
   return (
     <SafeAreaView style={styles.container}>

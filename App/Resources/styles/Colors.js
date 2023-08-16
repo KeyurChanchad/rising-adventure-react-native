@@ -13,6 +13,7 @@ const Colors = {
     teal: '#008080',
     navy: '#000080',
     purple: '#800080',
+    lightBlack: '#ccc5c5',
   };
   
   export default Colors;

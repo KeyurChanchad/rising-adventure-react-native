@@ -4,8 +4,8 @@ import Colors from '../Resources/styles/Colors'
 
 const CustomButton = (props) => {
   return (
-    <TouchableOpacity style={styles.btn} onPress={props.onclick}>
-      <Text style={styles.btnText}> Book Now </Text>
+    <TouchableOpacity style={[styles.btn, props.btnStyle]} onPress={props.onclick}>
+      <Text style={styles.btnText}> { props.btnText} </Text>
     </TouchableOpacity>
   )
 }

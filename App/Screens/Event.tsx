@@ -147,7 +147,7 @@ const scheduleData = [
   },
 ];
 
-const Event = () => {
+const Event = ({ navigation }: { navigation: any}) => {
   const [selectedMonth, setSelectedMonth] = useState('');
   const [selectedDate, setSelectedDate] = useState(0);
   const [opentModal, setOpenModal] = useState(false);
@@ -164,6 +164,7 @@ const Event = () => {
 
   const bookNow = async () => {
     console.info('pay 5500');
+    navigation.navigate('RegisterPhone')
   };
 
   const renderJoinUsItem = ({item}: {item: joinUs}) => {
@@ -478,16 +479,17 @@ const Event = () => {
               <Text style={{fontSize: 16}}>5500 / person</Text>
             </View>
 
-            <CustomButton onclick={bookNow} />
+            <CustomButton onclick={bookNow} btnText={'Book Now'} />
           </View>
         </View>
 
         <View style={{marginTop: 5}}>
           <OpenModalComponent title={'Things to carry'} onPress={() => {}} />
+          <View style={styles.hr}></View>
+
           <OpenModalComponent title={'Things to carry'} onPress={() => {}} />
-          <OpenModalComponent title={'Things to carry'} onPress={() => {}} />
-          <OpenModalComponent title={'Things to carry'} onPress={() => {}} />
-          <OpenModalComponent title={'Things to carry'} onPress={() => {}} />
+          <View style={styles.hr}></View>
+
           <Modal
             animationType="slide"
             transparent={true}
@@ -584,10 +586,10 @@ const styles = StyleSheet.create({
   },
 
   hr: {
-    borderColor: Colors.black,
-    opacity: 0.5,
+    borderColor: Colors.lightBlack,
     borderBottomWidth: 1,
     marginHorizontal: 10,
+    marginBottom: 10,
   },
 
   aboutInfo: {
@@ -693,9 +695,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 50,
     marginBottom: 3,
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.black,
-    borderStyle: 'solid',
   },
 
   centeredView: {
