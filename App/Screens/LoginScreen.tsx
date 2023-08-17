@@ -23,7 +23,7 @@ import { StackActions } from '@react-navigation/native';
 const screenWidth = Math.round(Dimensions.get('window').width);
 const screenHeight = Math.round(Dimensions.get('window').height);
 
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = ({ navigation }: { navigation: any }) => {
   const [loggedIn, setloggedIn] = useState(false);
 
   useEffect(() => {
@@ -70,7 +70,7 @@ const LoginScreen = ({ navigation }) => {
       //   Alert.alert('The email you loggedIn with is not exited.');
       //   await GoogleSignin.signOut();
       // }
-    } catch (error) {
+    } catch (error: any) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         console.log('SIGN_IN_CANCELLED');
       } else if (error.code === statusCodes.IN_PROGRESS) {

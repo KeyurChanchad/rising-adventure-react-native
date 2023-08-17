@@ -18,7 +18,7 @@ const screenHeight = Math.floor(Dimensions.get('window').height);
 const maximumCodeLength = 4;
 const boxArray = new Array(maximumCodeLength).fill(0);
 
-const RegisterPhone = ({ navigation }) => {
+const RegisterPhone = ({ navigation }: { navigation: any }) => {
   const [otp, setOtp] = useState('');
   const [isInputBoxFocused, setIsInputBoxFocused] = useState(false);
   const inputRef = useRef<TextInput | null>(null);
@@ -79,6 +79,7 @@ const RegisterPhone = ({ navigation }) => {
 
   const verifyOTP = () => {
     console.log('Verifing opt');
+    setotpSended(false);
     navigation.navigate('BookingForm')
   }
 

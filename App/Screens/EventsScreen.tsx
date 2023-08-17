@@ -45,7 +45,7 @@ const images = [
   require('../Assets/Images/carousel-6.jpg'), // Local image
 ];
 
-const EventsScreen = () => {
+const EventsScreen = ({ navigation }: { navigation: any }) => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>

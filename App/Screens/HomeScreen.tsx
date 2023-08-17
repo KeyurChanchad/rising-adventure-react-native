@@ -35,7 +35,7 @@ const events = [
   require('../Assets/Images/saputara.jpg'),
 ]
 const HomeScreen = ({ navigation }: { navigation: any }) => {
-  const renderItems = ({item}) => (
+  const renderItems = ({ item }: { item: any}) => (
       <Pressable style={styles.highlitedEvent} onPress={()=> navigation.navigate('Event')}>
         <Image source={item} style={styles.eventImg} />
       </Pressable>
