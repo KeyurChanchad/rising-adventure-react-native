@@ -217,7 +217,7 @@ const Event = ({ navigation }: { navigation: any}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={{flex: 1}}>
+      <ScrollView style={{flex: 1}} showsVerticalScrollIndicator={false}>
         <SliderBox
           images={images}
           sliderBoxHeight={screenHeight / 2}
@@ -466,7 +466,7 @@ const Event = ({ navigation }: { navigation: any}) => {
           <View
             style={[
               styles.row,
-              {justifyContent: 'space-evenly', marginTop: 5},
+              {justifyContent: 'space-evenly', marginVertical: 5, alignItems: 'center'},
             ]}>
             <View style={styles.row}>
               <Text style={styles.secondaryText}>From</Text>
@@ -479,7 +479,7 @@ const Event = ({ navigation }: { navigation: any}) => {
               <Text style={{fontSize: 16}}>5500 / person</Text>
             </View>
 
-            <CustomButton onclick={bookNow} btnText={'Book Now'} />
+            <CustomButton onClick={bookNow} btnText={'Book Now'} />
           </View>
         </View>
 
@@ -688,6 +688,7 @@ const styles = StyleSheet.create({
 
   bookCotainer: {
     padding: 5,
+    backgroundColor: Colors.secondary,
   },
 
   modalBtn: {
@@ -703,6 +704,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   modalView: {
     width: screenWidth - 20,
     margin: 10,

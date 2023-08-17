@@ -4,7 +4,7 @@ import Colors from '../Resources/styles/Colors'
 
 const CustomButton = (props) => {
   return (
-    <TouchableOpacity style={[styles.btn, props.btnStyle]} onPress={props.onclick}>
+    <TouchableOpacity style={[styles.btn, props.btnStyle]} onPress={props.onClick}>
       <Text style={styles.btnText}> { props.btnText} </Text>
     </TouchableOpacity>
   )
@@ -21,9 +21,13 @@ const styles = StyleSheet.create({
         borderColor: Colors.primary,
         borderStyle: 'solid',
         borderRadius: 10,
+        height: 50
     },
     btnText: {
         color: Colors.white,
         fontSize: 18,
+        textAlign: 'center',
+        textAlignVertical: 'center', 
+        flex: 1
     }
 });

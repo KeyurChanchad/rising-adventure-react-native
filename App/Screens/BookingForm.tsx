@@ -6,10 +6,10 @@ import {
   StyleSheet,
   SafeAreaView,
   Dimensions,
+  TextInput,
 } from 'react-native';
 import {Dropdown} from 'react-native-element-dropdown';
 import Colors from '../Resources/styles/Colors';
-import { TextInput } from 'react-native-gesture-handler';
 import CustomButton from '../Components/CustomButton';
 
 const screenWidth = Math.floor(Dimensions.get('window').width);
@@ -27,9 +27,11 @@ const BookingForm = ({navigation}: {navigation: any}) => {
     persons: '',
     phoneNumber: '',
   });
+  
+
   useEffect(() => {
-    console.log(formData);
-  }, [formData]);
+    
+  }, []);
 
   const data = [
     {label: 'Item 1', value: '1'},
@@ -42,6 +44,31 @@ const BookingForm = ({navigation}: {navigation: any}) => {
     {label: 'Item 8', value: '8'},
   ];
 
+  const setData = (text:string, id:string) => {
+    setFormData((prev)=> (
+      {
+        ...prev,
+        [id]: text
+      }
+    ))
+  }
+
+  const checkValidation = async () => {
+    if (formData.name && formData.joinUsFrom && formData.date && formData.phoneNumber && formData.city && formData.state && formData.pinCode && formData.address ) {
+      return true
+    }
+    else{
+      return false
+    }
+  }
+  const handleBookingForm = async () => {
+    console.log('check validatiaon');
+    
+    const validate = await checkValidation();
+    console.log("VAlidation ", validate);
+    validate && navigation.navigate('ShowBookingDetails', {formData})
+  }
+
   return (
     <SafeAreaView style={styles.mainContainer}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -49,12 +76,7 @@ const BookingForm = ({navigation}: {navigation: any}) => {
         <View style={{marginVertical: 20}}>
           <View style={styles.formField}>
             <Text style={styles.label}> Name </Text>
-            <TextInput style={styles.input} />
-          </View>
-
-          <View style={styles.formField}>
-            <Text style={styles.label}> Phone Number </Text>
-            <TextInput style={styles.input} />
+            <TextInput style={styles.input} id='name' onChangeText={(text:string)=> {setData(text, 'name')}} value={formData.name} placeholder='Enter name' />
           </View>
           
           <View style={styles.formField}>
@@ -82,7 +104,7 @@ const BookingForm = ({navigation}: {navigation: any}) => {
           </View>
 
           <View style={styles.formField}>
-            <Text style={styles.label}> Join us from </Text>
+            <Text style={styles.label}> Available Date </Text>
             <Dropdown
               style={[styles.dropdown]}
               placeholderStyle={styles.placeholderStyle}
@@ -93,39 +115,44 @@ const BookingForm = ({navigation}: {navigation: any}) => {
               maxHeight={300}
               labelField="label"
               valueField="value"
-              placeholder={'Select item'}
+              placeholder={'Select date'}
               searchPlaceholder="Search..."
-              value={formData.joinUsFrom}
+              value={formData.date}
               onChange={item => {
                 setFormData(prev => ({
                   ...prev,
-                  ['joinUsFrom']: item.value,
+                  ['date']: item.value,
                 }));
               }}
             />
           </View>
 
           <View style={styles.formField}>
+            <Text style={styles.label}> Phone Number </Text>
+            <TextInput style={styles.input} keyboardType={'phone-pad'} id='phoneNumber' onChangeText={(text:string)=> {setData(text, 'phoneNumber')}} value={formData.phoneNumber} placeholder='Enter mobile number' />
+          </View>
+
+          <View style={styles.formField}>
             <Text style={styles.label}> City </Text>
-            <TextInput style={styles.input} />
+            <TextInput style={styles.input} id='city' onChangeText={(text:string)=> {setData(text, 'city')}} value={formData.city} placeholder='Enter city name' />
           </View>
 
           <View style={styles.formField}>
             <Text style={styles.label}> State </Text>
-            <TextInput style={styles.input} />
+            <TextInput style={styles.input} id='state' onChangeText={(text:string)=> {setData(text, 'state')}} value={formData.state} placeholder='Enter state name'/>
           </View>
 
           <View style={styles.formField}>
             <Text style={styles.label}> Pincode </Text>
-            <TextInput style={styles.input}  keyboardType="numeric"/>
+            <TextInput style={styles.input}  keyboardType="numeric" id='pinCode' onChangeText={(text:string)=> {setData(text, 'pinCode')}} value={formData.pinCode} placeholder='Enter pincode number'/>
           </View>
 
           <View style={styles.formField}>
             <Text style={styles.label}> Address </Text>
-            <TextInput style={styles.input} multiline={true} numberOfLines={4} />
+            <TextInput style={styles.input} multiline={true} numberOfLines={5} id='address' onChangeText={(text:string)=> {setData(text, 'address')}} value={formData.address} placeholder='Enter address'/>
           </View>
 
-          <CustomButton btnText="Continue to Checkout"
+          <CustomButton btnText="Continue to Checkout" onClick={handleBookingForm} btnStyle={{ marginVertical: 5, height: 50 }} />
 
         </View>
       </ScrollView>
@@ -158,6 +185,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderRadius: 8,
     paddingHorizontal: 8,
+    marginBottom: 5,
   },
   placeholderStyle: {
     fontSize: 16,
@@ -170,9 +198,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   input: {
+    paddingHorizontal: 10,
     borderWidth: 1,
     borderColor: Colors.lightBlack,
     borderRadius: 10,
     height: 50,
+    fontSize: 16,
   }
 });

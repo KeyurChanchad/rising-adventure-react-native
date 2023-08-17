@@ -97,7 +97,7 @@ const RegisterPhone = ({ navigation }: { navigation: any }) => {
         <CustomButton
           btnText={'Send'}
           btnStyle={{width: screenWidth / 4}}
-          onclick={sendOTP}
+          onClick={sendOTP}
         />
       </View>
         :
@@ -122,7 +122,7 @@ const RegisterPhone = ({ navigation }: { navigation: any }) => {
         <CustomButton
           btnText={'Verify OTP'}
           btnStyle={{width: screenWidth / 3}}
-          onclick={verifyOTP}
+          onClick={verifyOTP}
         />
       </View>
     }

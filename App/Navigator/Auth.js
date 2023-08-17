@@ -9,6 +9,7 @@ import Event from "../Screens/Event";
 import EventsScreen from "../Screens/EventsScreen";
 import BookingForm from "../Screens/BookingForm";
 import RegisterPhone from "../Screens/RegisterPhone";
+import ShowBookingDetails from "../Screens/ShowBookingDetails";
 const Drawer = createDrawerNavigator();
 
 const Stack = createNativeStackNavigator();
@@ -83,6 +84,24 @@ const AuthStack = () => {
             <Drawer.Screen 
                 name="RegisterPhone" 
                 component={RegisterPhone} 
+                options={{
+                    headerStyle: {
+                        backgroundColor: Colors.primary,
+                    },
+                    headerTitle: "Register",
+                    headerTintColor: Colors.white,
+                    drawerItemStyle: {
+                        display: 'none'
+                    },
+                    drawerStyle: {
+                        display: 'none'
+                    }
+                }}
+            />
+            
+            <Drawer.Screen 
+                name="ShowBookingDetails" 
+                component={ShowBookingDetails} 
                 options={{
                     headerStyle: {
                         backgroundColor: Colors.primary,
