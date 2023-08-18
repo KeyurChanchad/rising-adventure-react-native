@@ -106,7 +106,7 @@ const AuthStack = () => {
                     headerStyle: {
                         backgroundColor: Colors.primary,
                     },
-                    headerTitle: "Register",
+                    headerTitle: "Booking Details",
                     headerTintColor: Colors.white,
                     drawerItemStyle: {
                         display: 'none'

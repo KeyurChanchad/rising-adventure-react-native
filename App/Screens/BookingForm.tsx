@@ -15,7 +15,7 @@ import CustomButton from '../Components/CustomButton';
 const screenWidth = Math.floor(Dimensions.get('window').width);
 const screenHeight = Math.floor(Dimensions.get('window').height);
 
-const BookingForm = ({navigation}: {navigation: any}) => {
+const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
   const [formData, setFormData] = useState({
     name: '',
     city: '',
@@ -24,8 +24,8 @@ const BookingForm = ({navigation}: {navigation: any}) => {
     address: '',
     joinUsFrom: '',
     date: '',
-    persons: '',
     phoneNumber: '',
+    numberOfPersons: '1'
   });
   
 
@@ -44,6 +44,14 @@ const BookingForm = ({navigation}: {navigation: any}) => {
     {label: 'Item 8', value: '8'},
   ];
 
+  const personsData = [
+    {label: '1', value: '1'}, 
+    {label: '2', value: '2'}, 
+    {label: '3', value: '3'}, 
+    {label: '4', value: '4'}, 
+    {label: '5', value: '5'},
+  ];
+
   const setData = (text:string, id:string) => {
     setFormData((prev)=> (
       {
@@ -54,7 +62,7 @@ const BookingForm = ({navigation}: {navigation: any}) => {
   }
 
   const checkValidation = async () => {
-    if (formData.name && formData.joinUsFrom && formData.date && formData.phoneNumber && formData.city && formData.state && formData.pinCode && formData.address ) {
+    if (formData.name && formData.joinUsFrom && formData.date && formData.phoneNumber && formData.city && formData.state && formData.pinCode && formData.address && formData.numberOfPersons ) {
       return true
     }
     else{
@@ -63,10 +71,9 @@ const BookingForm = ({navigation}: {navigation: any}) => {
   }
   const handleBookingForm = async () => {
     console.log('check validatiaon');
-    
     const validate = await checkValidation();
     console.log("VAlidation ", validate);
-    validate && navigation.navigate('ShowBookingDetails', {formData})
+    validate && navigation.navigate('ShowBookingDetails', { formData, package_amount: route.params.package_amount, package_name: route.params.package_name, })
   }
 
   return (
@@ -122,6 +129,30 @@ const BookingForm = ({navigation}: {navigation: any}) => {
                 setFormData(prev => ({
                   ...prev,
                   ['date']: item.value,
+                }));
+              }}
+            />
+          </View>
+
+          <View style={styles.formField}>
+            <Text style={styles.label}> Number Of Persons </Text>
+            <Dropdown
+              style={[styles.dropdown]}
+              placeholderStyle={styles.placeholderStyle}
+              selectedTextStyle={styles.selectedTextStyle}
+              inputSearchStyle={styles.inputSearchStyle}
+              data={personsData}
+              search
+              maxHeight={300}
+              labelField="label"
+              valueField="value"
+              placeholder={'Number of Persons'}
+              searchPlaceholder="Search..."
+              value={formData.numberOfPersons}
+              onChange={item => {
+                setFormData(prev => ({
+                  ...prev,
+                  ['numberOfPersons']: item.value,
                 }));
               }}
             />
