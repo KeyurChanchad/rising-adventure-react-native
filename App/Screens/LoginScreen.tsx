@@ -50,9 +50,10 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
       await GoogleSignin.hasPlayServices();
       let info = await GoogleSignin.signIn();
       setloggedIn(true);
+      await AsyncStorage.setItem('@loginUser', JSON.stringify(info)); 
       console.log('Login information ', info);
       console.log('Login EMAIL ', info.user.email);
-      navigation.replace('HomeScreen', {})
+      navigation.navigate('HomeScreen', {})
       // let result = await axios({
       //   method: 'get',
       //   url: `https://script.google.com/macros/s/AKfycbx1wYrX1YgXRoa5f_ZlBJiAGpiem1ph4A-Ti3X4eh6ZycCa0PazZz0pxEsT1IaMk67cAw/exec?sheet=${config.sheetId}&subsheet=Users&query=select * where A='${info.user.email}'`,

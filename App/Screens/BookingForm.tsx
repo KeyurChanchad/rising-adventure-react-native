@@ -11,6 +11,7 @@ import {
 import {Dropdown} from 'react-native-element-dropdown';
 import Colors from '../Resources/styles/Colors';
 import CustomButton from '../Components/CustomButton';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const screenWidth = Math.floor(Dimensions.get('window').width);
 const screenHeight = Math.floor(Dimensions.get('window').height);
@@ -25,13 +26,29 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
     joinUsFrom: '',
     date: '',
     phoneNumber: '',
-    numberOfPersons: '1'
+    numberOfPersons: '1',
+    amount: (1*5500).toString(),
+    email: '',
   });
   
 
   useEffect(() => {
-    
+    (async ()=>{
+      await getEmail();
+    })();
   }, []);
+
+  const getEmail = async ()=> {
+    let USER_INFO: any = await AsyncStorage.getItem('@loginUser');
+    USER_INFO  = USER_INFO && JSON.parse(USER_INFO);
+    console.log('Email logged in is ', USER_INFO.user.email);
+    setFormData((prev)=> (
+      {
+        ...prev,
+        ['email']: USER_INFO.user.email,
+      }
+    ))
+  }
 
   const data = [
     {label: 'Item 1', value: '1'},
@@ -153,9 +170,20 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
                 setFormData(prev => ({
                   ...prev,
                   ['numberOfPersons']: item.value,
+                  ['amount']: (+item.value * 5500).toString(),
                 }));
               }}
             />
+          </View>
+
+          <View style={styles.formField}>
+            <Text style={styles.label}> Payable Amount </Text>
+            <TextInput style={styles.input} keyboardType={'numeric'} id='amount' value={formData.amount}  />
+          </View>
+
+          <View style={styles.formField}>
+            <Text style={styles.label}> Email </Text>
+            <TextInput style={styles.input} keyboardType={'email-address'} id='email' onChangeText={(text:string)=> {setData(text, 'email')}} value={formData.email} placeholder='Enter email number' />
           </View>
 
           <View style={styles.formField}>
@@ -183,7 +211,7 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
             <TextInput style={styles.input} multiline={true} numberOfLines={5} id='address' onChangeText={(text:string)=> {setData(text, 'address')}} value={formData.address} placeholder='Enter address'/>
           </View>
 
-          <CustomButton btnText="Continue to Checkout" onClick={handleBookingForm} btnStyle={{ marginVertical: 5, height: 50 }} />
+          <CustomButton btnText="Continue to Pay" onClick={handleBookingForm} btnStyle={{ marginVertical: 5, height: 50 }} />
 
         </View>
       </ScrollView>

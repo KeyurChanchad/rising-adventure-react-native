@@ -9,13 +9,12 @@ import Event from "../Screens/Event";
 import EventsScreen from "../Screens/EventsScreen";
 import BookingForm from "../Screens/BookingForm";
 import RegisterPhone from "../Screens/RegisterPhone";
-import ShowBookingDetails from "../Screens/ShowBookingDetails";
 const Drawer = createDrawerNavigator();
 
 const Stack = createNativeStackNavigator();
 const AuthStack = () => {
     return (
-        <Drawer.Navigator initialRouteName="HomeScreen">
+        <Drawer.Navigator initialRouteName="LoginScreen">
             <Drawer.Screen 
                 name="HomeScreen" 
                 component={HomeScreen} 
@@ -99,23 +98,7 @@ const AuthStack = () => {
                 }}
             />
             
-            <Drawer.Screen 
-                name="ShowBookingDetails" 
-                component={ShowBookingDetails} 
-                options={{
-                    headerStyle: {
-                        backgroundColor: Colors.primary,
-                    },
-                    headerTitle: "Booking Details",
-                    headerTintColor: Colors.white,
-                    drawerItemStyle: {
-                        display: 'none'
-                    },
-                    drawerStyle: {
-                        display: 'none'
-                    }
-                }}
-            />
+            
         </Drawer.Navigator>
     )
 }
