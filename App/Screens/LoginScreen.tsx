@@ -5,9 +5,10 @@ import {
   ScrollView,
   SafeAreaView,
   StatusBar,
-  Button,
+  TouchableOpacity,
   Dimensions,
   Alert,
+  ActivityIndicator
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {
@@ -19,12 +20,16 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import config from '../config';
 import { StackActions } from '@react-navigation/native';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Colors from '../Resources/styles/Colors';
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 const screenHeight = Math.round(Dimensions.get('window').height);
 
 const LoginScreen = ({ navigation }: { navigation: any }) => {
   const [loggedIn, setloggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [configure, setConfigure] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -34,6 +39,8 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
         navigation.replace('HomeScreen', {
           screen: 'HomeScreen',
         });
+      console.log("configure google signing...");
+      
       GoogleSignin.configure({
         scopes: ['email', 'profile'], // what API you want to access on behalf of the user, default is email and profile
         webClientId:
@@ -41,16 +48,20 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
         offlineAccess: true, // if you want to access Google API on behalf of the user FROM YOUR SERVER
       });
     })();
-  }, []);
+  }, [configure]);
 
   const signIn = async () => {
     try {
+      setConfigure(true);
+      setIsLoading(true);
+      console.log("trying to login...");
       await GoogleSignin.signOut();
       console.log('Sign with google is called...');
       await GoogleSignin.hasPlayServices();
       let info = await GoogleSignin.signIn();
-      setloggedIn(true);
       await AsyncStorage.setItem('@loginUser', JSON.stringify(info)); 
+      setloggedIn(true);
+      setIsLoading(false);
       console.log('Login information ', info);
       console.log('Login EMAIL ', info.user.email);
       navigation.navigate('HomeScreen', {})
@@ -72,6 +83,7 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
       //   await GoogleSignin.signOut();
       // }
     } catch (error: any) {
+      setConfigure(true);
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         console.log('SIGN_IN_CANCELLED');
       } else if (error.code === statusCodes.IN_PROGRESS) {
@@ -89,14 +101,28 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <View style={styles.body}>
-          <Text style={styles.addName}> Rising Adventure </Text>
-          <View style={styles.btnLogin}>
+          <Text style={styles.addName}> Rising Adventure  </Text>
+          <View style={styles.btnWrapper}>
+            <TouchableOpacity
+              style={styles.btn}
+              onPress={signIn}
+            >
+              <AntDesign
+                name="google"
+                size={20}
+                color={Colors.black}
+              />
+              <Text style={styles.btnText}> Continue with Google </Text>
+              { isLoading && <ActivityIndicator color={Colors.white} size={25} />  }
+            </TouchableOpacity>
+          </View>
+          {/* <View style={styles.btnLogin}>
             <GoogleSigninButton
               size={GoogleSigninButton.Size.Wide}
               color={GoogleSigninButton.Color.Dark}
               onPress={signIn}
-            />
-          </View>
+            />            
+          </View> */}
         </View>
       </SafeAreaView>
     </View>
@@ -107,17 +133,32 @@ export default LoginScreen;
 
 const styles = StyleSheet.create({
   addName: {
-    fontSize: 20,
+    fontSize: 26,
     fontWeight: 'bold',
     marginBottom: 7,
   },
   body: {
+    padding: 20,
     height: screenHeight,
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
-  btnLogin: {
+  btnWrapper: {
+    backgroundColor: Colors.secondary,
+    paddingVertical: 20,
+    borderRadius: 30,
+    paddingHorizontal: '17%',
+    marginTop: 20,
+  },
+  btn: {
+    display: 'flex',
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  btnText: {
+    color: Colors.black,
+    fontSize: 20,
   },
 });

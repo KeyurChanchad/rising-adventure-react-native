@@ -79,7 +79,7 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
   }
 
   const checkValidation = async () => {
-    if (formData.name && formData.joinUsFrom && formData.date && formData.phoneNumber && formData.city && formData.state && formData.pinCode && formData.address && formData.numberOfPersons ) {
+    if (formData.name && formData.joinUsFrom && formData.date && formData.phoneNumber && formData.city && formData.state && formData.pinCode && formData.address && formData.numberOfPersons && formData.email ) {
       return true
     }
     else{
@@ -178,7 +178,7 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
 
           <View style={styles.formField}>
             <Text style={styles.label}> Payable Amount </Text>
-            <TextInput style={styles.input} keyboardType={'numeric'} id='amount' value={formData.amount}  />
+            <TextInput style={styles.input} keyboardType={'numeric'} id='amount' value={formData.amount} editable={false}  />
           </View>
 
           <View style={styles.formField}>
