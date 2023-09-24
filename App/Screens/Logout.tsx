@@ -6,16 +6,22 @@ import {
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Colors from '../Resources/styles/Colors';
 
-const Logout = () => {
+const Logout = ({ navigation }: { navigation: any}) => {
+
   useEffect(() => {
+    console.log("signing out...");
     signOut();
-  }, []);
+    navigation.navigate('LoginScreen');
+  }, [])
+  
 
   const signOut = async () => {
     try {
       await GoogleSignin.signOut();
       await AsyncStorage.removeItem('@loginUser'); 
+      console.log('signout sucessfully..');
     } catch (error) {
       console.error(error);
     }
@@ -23,7 +29,7 @@ const Logout = () => {
 
   return (
     <View>
-      <Text>Logout</Text>
+      <Text onPress={()=> signOut()} style={{ padding: 10, fontSize: 10, backgroundColor: Colors.primary, color: Colors.white, borderRadius: 10, margin: 10,}}>Logout</Text>
     </View>
   );
 };

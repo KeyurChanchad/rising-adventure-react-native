@@ -1,10 +1,10 @@
 const Colors = {
-    primary: '#91C8E4',
-    secondary: '#d6e2e8',
+    sky: '#91C8E4',
+    secondary: '#4361EE',
+    primary: '#9600FF',
     white: '#ffffff',
     black: '#1c1c1c',
     red: '#ff0000',
-    blue: '#0000FF',
     sliver: '#C0C0C0',
     grey: '#808080',
     yellow: '#FFFF00',
@@ -13,7 +13,7 @@ const Colors = {
     aqua: '#00FFFF',
     teal: '#008080',
     navy: '#000080',
-    purple: '#800080',
+   
     lightBlack: '#ccc5c5',
   };
   

@@ -128,7 +128,9 @@ const AuthStack = () => {
                     
                 }}
             />
+
             
+
         </Drawer.Navigator>
     )
 }

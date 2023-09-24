@@ -20,16 +20,28 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
   const [formData, setFormData] = useState({
     name: '',
     city: '',
-    state: '',
-    pinCode: '',
+    // state: '',
+    // pinCode: '',
     address: '',
     joinUsFrom: '',
     date: '',
     phoneNumber: '',
     numberOfPersons: '1',
-    // amount: (1*5500).toString(),
     email: '',
   });
+
+  const [focusData, setFocusData] = useState({
+    name: false,
+    // state: false,
+    // pinCode: false,
+    city: false,
+    address: false,
+    joinUsFrom: false,
+    date: false,
+    phoneNumber: false,
+    numberOfPersons: false,
+    email: false,
+  })
   
 
   useEffect(() => {
@@ -79,7 +91,7 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
   }
 
   const checkValidation = async () => {
-    if (formData.name && formData.joinUsFrom && formData.date && formData.phoneNumber && formData.city && formData.state && formData.pinCode && formData.address && formData.numberOfPersons && formData.email ) {
+    if (formData.name && formData.joinUsFrom && formData.date && formData.phoneNumber && formData.city && formData.address && formData.numberOfPersons && formData.email ) {
       return true
     }
     else{
@@ -93,20 +105,39 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
     validate && navigation.navigate('ShowBookingDetails', { formData, package_amount: route.params.package_amount, package_name: route.params.package_name, })
   }
 
+  const onFieldFocus = (field: string) => {
+    setFocusData((prev)=> (
+        {
+          ...prev,
+          [field]: true,
+        }
+    ))
+  }
+
+  const onFieldBlur = (field: string) => {
+    setFocusData(prev => (
+      {
+        ...prev,
+        [field]: false
+      }
+    ))
+  }
+
   return (
     <SafeAreaView style={styles.mainContainer}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Text style={styles.heading}> Matheran Hill Station </Text>
         <View style={{marginVertical: 20}}>
+
           <View style={styles.formField}>
             <Text style={styles.label}> Name </Text>
-            <TextInput style={styles.input} id='name' onChangeText={(text:string)=> {setData(text, 'name')}} value={formData.name} placeholder='Enter name' />
+            <TextInput style={[styles.input, focusData.name && {borderWidth: 1, borderColor: Colors.primary}]} id='name' onChangeText={(text:string)=> {setData(text, 'name')}} value={formData.name} placeholder='Enter name' onFocus={() => onFieldFocus('name')} onBlur={() => onFieldBlur('name')} />
           </View>
           
           <View style={styles.formField}>
             <Text style={styles.label}> Join us from </Text>
             <Dropdown
-              style={[styles.dropdown]}
+              style={[styles.dropdown, focusData.joinUsFrom && {borderWidth: 1, borderColor: Colors.primary}]}
               placeholderStyle={styles.placeholderStyle}
               selectedTextStyle={styles.selectedTextStyle}
               inputSearchStyle={styles.inputSearchStyle}
@@ -124,13 +155,15 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
                   ['joinUsFrom']: item.value,
                 }));
               }}
+              onFocus={()=> onFieldFocus('joinUsFrom')}
+              onBlur={()=> onFieldBlur('joinUsFrom')}
             />
           </View>
 
           <View style={styles.formField}>
             <Text style={styles.label}> Available Date </Text>
             <Dropdown
-              style={[styles.dropdown]}
+              style={[styles.dropdown, focusData.date && {borderWidth: 1, borderColor: Colors.primary}]}
               placeholderStyle={styles.placeholderStyle}
               selectedTextStyle={styles.selectedTextStyle}
               inputSearchStyle={styles.inputSearchStyle}
@@ -148,13 +181,15 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
                   ['date']: item.value,
                 }));
               }}
+              onFocus={()=> onFieldFocus('date')}
+              onBlur={()=> onFieldBlur('date')}
             />
           </View>
 
           <View style={styles.formField}>
             <Text style={styles.label}> Number Of Persons </Text>
             <Dropdown
-              style={[styles.dropdown]}
+              style={[styles.dropdown, focusData.numberOfPersons && {borderWidth: 1, borderColor: Colors.primary}]}
               placeholderStyle={styles.placeholderStyle}
               selectedTextStyle={styles.selectedTextStyle}
               inputSearchStyle={styles.inputSearchStyle}
@@ -173,6 +208,8 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
                   ['amount']: (+item.value * 5500).toString(),
                 }));
               }}
+              onFocus={()=> onFieldFocus('numberOfPersons')}
+              onBlur={()=> onFieldBlur('numberOfPersons')}
             />
           </View>
 
@@ -183,32 +220,32 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
 
           <View style={styles.formField}>
             <Text style={styles.label}> Email </Text>
-            <TextInput style={styles.input} keyboardType={'email-address'} id='email' onChangeText={(text:string)=> {setData(text, 'email')}} value={formData.email} placeholder='Enter email number' />
+            <TextInput style={[styles.input, focusData.email && {borderWidth: 1, borderColor: Colors.primary}]} keyboardType={'email-address'} id='email' onChangeText={(text:string)=> {setData(text, 'email')}} value={formData.email} placeholder='Enter email number' onFocus={() => onFieldFocus('email')} onBlur={() => onFieldBlur('email')}/>
           </View>
 
           <View style={styles.formField}>
             <Text style={styles.label}> Phone Number </Text>
-            <TextInput style={styles.input} keyboardType={'phone-pad'} id='phoneNumber' onChangeText={(text:string)=> {setData(text, 'phoneNumber')}} value={formData.phoneNumber} placeholder='Enter mobile number' />
+            <TextInput style={[styles.input, focusData.phoneNumber && {borderWidth: 1, borderColor: Colors.primary}]} keyboardType={'phone-pad'} id='phoneNumber' onChangeText={(text:string)=> {setData(text, 'phoneNumber')}} value={formData.phoneNumber} placeholder='Enter mobile number'onFocus={() => onFieldFocus('phoneNumber')} onBlur={() => onFieldBlur('phoneNumber')} />
           </View>
 
           <View style={styles.formField}>
             <Text style={styles.label}> City </Text>
-            <TextInput style={styles.input} id='city' onChangeText={(text:string)=> {setData(text, 'city')}} value={formData.city} placeholder='Enter city name' />
+            <TextInput style={[styles.input, focusData.city && {borderWidth: 1, borderColor: Colors.primary}]} id='city' onChangeText={(text:string)=> {setData(text, 'city')}} value={formData.city} placeholder='Enter city name' onFocus={() => onFieldFocus('city')} onBlur={() => onFieldBlur('city')} />
           </View>
 
-          <View style={styles.formField}>
+          {/* <View style={styles.formField}>
             <Text style={styles.label}> State </Text>
-            <TextInput style={styles.input} id='state' onChangeText={(text:string)=> {setData(text, 'state')}} value={formData.state} placeholder='Enter state name'/>
+            <TextInput style={[styles.input, focusData.state && {borderWidth: 1, borderColor: Colors.primary}]} id='state' onChangeText={(text:string)=> {setData(text, 'state')}} value={formData.state} placeholder='Enter state name' onFocus={() => onFieldFocus('state')} onBlur={() => onFieldBlur('state')} />
           </View>
 
           <View style={styles.formField}>
             <Text style={styles.label}> Pincode </Text>
-            <TextInput style={styles.input}  keyboardType="numeric" id='pinCode' onChangeText={(text:string)=> {setData(text, 'pinCode')}} value={formData.pinCode} placeholder='Enter pincode number'/>
-          </View>
+            <TextInput style={[styles.input, focusData.pinCode && {borderWidth: 1, borderColor: Colors.primary}]}  keyboardType="numeric" id='pinCode' onChangeText={(text:string)=> {setData(text, 'pinCode')}} value={formData.pinCode} placeholder='Enter pincode number' onFocus={() => onFieldFocus('pinCode')} onBlur={() => onFieldBlur('pinCode')} />
+          </View> */}
 
           <View style={styles.formField}>
             <Text style={styles.label}> Address </Text>
-            <TextInput style={styles.input} multiline={true} numberOfLines={5} id='address' onChangeText={(text:string)=> {setData(text, 'address')}} value={formData.address} placeholder='Enter address'/>
+            <TextInput style={[styles.input, focusData.address && {borderWidth: 1, borderColor: Colors.primary}]} multiline={true} numberOfLines={5} id='address' onChangeText={(text:string)=> {setData(text, 'address')}} value={formData.address} placeholder='Enter address' onFocus={() => onFieldFocus('address')} onBlur={() => onFieldBlur('address')} />
           </View>
 
           <CustomButton btnText="Continue to Pay" onClick={handleBookingForm} btnStyle={{ marginVertical: 5, height: 50 }} />
