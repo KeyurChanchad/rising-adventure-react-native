@@ -10,6 +10,7 @@ import EventsScreen from "../Screens/EventsScreen";
 import BookingForm from "../Screens/BookingForm";
 import RegisterPhone from "../Screens/RegisterPhone";
 import BookingDetails from "../Screens/BookingDetails";
+import Logout from "../Screens/Logout";
 const Drawer = createDrawerNavigator();
 
 const Stack = createNativeStackNavigator();
@@ -48,7 +49,6 @@ const AuthStack = () => {
                         backgroundColor: Colors.primary,
                     },
                     headerTintColor: Colors.white,
-                    
                 }}
             />
             <Drawer.Screen 
@@ -117,6 +117,17 @@ const AuthStack = () => {
                 }}
             />
             
+            <Drawer.Screen 
+                name="Logout"
+                component={Logout}
+                options={{
+                    headerStyle: {
+                        backgroundColor: Colors.primary,
+                    },
+                    headerTintColor: Colors.white,
+                    
+                }}
+            />
             
         </Drawer.Navigator>
     )

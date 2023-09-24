@@ -29,7 +29,6 @@ const screenHeight = Math.round(Dimensions.get('window').height);
 const LoginScreen = ({ navigation }: { navigation: any }) => {
   const [loggedIn, setloggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [configure, setConfigure] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -48,11 +47,10 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
         offlineAccess: true, // if you want to access Google API on behalf of the user FROM YOUR SERVER
       });
     })();
-  }, [configure]);
+  }, []);
 
   const signIn = async () => {
     try {
-      setConfigure(true);
       setIsLoading(true);
       console.log("trying to login...");
       await GoogleSignin.signOut();
@@ -83,7 +81,6 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
       //   await GoogleSignin.signOut();
       // }
     } catch (error: any) {
-      setConfigure(true);
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         console.log('SIGN_IN_CANCELLED');
       } else if (error.code === statusCodes.IN_PROGRESS) {

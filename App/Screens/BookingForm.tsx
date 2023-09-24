@@ -27,7 +27,7 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
     date: '',
     phoneNumber: '',
     numberOfPersons: '1',
-    amount: (1*5500).toString(),
+    // amount: (1*5500).toString(),
     email: '',
   });
   
@@ -176,10 +176,10 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
             />
           </View>
 
-          <View style={styles.formField}>
+          {/* <View style={styles.formField}>
             <Text style={styles.label}> Payable Amount </Text>
             <TextInput style={styles.input} keyboardType={'numeric'} id='amount' value={formData.amount} editable={false}  />
-          </View>
+          </View> */}
 
           <View style={styles.formField}>
             <Text style={styles.label}> Email </Text>
