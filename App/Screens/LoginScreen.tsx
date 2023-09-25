@@ -103,7 +103,7 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
         backgroundColor={Colors.primary}
        />
        <LinearGradient
-        colors={[ Colors.primary, Colors.secondary, ]}
+        colors={[ Colors.primary, Colors.blue, ]}
         style={styles.linearGradient}>
           <View style={styles.body}>
             <Text style={styles.addName}> Rising Adventure  </Text>
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     height: screenHeight,
   },
   btn: {
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.secondary,
     paddingVertical: 15,
     borderRadius: 30,
     paddingHorizontal: 20,
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginHorizontal: 25,
     position: 'absolute',
-    bottom: 40,
+    bottom: '8%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-evenly',

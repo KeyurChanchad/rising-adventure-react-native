@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import Colors from '../Resources/styles/Colors';
 import CustomButton from '../Components/CustomButton';
+import { api } from '../RestAPI/RestAPIHandler';
 
 const screenWidth = Math.floor(Dimensions.get('window').width);
 const screenHeight = Math.floor(Dimensions.get('window').height);
@@ -19,6 +20,7 @@ const maximumCodeLength = 4;
 const boxArray = new Array(maximumCodeLength).fill(0);
 
 const RegisterPhone = ({route, navigation }: { route: any, navigation: any }) => {
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [otp, setOtp] = useState('');
   const [isInputBoxFocused, setIsInputBoxFocused] = useState(false);
   const inputRef = useRef<TextInput | null>(null);
@@ -27,24 +29,29 @@ const RegisterPhone = ({route, navigation }: { route: any, navigation: any }) =>
   const sendOTP = async () => {
     console.log('OTP will send');
     setotpSended(true);
+    let payload = {
+      phoneNumber
+    }
+    // let response = api('/sendOTP', payload, 'post', 'token');
+    // console.log('response of sendotp ', response);
   };
 
-//   const OPTInput = () => {
-//     return (
-//       <View style={styles.otpContainer}>
-//         {boxArray.map((digit, index) => (
-//           <Pressable
-//             style={[styles.optInputBox]}
-//             key={index}
-//             onPress={() => {
-//                 handleOnPress(index);
-//             }}>
-//             <Text style={styles.digit}> {otp[index]} </Text>
-//           </Pressable>
-//         ))}
-//       </View>
-//     );
-//   };
+  // const OPTInput = () => {
+  //   return (
+  //     <View style={styles.otpContainer}>
+  //       {boxArray.map((digit, index) => (
+  //         <Pressable
+  //           style={[styles.optInputBox]}
+  //           key={index}
+  //           onPress={() => {
+  //               handleOnPress(index);
+  //           }}>
+  //           <Text style={styles.digit}> {otp[index]} </Text>
+  //         </Pressable>
+  //       ))}
+  //     </View>
+  //   );
+  // };
 
   const handleOnPress = (index: number) => {
     console.log('box is pressed');
@@ -88,7 +95,7 @@ const RegisterPhone = ({route, navigation }: { route: any, navigation: any }) =>
       { !otpSended ? 
       <View style={styles.box}>
         <Text style={styles.heading}> Phone Number </Text>
-        <TextInput style={styles.input} />
+        <TextInput style={styles.input} onChangeText={(text)=>{setPhoneNumber(text)}} value={phoneNumber} />
         <Text style={styles.small}>
           {' '}
           We'll send OTP (One Time Password) to this phone number to verify your

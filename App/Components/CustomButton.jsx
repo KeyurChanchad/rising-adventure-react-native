@@ -16,9 +16,9 @@ const styles = StyleSheet.create({
     btn: {
         paddingHorizontal: 12,
         paddingVertical: 6,
-        backgroundColor: Colors.primary,
+        backgroundColor: Colors.secondary,
         borderWidth: 1,
-        borderColor: Colors.primary,
+        borderColor: Colors.secondary,
         borderStyle: 'solid',
         borderRadius: 10,
         height: 50

@@ -177,12 +177,12 @@ const Event = ({ navigation }: { navigation: any}) => {
             <MaterialIcon
               name="currency-rupee"
               size={18}
-              color={Colors.primary}
+              color={Colors.secondary}
             />
             <Text> {item.price} /-</Text>
           </View>
           <View style={styles.row}>
-            <FontAwesome6 name="calendar" size={18} color={Colors.primary} />
+            <FontAwesome6 name="calendar" size={18} color={Colors.secondary} />
             <Text> {item.days} days</Text>
           </View>
         </View>
@@ -243,7 +243,7 @@ const Event = ({ navigation }: { navigation: any}) => {
                 <FontAwesome6
                   name="calendar"
                   size={26}
-                  color={Colors.primary}
+                  color={Colors.secondary}
                 />
                 <View style={{marginHorizontal: 7}}>
                   <Text> Duration </Text>
@@ -251,7 +251,7 @@ const Event = ({ navigation }: { navigation: any}) => {
                 </View>
               </View>
               <View style={styles.singleInfo}>
-                <MaterialIcon name="map" size={26} color={Colors.primary} />
+                <MaterialIcon name="map" size={26} color={Colors.secondary} />
                 <View style={{marginHorizontal: 7}}>
                   <Text> Difficulty </Text>
                   <Text> easy </Text>
@@ -260,7 +260,7 @@ const Event = ({ navigation }: { navigation: any}) => {
             </View>
             <View style={styles.row}>
               <View style={styles.singleInfo}>
-                <MaterialIcon name="group" size={26} color={Colors.primary} />
+                <MaterialIcon name="group" size={26} color={Colors.secondary} />
                 <View style={{marginHorizontal: 7}}>
                   <Text> Age group </Text>
                   <Text> 8-35 years </Text>
@@ -270,7 +270,7 @@ const Event = ({ navigation }: { navigation: any}) => {
                 <FontAwesome6
                   name="mountain-sun"
                   size={24}
-                  color={Colors.primary}
+                  color={Colors.secondary}
                 />
                 <View style={{marginHorizontal: 7}}>
                   <Text> Max Altitude </Text>
@@ -614,7 +614,7 @@ const styles = StyleSheet.create({
   circle: {
     padding: 10,
     borderRadius: 30,
-    backgroundColor: Colors.grey,
+    backgroundColor: Colors.secondary,
     width: 45,
     height: 45,
   },
@@ -624,6 +624,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     marginHorizontal: 5,
+    opacity: 0.5
   },
 
   feeItems: {
@@ -688,7 +689,7 @@ const styles = StyleSheet.create({
 
   bookCotainer: {
     padding: 5,
-    backgroundColor: Colors.secondary,
+    backgroundColor: Colors.white,
   },
 
   modalBtn: {
