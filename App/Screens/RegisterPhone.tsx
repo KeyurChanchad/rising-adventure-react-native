@@ -32,8 +32,8 @@ const RegisterPhone = ({route, navigation }: { route: any, navigation: any }) =>
     let payload = {
       phoneNumber
     }
-    // let response = api('/sendOTP', payload, 'post', 'token');
-    // console.log('response of sendotp ', response);
+    let response = api('/sendOTP', payload, 'post', 'token');
+    console.log('response of sendotp ', response);
   };
 
   // const OPTInput = () => {

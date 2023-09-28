@@ -23,6 +23,7 @@ import { StackActions } from '@react-navigation/native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Colors from '../Resources/styles/Colors';
 import LinearGradient from 'react-native-linear-gradient';
+import { api } from '../RestAPI/RestAPIHandler';
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 const screenHeight = Math.round(Dimensions.get('window').height);
@@ -62,13 +63,15 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
       setIsLoading(false);
       console.log('Login information ', info);
       console.log('Login EMAIL ', info.user.email);
-      navigation.navigate('HomeScreen', {})
-      // let result = await axios({
-      //   method: 'get',
-      //   url: `https://script.google.com/macros/s/AKfycbx1wYrX1YgXRoa5f_ZlBJiAGpiem1ph4A-Ti3X4eh6ZycCa0PazZz0pxEsT1IaMk67cAw/exec?sheet=${config.sheetId}&subsheet=Users&query=select * where A='${info.user.email}'`,
-      //   data: null,
-      // });
-      // console.log('Email is exits ', result.data);
+      const data = {
+        firstName: info.user.givenName,
+        lastName: info.user.familyName,
+        email: info.user.email,
+        profilePic: info.user.photo,
+        token: info.idToken,
+      }
+      let response = api('/v1/user/create', data, 'post', 'token');
+      console.log('response  ', response );
       // if (Number(JSON.stringify(result.data.length)) !== 0) {
       //   info = {...info, roll: result.data[0].Roll};
       //   console.log('Login information ', info);
