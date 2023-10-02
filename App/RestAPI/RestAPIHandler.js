@@ -6,7 +6,7 @@ const mainUrl = config.baseUrl + '/api';
 export const api = async (endpoint, data, type, token) => {
   var res;
   if (token) {
-    token = user_info[0].token;
+    // token = user_info[0].token;
     console.log(`Token jwt is ${token}`);
   }
 
@@ -17,7 +17,7 @@ export const api = async (endpoint, data, type, token) => {
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
-          authorization: `${token}`,
+          // authorization: `${token}`,
         },
         url: mainUrl + endpoint,
       })
@@ -42,7 +42,7 @@ export const api = async (endpoint, data, type, token) => {
         method: 'get',
         headers: {
           'Content-Type': 'application/json',
-          authorization: `${token}`,
+          // authorization: `${token}`,
         },
         url: mainUrl + endpoint,
       }).then((response) => {
@@ -68,7 +68,7 @@ export const api = async (endpoint, data, type, token) => {
         data: data,
         headers: {
           'Content-Type': 'application/json',
-          authorization: `${token}`,
+          // authorization: `${token}`,
         },
         url: mainUrl + endpoint,
       })
@@ -95,7 +95,7 @@ export const api = async (endpoint, data, type, token) => {
         method: 'delete',
         headers: {
           'Content-Type': 'application/json',
-          authorization: `${token}`,
+          // authorization: `${token}`,
         },
         url: mainUrl + endpoint,
       })

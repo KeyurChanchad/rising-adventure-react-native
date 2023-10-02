@@ -42,6 +42,17 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
     numberOfPersons: false,
     email: false,
   })
+
+  const [validation, setValidation] = useState({
+    name: { error: false, message: ''},
+    city:  { error: false, message: ''},
+    address:  { error: false, message: ''},
+    joinUsFrom:  { error: false, message: ''},
+    date:  { error: false, message: ''},
+    phoneNumber:  { error: false, message: ''},
+    numberOfPersons:  { error: false, message: ''},
+    email:  { error: false, message: ''},
+  })
   
 
   useEffect(() => {
@@ -88,6 +99,13 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
         [id]: text
       }
     ))
+
+    text && setValidation(prev => (
+      {
+        ...prev,
+      [id]: { error: false, message: ''},
+      }
+    ))
   }
 
   const checkValidation = async () => {
@@ -95,7 +113,54 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
       return true
     }
     else{
-      return false
+      !formData.name && setValidation((prev) => (
+        {
+          ...prev,
+        ['name']: { error: true, message: 'this filed required'},
+        }
+      ))
+      !formData.joinUsFrom && setValidation(prev => (
+        {
+          ...prev,
+        ['joinUsFrom']: { error: true, message: 'this filed required'},
+        }
+      ))
+      !formData.phoneNumber && setValidation(prev => (
+        {
+          ...prev,
+        ['phoneNumber']: { error: true, message: 'this filed required'},
+        }
+      ))
+      !formData.numberOfPersons && setValidation(prev => (
+        {
+          ...prev,
+        ['numberOfPersons']: { error: true, message: 'this filed required'},
+        }
+      ))
+      !formData.city && setValidation(prev => (
+        {
+          ...prev,
+        ['city']: { error: true, message: 'this filed required'},
+        }
+      ))
+      !formData.address && setValidation(prev => (
+        {
+          ...prev,
+        ['address']: { error: true, message: 'this filed required'},
+        }
+      ))
+      !formData.email && setValidation(prev => (
+        {
+          ...prev,
+        ['email']: { error: true, message: 'this filed required'},
+        }
+      ))
+      !formData.date && setValidation(prev => (
+        {
+          ...prev,
+        ['date']: { error: true, message: 'this filed required'},
+        }
+      ))
     }
   }
   const handleBookingForm = async () => {
@@ -112,6 +177,7 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
           [field]: true,
         }
     ))
+    
   }
 
   const onFieldBlur = (field: string) => {
@@ -132,6 +198,7 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
           <View style={styles.formField}>
             <Text style={styles.label}> Name </Text>
             <TextInput style={[styles.input, focusData.name && {borderWidth: 1, borderColor: Colors.primary}]} id='name' onChangeText={(text:string)=> {setData(text, 'name')}} value={formData.name} placeholder='Enter name' onFocus={() => onFieldFocus('name')} onBlur={() => onFieldBlur('name')} />
+            <Text style={styles.error}> {validation.name.error && validation.name.message} </Text>
           </View>
           
           <View style={styles.formField}>
@@ -158,6 +225,7 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
               onFocus={()=> onFieldFocus('joinUsFrom')}
               onBlur={()=> onFieldBlur('joinUsFrom')}
             />
+            <Text style={styles.error}> {validation.joinUsFrom.error && validation.joinUsFrom.message} </Text>
           </View>
 
           <View style={styles.formField}>
@@ -184,6 +252,7 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
               onFocus={()=> onFieldFocus('date')}
               onBlur={()=> onFieldBlur('date')}
             />
+            <Text style={styles.error}> {validation.date.error && validation.date.message} </Text>
           </View>
 
           <View style={styles.formField}>
@@ -211,6 +280,7 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
               onFocus={()=> onFieldFocus('numberOfPersons')}
               onBlur={()=> onFieldBlur('numberOfPersons')}
             />
+            <Text style={styles.error}> {validation.numberOfPersons.error && validation.numberOfPersons.message} </Text>
           </View>
 
           {/* <View style={styles.formField}>
@@ -221,16 +291,19 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
           <View style={styles.formField}>
             <Text style={styles.label}> Email </Text>
             <TextInput style={[styles.input, focusData.email && {borderWidth: 1, borderColor: Colors.primary}]} keyboardType={'email-address'} id='email' onChangeText={(text:string)=> {setData(text, 'email')}} value={formData.email} placeholder='Enter email number' onFocus={() => onFieldFocus('email')} onBlur={() => onFieldBlur('email')}/>
+            <Text style={styles.error}> {validation.email.error && validation.email.message} </Text>
           </View>
 
           <View style={styles.formField}>
             <Text style={styles.label}> Phone Number </Text>
             <TextInput style={[styles.input, focusData.phoneNumber && {borderWidth: 1, borderColor: Colors.primary}]} keyboardType={'phone-pad'} id='phoneNumber' onChangeText={(text:string)=> {setData(text, 'phoneNumber')}} value={formData.phoneNumber} placeholder='Enter mobile number'onFocus={() => onFieldFocus('phoneNumber')} onBlur={() => onFieldBlur('phoneNumber')} />
+            <Text style={styles.error}> {validation.phoneNumber.error && validation.phoneNumber.message} </Text>
           </View>
 
           <View style={styles.formField}>
             <Text style={styles.label}> City </Text>
             <TextInput style={[styles.input, focusData.city && {borderWidth: 1, borderColor: Colors.primary}]} id='city' onChangeText={(text:string)=> {setData(text, 'city')}} value={formData.city} placeholder='Enter city name' onFocus={() => onFieldFocus('city')} onBlur={() => onFieldBlur('city')} />
+            <Text style={styles.error}> {validation.city.error && validation.city.message} </Text>
           </View>
 
           {/* <View style={styles.formField}>
@@ -246,6 +319,7 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
           <View style={styles.formField}>
             <Text style={styles.label}> Address </Text>
             <TextInput style={[styles.input, focusData.address && {borderWidth: 1, borderColor: Colors.primary}]} multiline={true} numberOfLines={5} id='address' onChangeText={(text:string)=> {setData(text, 'address')}} value={formData.address} placeholder='Enter address' onFocus={() => onFieldFocus('address')} onBlur={() => onFieldBlur('address')} />
+            <Text style={styles.error}> {validation.address.error && validation.address.message} </Text>
           </View>
 
           <CustomButton btnText="Continue to Pay" onClick={handleBookingForm} btnStyle={{ marginVertical: 5, height: 50 }} />
@@ -300,5 +374,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     height: 50,
     fontSize: 16,
+  },
+  error: {
+    color: Colors.red,
+    paddingLeft: 10
   }
 });

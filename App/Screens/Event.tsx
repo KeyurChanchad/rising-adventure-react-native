@@ -164,7 +164,7 @@ const Event = ({ navigation }: { navigation: any}) => {
 
   const bookNow = async () => {
     console.info('pay 5500');
-    navigation.navigate('RegisterPhone', { package_amount: 5500, package_name: "Matheran Hill station"})
+    navigation.navigate('BookingForm', { package_amount: 5500, package_name: "Matheran Hill station"})
   };
 
   const renderJoinUsItem = ({item}: {item: joinUs}) => {

@@ -8,7 +8,7 @@ import {
   TextInput,
   Dimensions,
   Pressable,
-  Keyboard,
+  Linking,
 } from 'react-native';
 import Colors from '../Resources/styles/Colors';
 import CustomButton from '../Components/CustomButton';
@@ -26,14 +26,32 @@ const RegisterPhone = ({route, navigation }: { route: any, navigation: any }) =>
   const inputRef = useRef<TextInput | null>(null);
   const [otpSended, setotpSended] = useState(false);
 
+
+  
+  
+// Function to generate OTP
+const generateOTP = ()=> {    
+  // Declare a digits variable 
+  // which stores all digits
+  var digits = '0123456789';
+  let OTP = '';
+  for (let i = 0; i < 6; i++ ) {
+      OTP += digits[Math.floor(Math.random() * 10)];
+  }
+  return OTP;
+}
   const sendOTP = async () => {
     console.log('OTP will send');
-    setotpSended(true);
+    // setotpSended(true);
     let payload = {
-      phoneNumber
+      phoneNumber,
+      otp: generateOTP()
     }
-    let response = api('/sendOTP', payload, 'post', 'token');
-    console.log('response of sendotp ', response);
+    // Linking.openURL(`whatsapp://send?text=Your Rising adventure verification code is: ${payload.otp}&phone=${payload.phoneNumber}`);
+    console.log(payload);
+    
+    // let response = api('/sendOTP', payload, 'post', 'token');
+    // console.log('response of sendotp ', response);
   };
 
   // const OPTInput = () => {
@@ -95,10 +113,10 @@ const RegisterPhone = ({route, navigation }: { route: any, navigation: any }) =>
       { !otpSended ? 
       <View style={styles.box}>
         <Text style={styles.heading}> Phone Number </Text>
-        <TextInput style={styles.input} onChangeText={(text)=>{setPhoneNumber(text)}} value={phoneNumber} />
+        <TextInput style={styles.input} onChangeText={(text)=>{setPhoneNumber(text)}} value={phoneNumber}  placeholder='Enter whatsapp number' />
         <Text style={styles.small}>
           {' '}
-          We'll send OTP (One Time Password) to this phone number to verify your
+          We'll send OTP (One Time Password) to this whatsapp number to verify your
           number.{' '}
         </Text>
         <CustomButton
@@ -151,6 +169,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.lightBlack,
     borderRadius: 10,
+    paddingHorizontal: 10
   },
   hiddenInput: {
     height: 0,

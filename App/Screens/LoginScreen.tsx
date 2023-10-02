@@ -70,8 +70,15 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
         profilePic: info.user.photo,
         token: info.idToken,
       }
-      let response = api('/v1/user/create', data, 'post', 'token');
-      console.log('response  ', response );
+
+      try {
+        let response: any = await api('/v1/user/create', data, 'post', 'token');
+        console.log('response  ', response.data );
+      } catch (error) {
+        console.log("Error in user creating ",error);
+        
+      }
+      
       // if (Number(JSON.stringify(result.data.length)) !== 0) {
       //   info = {...info, roll: result.data[0].Roll};
       //   console.log('Login information ', info);
