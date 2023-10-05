@@ -9,10 +9,11 @@ import {
   ScrollView,
   Pressable,
 } from 'react-native';
-import React from 'react';
+import React,{ useState, useEffect } from 'react';
 import {SliderBox} from 'react-native-image-slider-box';
 import Colors from '../Resources/styles/Colors';
 import Footer from '../Components/Footer';
+import { api } from '../RestAPI/RestAPIHandler';
 
 const screenWidth = Math.floor(Dimensions.get('window').width);
 const screenHeight = Math.floor(Dimensions.get('window').height);
@@ -35,6 +36,19 @@ const events = [
   require('../Assets/Images/saputara.jpg'),
 ]
 const HomeScreen = ({ navigation }: { navigation: any }) => {
+  useEffect(() => {
+    getAllEvents();
+  }, [])
+  
+  const getAllEvents = async () => {
+    try {
+      const res = await api('/v1/getAllPackages', null, 'post', 'token');
+      console.log(res);
+      
+    } catch (error) {
+      
+    }
+  }
   const renderItems = ({ item }: { item: any}) => (
       <Pressable style={styles.highlitedEvent} onPress={()=> navigation.navigate('Event')}>
         <Image source={item} style={styles.eventImg} />
