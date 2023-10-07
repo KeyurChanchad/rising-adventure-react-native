@@ -17,7 +17,7 @@ export const api = async (endpoint, data, type, token) => {
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
-          // authorization: `${token}`,
+          authorization: `${token}`,
         },
         url: mainUrl + endpoint,
       })
@@ -42,7 +42,7 @@ export const api = async (endpoint, data, type, token) => {
         method: 'get',
         headers: {
           'Content-Type': 'application/json',
-          // authorization: `${token}`,
+          authorization: `${token}`,
         },
         url: mainUrl + endpoint,
       }).then((response) => {
@@ -118,7 +118,7 @@ export const api = async (endpoint, data, type, token) => {
     default:
       return true;
   }
-  return res;
+  return res.data;
 };
 export const checkData = (data) => {
   return true;

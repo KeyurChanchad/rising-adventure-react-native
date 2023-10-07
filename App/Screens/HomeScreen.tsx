@@ -25,35 +25,56 @@ const images = [
   require('../Assets/Images/carousel-3.jpg'),          // Local image
 ];
 
-const events = [
-  require('../Assets/Images/himalayas.jpg'),
-  require('../Assets/Images/matheran.jpg'),
-  require('../Assets/Images/dang.jpg'),
-  require('../Assets/Images/manali.jpg'),
-  require('../Assets/Images/kasol_manali.jpg'),
-  require('../Assets/Images/polo_forest.jpg'),
-  require('../Assets/Images/bakor.jpg'),
-  require('../Assets/Images/saputara.jpg'),
-]
+interface Event {
+id: string,
+name: string,
+slogan: string,
+days: number,
+nights: number,
+minAge: number,
+maxAge: number,
+maxAltitude: number,
+amount: number,
+description: string,
+joinUsFrom: Array<object>,
+availableDates: Array<object>,
+crouselImages: Array<string>,
+coverImage: string
+}
+
+
 const HomeScreen = ({ navigation }: { navigation: any }) => {
+  const [events, setEvents] = useState([]);
+
   useEffect(() => {
-    getAllEvents();
+    console.log("calling");
+    
+    (async ()=>{
+      await getAllEvents();
+    })()
   }, [])
   
   const getAllEvents = async () => {
+    console.log("getting all events");
+    
     try {
-      const res = await api('/v1/getAllPackages', null, 'post', 'token');
-      console.log(res);
-      
+      console.log("api calling ");
+      var res: any = await api('/v1/getAllPackages', {}, 'get', 'token');
+      res.status === 200 ? setEvents(res.data) : setEvents([]);
+      console.log("All events ", res.data);
     } catch (error) {
+      console.log("error of events ", error);
       
     }
   }
-  const renderItems = ({ item }: { item: any}) => (
-      <Pressable style={styles.highlitedEvent} onPress={()=> navigation.navigate('Event')}>
-        <Image source={item} style={styles.eventImg} />
-      </Pressable>
-    )
+  const renderItems = ({ item }: { item: Event}) => (
+    <Pressable style={styles.highlitedEvent} onPress={
+      ()=> navigation.navigate('Event', { data: item })
+    }>
+      <Image source={{ uri: item.coverImage}} style={styles.eventImg} />
+    </Pressable>
+  )
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={{ flex: 1}}>
@@ -69,7 +90,7 @@ const HomeScreen = ({ navigation }: { navigation: any }) => {
         <FlatList
           data={events}
           renderItem={renderItems}
-          keyExtractor={item => item}
+          keyExtractor={item => item.id}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
         />

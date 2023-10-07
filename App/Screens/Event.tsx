@@ -25,90 +25,27 @@ import {
   TouchableWithoutFeedback,
   TouchableHighlight,
 } from 'react-native-gesture-handler';
+import { api } from '../RestAPI/RestAPIHandler';
 
 const screenHeight = Math.floor(Dimensions.get('window').height);
 const screenWidth = Math.floor(Dimensions.get('window').width);
 
-const images = [
-  // 'https://source.unsplash.com/1024x768/?nature', //Remote image
-  require('../Assets/Images/carousel-7.jpg'), // Local image
-  require('../Assets/Images/carousel-8.jpg'), // Local image
-  require('../Assets/Images/carousel-1.jpg'), // Local image
-  require('../Assets/Images/carousel-2.jpg'), // Local image
-];
-
 type joinUs = {
-  from: string;
+  id: string;
+  packageId: string;
+  name: string;
   image: string;
-  price: number;
+  amount: number;
   days: number;
+  mainSchedule: Array<object>
 };
-
-const joinUsData: joinUs[] = [
-  {
-    from: 'Ahmedabad',
-    image:
-      'https://imgs.search.brave.com/NzJQ9jpJi5l5Bt43x1_QixscSGzonNWmOR479P3hz7o/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMudHJhdmVsdHJp/YW5nbGUuY29tL2Js/b2cvd3AtY29udGVu/dC91cGxvYWRzLzIw/MTYvMDIvSmFtYS1N/YXNqaWQtaW4tQWht/ZWRhYmFkLmpwZw',
-    price: 5500,
-    days: 3,
-  },
-  {
-    from: 'Baroda',
-    image:
-      'https://imgs.search.brave.com/NzJQ9jpJi5l5Bt43x1_QixscSGzonNWmOR479P3hz7o/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMudHJhdmVsdHJp/YW5nbGUuY29tL2Js/b2cvd3AtY29udGVu/dC91cGxvYWRzLzIw/MTYvMDIvSmFtYS1N/YXNqaWQtaW4tQWht/ZWRhYmFkLmpwZw',
-    price: 5500,
-    days: 3,
-  },
-  {
-    from: 'Surat',
-    image:
-      'https://imgs.search.brave.com/NzJQ9jpJi5l5Bt43x1_QixscSGzonNWmOR479P3hz7o/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMudHJhdmVsdHJp/YW5nbGUuY29tL2Js/b2cvd3AtY29udGVu/dC91cGxvYWRzLzIw/MTYvMDIvSmFtYS1N/YXNqaWQtaW4tQWht/ZWRhYmFkLmpwZw',
-    price: 5500,
-    days: 3,
-  },
-  {
-    from: 'Matheran',
-    image:
-      'https://imgs.search.brave.com/NzJQ9jpJi5l5Bt43x1_QixscSGzonNWmOR479P3hz7o/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMudHJhdmVsdHJp/YW5nbGUuY29tL2Js/b2cvd3AtY29udGVu/dC91cGxvYWRzLzIw/MTYvMDIvSmFtYS1N/YXNqaWQtaW4tQWht/ZWRhYmFkLmpwZw',
-    price: 3500,
-    days: 3,
-  },
-  {
-    from: 'Mumbai',
-    image:
-      'https://imgs.search.brave.com/NzJQ9jpJi5l5Bt43x1_QixscSGzonNWmOR479P3hz7o/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMudHJhdmVsdHJp/YW5nbGUuY29tL2Js/b2cvd3AtY29udGVu/dC91cGxvYWRzLzIw/MTYvMDIvSmFtYS1N/YXNqaWQtaW4tQWht/ZWRhYmFkLmpwZw',
-    price: 5000,
-    days: 3,
-  },
-];
 
 type datesDataType = {
   month: string;
+  year: number;
   dates: number[];
 };
 
-const eventDates: datesDataType[] = [
-  {
-    month: 'Auguest',
-    dates: [5, 6, 8, 12, 15, 22, 28],
-  },
-  {
-    month: 'September',
-    dates: [1, 2, 5, 16, 19, 21, 22, 25],
-  },
-  {
-    month: 'October',
-    dates: [4, 9, 11, 15, 18, 20, 24, 29, 30],
-  },
-  {
-    month: 'November',
-    dates: [5, 6, 8, 12, 15, 22, 28],
-  },
-  {
-    month: 'December',
-    dates: [5, 6, 8, 12, 15, 22, 28],
-  },
-];
 
 const scheduleData = [
   {
@@ -147,11 +84,38 @@ const scheduleData = [
   },
 ];
 
-const Event = ({ navigation }: { navigation: any}) => {
+const Event = ({ navigation, route }: { navigation: any, route: any}) => {
   const [selectedMonth, setSelectedMonth] = useState('');
   const [selectedDate, setSelectedDate] = useState(0);
   const [opentModal, setOpenModal] = useState(false);
+  const [schedule, setSchedule] = useState([]);
+  const [mainSchedule, setMainSchedule] = useState([]);
 
+  useEffect(()=>{
+    console.log("getting scheulde ", route.params.data.id);
+    (async()=>{
+     await getSchedule();
+    })()
+  }, [])
+
+  const getSchedule = async () => {
+    try {
+      const payload = { 
+        packageId: route.params.data.id 
+      }
+      const res = await api('/v1/getSchedule', payload, 'post', 'token')
+      // console.log("response of schedule ", res.data);
+      if(res.status === 200) {
+        setSchedule(res.data);
+        setMainSchedule(res.data[0].mainSchedule);
+        console.log('mainSchedule ', res.data[0].mainSchedule);
+        
+      } 
+    } catch (error) {
+      console.log("error in getting schedule ", error);
+      
+    }
+  }
   const monthSelected = (month: string) => {
     console.log('Selected month is ', month);
     setSelectedMonth(month);
@@ -171,7 +135,7 @@ const Event = ({ navigation }: { navigation: any}) => {
     return (
       <View style={styles.joinUsItem}>
         <Image source={{uri: item.image}} style={styles.joinUsImg} />
-        <Text style={{fontSize: 20, fontWeight: '400'}}> {item.from} </Text>
+        <Text style={{fontSize: 20, fontWeight: '400'}}> {item.name} </Text>
         <View style={[styles.row, {justifyContent: 'space-between'}]}>
           <View style={styles.row}>
             <MaterialIcon
@@ -179,7 +143,7 @@ const Event = ({ navigation }: { navigation: any}) => {
               size={18}
               color={Colors.secondary}
             />
-            <Text> {item.price} /-</Text>
+            <Text> {item.amount} /-</Text>
           </View>
           <View style={styles.row}>
             <FontAwesome6 name="calendar" size={18} color={Colors.secondary} />
@@ -219,7 +183,7 @@ const Event = ({ navigation }: { navigation: any}) => {
     <SafeAreaView style={styles.container}>
       <ScrollView style={{flex: 1}} showsVerticalScrollIndicator={false}>
         <SliderBox
-          images={images}
+          images={route.params.data.crouselImages}
           sliderBoxHeight={screenHeight / 2}
           dotColor={Colors.primary}
           circleLoop={true}
@@ -230,11 +194,8 @@ const Event = ({ navigation }: { navigation: any}) => {
         />
         <View>
           <View style={styles.header}>
-            <Text style={styles.packageName}> Marvellous Matheran </Text>
-            <Text style={styles.tagline}>
-              {' '}
-              Experience the finest hill station of Maharashtra!{' '}
-            </Text>
+            <Text style={styles.packageName}> {route.params.data.name} </Text>
+            <Text style={styles.tagline}>  {route.params.data.slogan} </Text>
           </View>
 
           <View style={styles.packgeInfo}>
@@ -247,7 +208,7 @@ const Event = ({ navigation }: { navigation: any}) => {
                 />
                 <View style={{marginHorizontal: 7}}>
                   <Text> Duration </Text>
-                  <Text> 3 days / 2 nights </Text>
+                  <Text> {route.params.data.days} days / {route.params.data.nights} nights </Text>
                 </View>
               </View>
               <View style={styles.singleInfo}>
@@ -263,7 +224,7 @@ const Event = ({ navigation }: { navigation: any}) => {
                 <MaterialIcon name="group" size={26} color={Colors.secondary} />
                 <View style={{marginHorizontal: 7}}>
                   <Text> Age group </Text>
-                  <Text> 8-35 years </Text>
+                  <Text> {route.params.data.minAge}-{route.params.data.maxAge} years </Text>
                 </View>
               </View>
               <View style={styles.singleInfo}>
@@ -274,7 +235,7 @@ const Event = ({ navigation }: { navigation: any}) => {
                 />
                 <View style={{marginHorizontal: 7}}>
                   <Text> Max Altitude </Text>
-                  <Text> 2500 ft </Text>
+                  <Text> {route.params.data.maxAltitude} ft </Text>
                 </View>
               </View>
             </View>
@@ -285,11 +246,7 @@ const Event = ({ navigation }: { navigation: any}) => {
           <View style={styles.aboutInfo}>
             <Text style={styles.heading}> About </Text>
             <Text style={styles.secondaryText}>
-              Matheran is situated near Mumbai in Maharashtra and is known for
-              its misty mountains, toy trains and typical sahyadri weather.
-              Marvelous Matheran is an event where trekkers will enjoy the misty
-              mountains and hilly weather. The place is highly populated on
-              weekends.
+              {route.params.data.description}
             </Text>
           </View>
         </View>
@@ -371,20 +328,22 @@ const Event = ({ navigation }: { navigation: any}) => {
           <Text style={styles.heading}> Join us from </Text>
           <View style={styles.joinUsPlaces}>
             <FlatList
-              data={joinUsData}
+              data={schedule}
               renderItem={renderJoinUsItem}
-              keyExtractor={item => item.from}
+              keyExtractor={item => item.id}
               horizontal={true}
               showsHorizontalScrollIndicator={false}
             />
           </View>
         </View>
 
-        <View style={styles.dateContainer}>
+        {
+          /**
+           * <View style={styles.dateContainer}>
           <Text style={styles.heading}> Date from Ahmedabad </Text>
 
           <View style={[styles.row, {flexWrap: 'wrap'}]}>
-            {eventDates.map((item: datesDataType, index: number) => (
+            {route.params.data.availableDates.map((item: datesDataType, index: number) => (
               <Pressable
                 style={[
                   styles.month,
@@ -414,7 +373,7 @@ const Event = ({ navigation }: { navigation: any}) => {
           </View>
 
           <View style={[styles.row, {flexWrap: 'wrap'}]}>
-            {eventDates[2].dates.map((date: number, index: number) => (
+            {route.params.data.availableDates[0].dates.map((date: number, index: number) => (
               <Pressable
                 style={[
                   styles.date,
@@ -439,11 +398,13 @@ const Event = ({ navigation }: { navigation: any}) => {
             ))}
           </View>
         </View>
+           */
+        }
 
         <View style={styles.scheduleContainer}>
           <Text style={styles.heading}> Schedule </Text>
           <Timeline
-            data={scheduleData}
+            data={mainSchedule}
             circleColor={Colors.primary}
             lineColor={Colors.primary}
             lineWidth={2}
@@ -476,7 +437,7 @@ const Event = ({ navigation }: { navigation: any}) => {
                 color={Colors.primary}
                 style={{}}
               />
-              <Text style={{fontSize: 16}}>5500 / person</Text>
+              <Text style={{fontSize: 16}}>{schedule[0].amount} / person</Text>
             </View>
 
             <CustomButton onClick={bookNow} btnText={'Book Now'} />
