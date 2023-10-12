@@ -58,6 +58,7 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
   useEffect(() => {
     (async ()=>{
       await getEmail();
+      await getJoinUsPlace();
     })();
   }, []);
 
@@ -71,6 +72,14 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
         ['email']: USER_INFO.user.email,
       }
     ))
+  }
+
+  const getJoinUsPlace = async ()=> {
+    try {
+      
+    } catch (error) {
+      
+    }
   }
 
   const data = [

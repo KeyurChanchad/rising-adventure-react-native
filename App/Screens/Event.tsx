@@ -40,6 +40,14 @@ type joinUs = {
   mainSchedule: Array<object>
 };
 
+type relatedPackage = {
+  id: string;
+  packageId: string;
+  name: string;
+  description: string;
+  image: string;
+}
+
 type datesDataType = {
   month: string;
   year: number;
@@ -47,58 +55,30 @@ type datesDataType = {
 };
 
 
-const scheduleData = [
-  {
-    time: 'Day 0',
-    date: 'Aug 17, 2023',
-    title: 'Departure from Ahmedabad/Baroda/Surat',
-    description:
-      'The camp will depart on the previous day evening from Ahmedabad.\ni.e. if the camp start date on Friday, then the camp will depart on Thursday evening.',
-  },
-  {
-    time: 'Day 1',
-    date: 'Aug 17, 2023',
-    title: 'Departure from Ahmedabad/Baroda/Surat',
-    description:
-      'The camp will depart on the previous day evening from Ahmedabad.\ni.e. if the camp start date on Friday, then the camp will depart on Thursday evening',
-    imageUrl:
-      'https://cloud.githubusercontent.com/assets/21040043/24240405/0ba41234-0fe4-11e7-919b-c3f88ced349c.jpg',
-  },
-  {
-    time: 'Day 2',
-    date: 'Aug 17, 2023',
-    title: 'Departure from Ahmedabad/Baroda/Surat',
-    description:
-      'The camp will depart on the previous day evening from Ahmedabad.\ni.e. if the camp start date on Friday, then the camp will depart on Thursday evening.',
-    imageUrl:
-      'https://cloud.githubusercontent.com/assets/21040043/24240405/0ba41234-0fe4-11e7-919b-c3f88ced349c.jpg',
-  },
-  {
-    time: 'Day 3',
-    date: 'Aug 17, 2023',
-    title: 'Departure from Ahmedabad/Baroda/Surat',
-    description:
-      'The camp will depart on the previous day evening from Ahmedabad.\ni.e. if the camp start date on Friday, then the camp will depart on Thursday evening.',
-    imageUrl:
-      'https://cloud.githubusercontent.com/assets/21040043/24240405/0ba41234-0fe4-11e7-919b-c3f88ced349c.jpg',
-  },
-];
-
 const Event = ({ navigation, route }: { navigation: any, route: any}) => {
-  const [selectedMonth, setSelectedMonth] = useState('');
-  const [selectedDate, setSelectedDate] = useState(0);
+  const [selectedPackage, setSelectedPackage] = useState<joinUs>({
+    id: '',
+    packageId: '',
+    name: '',
+    image: '',
+    amount: 0,
+    days: 0,
+    mainSchedule: [{}],
+  });
   const [opentModal, setOpenModal] = useState(false);
   const [schedule, setSchedule] = useState([]);
-  const [mainSchedule, setMainSchedule] = useState([]);
+  const [mainSchedule, setMainSchedule] = useState([{}]);
+  const [relatedPackages, setRelatedPackages] = useState([{}]);
 
   useEffect(()=>{
     console.log("getting scheulde ", route.params.data.id);
     (async()=>{
      await getSchedule();
+     await getRelatedEvents();
     })()
   }, [])
 
-  const getSchedule = async () => {
+  const getSchedule = async ()=> {
     try {
       const payload = { 
         packageId: route.params.data.id 
@@ -108,32 +88,50 @@ const Event = ({ navigation, route }: { navigation: any, route: any}) => {
       if(res.status === 200) {
         setSchedule(res.data);
         setMainSchedule(res.data[0].mainSchedule);
-        console.log('mainSchedule ', res.data[0].mainSchedule);
-        
-      } 
+        setSelectedPackage(res.data[0]);
+        // console.log('mainSchedule ', res.data[0].mainSchedule);
+      }
+      if(res.status === 404){
+        console.log("no schedule found for this pacakge.");      
+      }
     } catch (error) {
       console.log("error in getting schedule ", error);
       
     }
   }
-  const monthSelected = (month: string) => {
-    console.log('Selected month is ', month);
-    setSelectedMonth(month);
-  };
 
-  const dateSelected = (date: number) => {
-    console.log('Selected date is ', date);
-    setSelectedDate(date);
-  };
+  const getRelatedEvents = async ()=> {
+    try {
+      const payload = { 
+        packageId: route.params.data.id 
+      }
+      const res = await api('/v1/getRelatedPackages', payload, 'post', 'token');
+      console.log(`All related events ${JSON.stringify(res)}`);
+      res.status === 200 ? setRelatedPackages(res.data) : setRelatedPackages([{}]);
+    } catch (error) {
+      console.log("Error getting related pacakges ", error);
+      
+    }
+  }
+
+  const relatedPackageItem = async ({item}: {item: relatedPackage})=> (
+    <View>
+      <Image source={{ uri: item.image}}  style={{ height: 30, width: 100}}/>
+      <Text> { item.name } </Text>
+    </View>
+  )
 
   const bookNow = async () => {
     console.info('pay 5500');
-    navigation.navigate('BookingForm', { package_amount: 5500, package_name: "Matheran Hill station"})
+    navigation.navigate('RegisterPhone', { package_amount: route.params.data.amount, package_name: route.params.data.name})
   };
 
   const renderJoinUsItem = ({item}: {item: joinUs}) => {
     return (
-      <View style={styles.joinUsItem}>
+      <Pressable style={[styles.joinUsItem, selectedPackage.id === item.id && styles.selectedPackage]} onPress={()=> {
+        setSelectedPackage(item);
+        setMainSchedule(item.mainSchedule)
+      }}>
         <Image source={{uri: item.image}} style={styles.joinUsImg} />
         <Text style={{fontSize: 20, fontWeight: '400'}}> {item.name} </Text>
         <View style={[styles.row, {justifyContent: 'space-between'}]}>
@@ -150,7 +148,7 @@ const Event = ({ navigation, route }: { navigation: any, route: any}) => {
             <Text> {item.days} days</Text>
           </View>
         </View>
-      </View>
+      </Pressable>
     );
   };
 
@@ -181,7 +179,7 @@ const Event = ({ navigation, route }: { navigation: any, route: any}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={{flex: 1}} showsVerticalScrollIndicator={false}>
+      <ScrollView style={{flex: 1}} showsVerticalScrollIndicator={false} stickyHeaderIndices={[6]}>
         <SliderBox
           images={route.params.data.crouselImages}
           sliderBoxHeight={screenHeight / 2}
@@ -264,7 +262,7 @@ const Event = ({ navigation, route }: { navigation: any, route: any}) => {
                   name="bus"
                   size={24}
                   color={Colors.primary}
-                  style={styles.circle}
+                  style={[styles.circle]}
                 />
                 <Text> Travelling </Text>
               </View>
@@ -337,70 +335,6 @@ const Event = ({ navigation, route }: { navigation: any, route: any}) => {
           </View>
         </View>
 
-        {
-          /**
-           * <View style={styles.dateContainer}>
-          <Text style={styles.heading}> Date from Ahmedabad </Text>
-
-          <View style={[styles.row, {flexWrap: 'wrap'}]}>
-            {route.params.data.availableDates.map((item: datesDataType, index: number) => (
-              <Pressable
-                style={[
-                  styles.month,
-                  {
-                    backgroundColor:
-                      selectedMonth === item.month
-                        ? Colors.primary
-                        : Colors.white,
-                  },
-                ]}
-                key={index}
-                onPress={() => monthSelected(item.month)}>
-                <Text
-                  style={[
-                    styles.text,
-                    {
-                      color:
-                        selectedMonth === item.month
-                          ? Colors.white
-                          : Colors.primary,
-                    },
-                  ]}>
-                  {item.month}
-                </Text>
-              </Pressable>
-            ))}
-          </View>
-
-          <View style={[styles.row, {flexWrap: 'wrap'}]}>
-            {route.params.data.availableDates[0].dates.map((date: number, index: number) => (
-              <Pressable
-                style={[
-                  styles.date,
-                  {
-                    backgroundColor:
-                      selectedDate === date ? Colors.primary : Colors.white,
-                  },
-                ]}
-                key={index}
-                onPress={() => dateSelected(date)}>
-                <Text
-                  style={[
-                    styles.text,
-                    {
-                      color:
-                        selectedDate === date ? Colors.white : Colors.primary,
-                    },
-                  ]}>
-                  {date}
-                </Text>
-              </Pressable>
-            ))}
-          </View>
-        </View>
-           */
-        }
-
         <View style={styles.scheduleContainer}>
           <Text style={styles.heading}> Schedule </Text>
           <Timeline
@@ -437,11 +371,25 @@ const Event = ({ navigation, route }: { navigation: any, route: any}) => {
                 color={Colors.primary}
                 style={{}}
               />
-              <Text style={{fontSize: 16}}>{schedule[0].amount} / person</Text>
+              <Text style={{fontSize: 16}}>5500 / person</Text>
             </View>
 
             <CustomButton onClick={bookNow} btnText={'Book Now'} />
           </View>
+        </View>
+
+        <View style={styles.attractionContainer}>
+              <FlatList
+                data={relatedPackages}
+                renderItem={({item}: {item: relatedPackage})=> (<View style={styles.attractionItem}
+                >
+                  <Image source={{ uri: item.image}}  style={styles.attractionImage} />
+                  <Text style={styles.attractionLabel}> { item.name } </Text>
+                </View>)}
+                keyExtractor={item => item.id}
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+              />
         </View>
 
         <View style={{marginTop: 5}}>
@@ -597,8 +545,8 @@ const styles = StyleSheet.create({
   },
 
   joinUsItem: {
-    width: screenWidth / 2 + 20,
-    height: 200,
+    width: screenWidth / 2 + 30,
+    height: screenHeight / 3 ,
     backgroundColor: Colors.white,
     marginRight: 10,
     padding: 10,
@@ -650,7 +598,9 @@ const styles = StyleSheet.create({
 
   bookCotainer: {
     padding: 5,
-    backgroundColor: Colors.white,
+    position: 'relative',
+    bottom: 0,
+    right: 0
   },
 
   modalBtn: {
@@ -702,4 +652,36 @@ const styles = StyleSheet.create({
     alignItems:'flex-start',
     justifyContent: 'space-between',
   },
+
+  selectedPackage: {
+    borderWidth: 2,
+    borderColor: Colors.primary,
+    borderStyle: 'solid'
+  },
+
+  attractionContainer: {
+    height: 240,
+    marginVertical: 20
+  },
+
+  attractionItem: { 
+    width: screenWidth - 80, 
+    height: '90%', 
+    marginHorizontal: 10, 
+    marginVertical: 10,
+  },
+
+  attractionImage: {
+    flex: 1, 
+    borderRadius: 30, 
+    elevation: 5
+  },
+
+  attractionLabel: {
+    fontSize: 18,
+    paddingLeft: 20,
+    paddingTop: 10,
+    fontVariant: 'small-caps'
+  }
+
 });

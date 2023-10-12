@@ -8,12 +8,14 @@ import {
   SafeAreaView,
   ScrollView,
   Pressable,
+  ToastAndroid,
 } from 'react-native';
 import React,{ useState, useEffect } from 'react';
 import {SliderBox} from 'react-native-image-slider-box';
 import Colors from '../Resources/styles/Colors';
 import Footer from '../Components/Footer';
 import { api } from '../RestAPI/RestAPIHandler';
+import Utility from '../Helpers/Utility';
 
 const screenWidth = Math.floor(Dimensions.get('window').width);
 const screenHeight = Math.floor(Dimensions.get('window').height);
@@ -56,15 +58,14 @@ const HomeScreen = ({ navigation }: { navigation: any }) => {
   
   const getAllEvents = async () => {
     console.log("getting all events");
-    
     try {
       console.log("api calling ");
       var res: any = await api('/v1/getAllPackages', {}, 'get', 'token');
       res.status === 200 ? setEvents(res.data) : setEvents([]);
-      console.log("All events ", res.data);
+      // console.log("All events ", res.data);
     } catch (error) {
       console.log("error of events ", error);
-      
+      Utility.showToast("Internal server error", ToastAndroid.LONG)
     }
   }
   const renderItems = ({ item }: { item: Event}) => (

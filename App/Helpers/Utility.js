@@ -19,8 +19,9 @@ export default class Utility {
    * @method isNetworkAvailable
    * @description to get network information
    */
-  static async isNetworkAvailable() {
+  static isNetworkAvailable = async ()=> {
     const response = await NetInfo.fetch(); //fetch network is available or not
+    console.log("response of netinfo ", response);
     return response.isConnected;
   }
 }
