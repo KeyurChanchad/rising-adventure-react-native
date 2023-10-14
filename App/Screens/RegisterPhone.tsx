@@ -24,9 +24,12 @@ const RegisterPhone = ({route, navigation }: { route: any, navigation: any }) =>
   const [otp, setOtp] = useState('');
   const [enteredOtp, setEnteredOtp] = useState('');
   const inputRef = useRef<TextInput | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [validation, setValidation] = useState({ message: "", validate: false })
 
 
   const sendOTP = async () => {
+    setLoading(true);
     console.log('OTP will send on ', email);
     let payload = {
       email,
@@ -37,29 +40,13 @@ const RegisterPhone = ({route, navigation }: { route: any, navigation: any }) =>
       console.log('response of sendotp ', JSON.stringify(res));
       if (res.status === 200){
         setOtp(res.data.OTP);
-      } 
+      }
+      setLoading(false); 
     } catch (error) {
-      console.log("Error in send otp ", error);     
+      console.log("Error in send otp ", error);   
+      setLoading(false); 
     }
-    
   };
-
-  // const OPTInput = () => {
-  //   return (
-  //     <View style={styles.otpContainer}>
-  //       {boxArray.map((digit, index) => (
-  //         <Pressable
-  //           style={[styles.optInputBox]}
-  //           key={index}
-  //           onPress={() => {
-  //               handleOnPress(index);
-  //           }}>
-  //           <Text style={styles.digit}> {otp[index]} </Text>
-  //         </Pressable>
-  //       ))}
-  //     </View>
-  //   );
-  // };
 
   const handleOnPress = (index: number) => {
     console.log('box is pressed');
@@ -67,7 +54,6 @@ const RegisterPhone = ({route, navigation }: { route: any, navigation: any }) =>
         inputRef.current.focus();
         console.log('keyboard is apperared')
     } 
-    
   };
 
   const boxDigit = (_:any, index: number) => {
@@ -98,11 +84,17 @@ const RegisterPhone = ({route, navigation }: { route: any, navigation: any }) =>
     
     
     if(text.length === maximumCodeLength ){
-      console.log("Wrong otp entered.");
       if(otp === text){
-        console.log("verified successfully ");
-        boxArray = Array(maximumCodeLength).fill('');
-        navigation.navigate('BookingForm', { package_amount: route.params.package_amount, package_name: route.params.package_name })
+        setValidation({ message: 'Verified!', validate: true});
+        setTimeout(()=>{
+          console.log("verified successfully ");
+          boxArray = Array(maximumCodeLength).fill('');
+          navigation.navigate('BookingForm', { package_amount: route.params.package_amount, package_name: route.params.package_name })
+        }, 1000)
+      }
+      else{
+        console.log("Wrong otp entered.");
+        setValidation({ message: 'Wrong OTP!', validate: true});
       }
     }
     
@@ -121,7 +113,7 @@ const RegisterPhone = ({route, navigation }: { route: any, navigation: any }) =>
         </Text>
         <CustomButton
           btnText={'Send'}
-          btnStyle={{width: screenWidth / 4}}
+          btnStyle={{width: screenWidth / 4, marginTop: 10}}
           onClick={sendOTP}
         />
       </View>
@@ -139,6 +131,7 @@ const RegisterPhone = ({route, navigation }: { route: any, navigation: any }) =>
           autoFocus={true}
           ref={inputRef}
         />
+        { validation.validate && <Text style={[styles.validationText, { color: validation.message === 'Wrong OTP!' ? 'red' : 'green' }]}> { validation.message } </Text>}
         <Text style={styles.small}>Please enter the OTP sent to {email}.</Text>
         {/**<CustomButton
           btnText={'Verify OTP'}
@@ -186,6 +179,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',
+    position: 'relative',
   },
   optInputBox: {
     width: '13%',
@@ -202,8 +196,14 @@ const styles = StyleSheet.create({
   },
   focus: {
     borderRadius: 10,
-    borderWidth: 3,
+    borderWidth: 2,
     borderColor: Colors.primary,
     borderStyle: 'solid',
   },
+  validationText: {
+    alignSelf: 'flex-end', 
+    marginRight: 10,  
+    fontWeight: '600', 
+    fontSize: 18
+  }
 });

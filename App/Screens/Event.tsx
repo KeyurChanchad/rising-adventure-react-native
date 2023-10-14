@@ -68,7 +68,7 @@ const Event = ({ navigation, route }: { navigation: any, route: any}) => {
   const [opentModal, setOpenModal] = useState(false);
   const [schedule, setSchedule] = useState([]);
   const [mainSchedule, setMainSchedule] = useState([{}]);
-  const [relatedPackages, setRelatedPackages] = useState([{}]);
+  const [relatedPackages, setRelatedPackages] = useState([]);
 
   useEffect(()=>{
     console.log("getting scheulde ", route.params.data.id);
@@ -106,8 +106,8 @@ const Event = ({ navigation, route }: { navigation: any, route: any}) => {
         packageId: route.params.data.id 
       }
       const res = await api('/v1/getRelatedPackages', payload, 'post', 'token');
-      console.log(`All related events ${JSON.stringify(res)}`);
-      res.status === 200 ? setRelatedPackages(res.data) : setRelatedPackages([{}]);
+      console.log(`All related events ${res}`);
+      res.status === 200 ? setRelatedPackages(res.data) : setRelatedPackages([]);
     } catch (error) {
       console.log("Error getting related pacakges ", error);
       
@@ -122,8 +122,8 @@ const Event = ({ navigation, route }: { navigation: any, route: any}) => {
   )
 
   const bookNow = async () => {
-    console.info('pay 5500');
-    navigation.navigate('RegisterPhone', { package_amount: route.params.data.amount, package_name: route.params.data.name})
+    console.info(`You have to pay ${selectedPackage.amount} for per person`);
+    navigation.navigate('RegisterPhone', { package_amount: selectedPackage.amount, package_name: route.params.data.name})
   };
 
   const renderJoinUsItem = ({item}: {item: joinUs}) => {
@@ -357,7 +357,6 @@ const Event = ({ navigation, route }: { navigation: any, route: any}) => {
         </View>
 
         <View style={styles.bookCotainer}>
-          <Text style={styles.heading}> Attractions </Text>
           <View
             style={[
               styles.row,
@@ -371,25 +370,26 @@ const Event = ({ navigation, route }: { navigation: any, route: any}) => {
                 color={Colors.primary}
                 style={{}}
               />
-              <Text style={{fontSize: 16}}>5500 / person</Text>
+              <Text style={{fontSize: 16}}> {selectedPackage.amount} / person</Text>
             </View>
 
-            <CustomButton onClick={bookNow} btnText={'Book Now'} />
+            <CustomButton  btnStyle={{minWidth: 120}} onClick={bookNow} btnText={'Book Now'} />
           </View>
         </View>
 
         <View style={styles.attractionContainer}>
-              <FlatList
-                data={relatedPackages}
-                renderItem={({item}: {item: relatedPackage})=> (<View style={styles.attractionItem}
-                >
-                  <Image source={{ uri: item.image}}  style={styles.attractionImage} />
-                  <Text style={styles.attractionLabel}> { item.name } </Text>
-                </View>)}
-                keyExtractor={item => item.id}
-                horizontal={true}
-                showsHorizontalScrollIndicator={false}
-              />
+          <Text style={styles.heading}> Attractions </Text>
+          <FlatList
+            data={relatedPackages}
+            renderItem={({item}: {item: relatedPackage})=> (<View style={styles.attractionItem}
+            >
+              <Image source={{ uri: item.image}}  style={styles.attractionImage} />
+              <Text style={styles.attractionLabel}> { item.name } </Text>
+            </View>)}
+            keyExtractor={item => item.id}
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+          />
         </View>
 
         <View style={{marginTop: 5}}>
@@ -598,9 +598,6 @@ const styles = StyleSheet.create({
 
   bookCotainer: {
     padding: 5,
-    position: 'relative',
-    bottom: 0,
-    right: 0
   },
 
   modalBtn: {
@@ -661,7 +658,7 @@ const styles = StyleSheet.create({
 
   attractionContainer: {
     height: 240,
-    marginVertical: 20
+    marginVertical: 20,
   },
 
   attractionItem: { 
@@ -681,7 +678,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     paddingLeft: 20,
     paddingTop: 10,
-    fontVariant: 'small-caps'
   }
 
 });

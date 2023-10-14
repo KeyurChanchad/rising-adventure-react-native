@@ -28,6 +28,7 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
     phoneNumber: '',
     numberOfPersons: '1',
     email: '',
+    amount:( route.params.package_amount * 1).toString(),
   });
 
   const [focusData, setFocusData] = useState({
@@ -201,7 +202,7 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
   return (
     <SafeAreaView style={styles.mainContainer}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Text style={styles.heading}> Matheran Hill Station </Text>
+        <Text style={styles.heading}> { route.params.package_name } </Text>
         <View style={{marginVertical: 20}}>
 
           <View style={styles.formField}>
@@ -283,7 +284,7 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
                 setFormData(prev => ({
                   ...prev,
                   ['numberOfPersons']: item.value,
-                  ['amount']: (+item.value * 5500).toString(),
+                  ['amount']: (+item.value * route.params.package_amount).toString(),
                 }));
               }}
               onFocus={()=> onFieldFocus('numberOfPersons')}
@@ -292,10 +293,10 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
             <Text style={styles.error}> {validation.numberOfPersons.error && validation.numberOfPersons.message} </Text>
           </View>
 
-          {/* <View style={styles.formField}>
+          <View style={styles.formField}>
             <Text style={styles.label}> Payable Amount </Text>
             <TextInput style={styles.input} keyboardType={'numeric'} id='amount' value={formData.amount} editable={false}  />
-          </View> */}
+          </View>
 
           <View style={styles.formField}>
             <Text style={styles.label}> Email </Text>
@@ -353,7 +354,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   formField: {
-    marginVertical: 5,
+    marginVertical: 2,
   },
   label: {
     fontSize: 16,
