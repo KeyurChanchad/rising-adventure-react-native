@@ -89,7 +89,7 @@ const RegisterPhone = ({route, navigation }: { route: any, navigation: any }) =>
         setTimeout(()=>{
           console.log("verified successfully ");
           boxArray = Array(maximumCodeLength).fill('');
-          navigation.navigate('BookingForm', { package_amount: route.params.package_amount, package_name: route.params.package_name })
+          navigation.navigate('BookingForm', { package_amount: route.params.package_amount, package_name: route.params.package_name, packageId: route.params.packageId })
         }, 1000)
       }
       else{

@@ -123,7 +123,7 @@ const Event = ({ navigation, route }: { navigation: any, route: any}) => {
 
   const bookNow = async () => {
     console.info(`You have to pay ${selectedPackage.amount} for per person`);
-    navigation.navigate('RegisterPhone', { package_amount: selectedPackage.amount, package_name: route.params.data.name})
+    navigation.navigate('RegisterPhone', { package_amount: selectedPackage.amount, package_name: route.params.data.name, packageId: route.params.data.id})
   };
 
   const renderJoinUsItem = ({item}: {item: joinUs}) => {

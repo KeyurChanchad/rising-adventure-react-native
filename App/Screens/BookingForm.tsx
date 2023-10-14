@@ -12,6 +12,7 @@ import {Dropdown} from 'react-native-element-dropdown';
 import Colors from '../Resources/styles/Colors';
 import CustomButton from '../Components/CustomButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { api } from '../RestAPI/RestAPIHandler';
 
 const screenWidth = Math.floor(Dimensions.get('window').width);
 const screenHeight = Math.floor(Dimensions.get('window').height);
@@ -28,7 +29,7 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
     phoneNumber: '',
     numberOfPersons: '1',
     email: '',
-    amount:( route.params.package_amount * 1).toString(),
+    amount: (route.params.package_amount * 1).toString(),
   });
 
   const [focusData, setFocusData] = useState({
@@ -55,11 +56,15 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
     email:  { error: false, message: ''},
   })
   
+  type dropdown = { label: string, value: string }
+  const [joinUsData, setJoinUsData] = useState<dropdown[]>([]);
+  const [dateData, setDateData] = useState<dropdown[]>([]);
 
   useEffect(() => {
     (async ()=>{
       await getEmail();
       await getJoinUsPlace();
+      await getAvailableDates();
     })();
   }, []);
 
@@ -77,22 +82,31 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
 
   const getJoinUsPlace = async ()=> {
     try {
-      
+      const payload = {
+        packageId: route.params.packageId
+      }
+      const res = await api('/v1/getJoinUsPlaces', payload, 'post', 'token');
+      console.log("join us places ", res);
+      setJoinUsData(res.data);
     } catch (error) {
+      console.log("Error getting joinus places ", error);
       
     }
   }
 
-  const data = [
-    {label: 'Item 1', value: '1'},
-    {label: 'Item 2', value: '2'},
-    {label: 'Item 3', value: '3'},
-    {label: 'Item 4', value: '4'},
-    {label: 'Item 5', value: '5'},
-    {label: 'Item 6', value: '6'},
-    {label: 'Item 7', value: '7'},
-    {label: 'Item 8', value: '8'},
-  ];
+  const getAvailableDates = async ()=> {
+    try {
+      const payload = {
+        packageId: route.params.packageId
+      }
+      const res = await api('/v1/getAvailableDates', payload, 'post', 'token');
+      console.log("available dates ", res);
+      setDateData(res.data);
+    } catch (error) {
+      console.log("Error getting available dates ", error);
+    }
+  }
+
 
   const personsData = [
     {label: '1', value: '1'}, 
@@ -218,7 +232,7 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
               placeholderStyle={styles.placeholderStyle}
               selectedTextStyle={styles.selectedTextStyle}
               inputSearchStyle={styles.inputSearchStyle}
-              data={data}
+              data={joinUsData}
               search
               maxHeight={300}
               labelField="label"
@@ -245,7 +259,7 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
               placeholderStyle={styles.placeholderStyle}
               selectedTextStyle={styles.selectedTextStyle}
               inputSearchStyle={styles.inputSearchStyle}
-              data={data}
+              data={dateData}
               search
               maxHeight={300}
               labelField="label"
