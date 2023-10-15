@@ -11,6 +11,7 @@ import BookingForm from "../Screens/BookingForm";
 import RegisterPhone from "../Screens/RegisterPhone";
 import BookingDetails from "../Screens/BookingDetails";
 import Logout from "../Screens/Logout";
+import MyPackages from "../Screens/MyPackages";
 const Drawer = createDrawerNavigator();
 
 const Stack = createNativeStackNavigator();
@@ -124,8 +125,20 @@ const AuthStack = () => {
                     headerStyle: {
                         backgroundColor: Colors.primary,
                     },
-                    headerTintColor: Colors.white,
-                    
+                    headerTintColor: Colors.white,   
+                       
+                }}
+            />
+
+            <Drawer.Screen 
+                name="MyPackages"
+                component={MyPackages}
+                options={{
+                    headerStyle: {
+                        backgroundColor: Colors.primary,
+                    },
+                    headerTintColor: Colors.white,  
+                    headerTitle: "My Packages",
                 }}
             />
 

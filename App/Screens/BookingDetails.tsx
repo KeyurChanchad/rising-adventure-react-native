@@ -30,7 +30,7 @@ const BookingDetails = ({ navigation, route}: { navigation: any, route: any}) =>
     image: 'https://i.imgur.com/3g7nmJC.png',
     currency: 'INR',
     key: 'rzp_test_yS4IjIG05nIf1G', // Your api key
-    amount: route.params.formData.amount,
+    amount: route.params.formData.amount * 100,
     name:  route.params.formData.name,
     prefill: {
       email: route.params.formData.email,
@@ -41,7 +41,7 @@ const BookingDetails = ({ navigation, route}: { navigation: any, route: any}) =>
   }
   RazorpayCheckout.open(options).then(async (data: any) => {
     // handle success
-    let userInfo = await AsyncStorage.getItem("@loginUser");
+    let userInfo: any = await AsyncStorage.getItem("@loginUser");
     userInfo = JSON.parse(userInfo || "");
     const payload = {
       packageName: route.params.package_name,
@@ -59,7 +59,7 @@ const BookingDetails = ({ navigation, route}: { navigation: any, route: any}) =>
     const res = await api('/v1/package/book', payload, 'post', 'token');
     if(res.status === 200){
       ToastAndroid.show('Package Book successfully', ToastAndroid.LONG)
-      navigation.navigate('BookedPackges', {successId: data.razorpay_payment_id})
+      navigation.navigate('MyPackages', {successId: data.razorpay_payment_id})
     }
     else{
       Alert.alert("Package Booking", "Sorry your package has not book now, please contact us directly.", [{ text: 'Ok' }])

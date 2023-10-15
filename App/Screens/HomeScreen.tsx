@@ -78,8 +78,8 @@ const HomeScreen = ({ navigation }: { navigation: any }) => {
       res.status === 200 ? setEvents(res.data) : setEvents([]);
       // console.log("All events ", res.data);
     } catch (error) {
-      console.log("error of events ", error);
       Utility.showToast("Internal server error", ToastAndroid.LONG)
+      console.log("error of events ", error);
     }
   }
   const renderItems = ({ item }: { item: Event}) => (
