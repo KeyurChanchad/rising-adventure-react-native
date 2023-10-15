@@ -26,6 +26,7 @@ import {
   TouchableHighlight,
 } from 'react-native-gesture-handler';
 import { api } from '../RestAPI/RestAPIHandler';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const screenHeight = Math.floor(Dimensions.get('window').height);
 const screenWidth = Math.floor(Dimensions.get('window').width);
@@ -123,7 +124,8 @@ const Event = ({ navigation, route }: { navigation: any, route: any}) => {
 
   const bookNow = async () => {
     console.info(`You have to pay ${selectedPackage.amount} for per person`);
-    navigation.navigate('RegisterPhone', { package_amount: selectedPackage.amount, package_name: route.params.data.name, packageId: route.params.data.id})
+    const isEmailVerified = await AsyncStorage.getItem("@emailVerified");
+    isEmailVerified ? navigation.navigate('BookingForm', { package_amount:selectedPackage.amount, package_name: route.params.data.name, packageId: route.params.data.id }) : navigation.navigate('RegisterPhone', { package_amount: selectedPackage.amount, package_name: route.params.data.name, packageId: route.params.data.id})
   };
 
   const renderJoinUsItem = ({item}: {item: joinUs}) => {
@@ -671,7 +673,6 @@ const styles = StyleSheet.create({
   attractionImage: {
     flex: 1, 
     borderRadius: 30, 
-    elevation: 5
   },
 
   attractionLabel: {

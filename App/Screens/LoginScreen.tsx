@@ -49,7 +49,7 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
         offlineAccess: true, // if you want to access Google API on behalf of the user FROM YOUR SERVER
       });
     })();
-  }, []);
+  }, [loggedIn]);
 
   const signIn = async () => {
     try {
@@ -58,9 +58,6 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
       await GoogleSignin.hasPlayServices();
       console.log('Sign with google is called...');
       let info = await GoogleSignin.signIn();
-      await AsyncStorage.setItem('@loginUser', JSON.stringify(info)); 
-      setloggedIn(true);
-      setIsLoading(false);
       console.log('Login information ', info);
       console.log('Login EMAIL ', info.user.email);
       const data = {
@@ -74,22 +71,25 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
       try {
         let response: any = await api('/v1/user/create', data, 'post', 'token');
         console.log('response  ', response.data );
+        const localData = {
+          id: response.data.id,
+          firstName: info.user.givenName,
+          lastName: info.user.familyName,
+          email: info.user.email,
+          profilePic: info.user.photo,
+          token: info.idToken,
+        }
+        await AsyncStorage.setItem('@loginUser', JSON.stringify(localData)); 
+        setloggedIn(true);
+        setIsLoading(false);
+        navigation.replace('HomeScreen', {
+          screen: 'HomeScreen',
+        });
       } catch (error) {
         console.log("Error in user creating ",error);
-        
+        setIsLoading(false);
+        setloggedIn(false);
       }
-      
-      // if (Number(JSON.stringify(result.data.length)) !== 0) {
-      //   info = {...info, roll: result.data[0].Roll};
-      //   console.log('Login information ', info);
-      //   await AsyncStorage.setItem('@loginUser', JSON.stringify(info));
-      //   navigation.replace('HomeScreen', {
-      //     screen: 'HomeScreen',
-      //   });
-      // } else {
-      //   Alert.alert('The email you loggedIn with is not exited.');
-      //   await GoogleSignin.signOut();
-      // }
     } catch (error: any) {
       setIsLoading(false);
       setloggedIn(false);

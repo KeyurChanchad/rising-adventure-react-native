@@ -9,6 +9,7 @@ import {
   ScrollView,
   Pressable,
   ToastAndroid,
+  BackHandler
 } from 'react-native';
 import React,{ useState, useEffect } from 'react';
 import {SliderBox} from 'react-native-image-slider-box';
@@ -53,7 +54,20 @@ const HomeScreen = ({ navigation }: { navigation: any }) => {
     
     (async ()=>{
       await getAllEvents();
-    })()
+    })();
+
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', ()=> {
+      console.log("~~~~~~``` Go to Back ~~~~~~~~");
+      
+      if (navigation.canGoBack()) {
+        navigation.goBack();
+      }
+      else{
+        BackHandler.exitApp();
+      }
+      return true;
+    });
+    
   }, [])
   
   const getAllEvents = async () => {

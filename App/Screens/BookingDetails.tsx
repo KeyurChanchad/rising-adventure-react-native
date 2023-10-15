@@ -1,13 +1,26 @@
-import { StyleSheet, Text, View, ScrollView, ActivityIndicator, Alert, ToastAndroid, Dimensions, TouchableOpacity } from 'react-native';
-import React, { useState } from 'react';
+import { StyleSheet, Text, View, ScrollView, ActivityIndicator, Alert, ToastAndroid, Dimensions, TouchableOpacity, BackHandler
+ } from 'react-native';
+import React, { useState, useEffect } from 'react';
 import Colors from '../Resources/styles/Colors';
 import RazorpayCheckout from 'react-native-razorpay';
+import { api } from '../RestAPI/RestAPIHandler';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const screenWidth = Math.round(Dimensions.get('window').width);
 const screenHeight = Math.round(Dimensions.get('window').height);
 
 const BookingDetails = ({ navigation, route}: { navigation: any, route: any}) => {
   const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    BackHandler.addEventListener("hardwareBackPress", handleBackButtonClick);
+  }, [])
+  
+  const handleBackButtonClick = ()=> {
+    console.log("Go to back...");
+    
+    navigation.goBack();
+    return true;
+  }
 
   const checkoutNow = () => {
     console.log("Redirect rezorpay payment gateway...");
@@ -17,7 +30,7 @@ const BookingDetails = ({ navigation, route}: { navigation: any, route: any}) =>
     image: 'https://i.imgur.com/3g7nmJC.png',
     currency: 'INR',
     key: 'rzp_test_yS4IjIG05nIf1G', // Your api key
-    amount: route.params.package_amount * route.params.formData.numberOfPersons * 100,
+    amount: route.params.formData.amount,
     name:  route.params.formData.name,
     prefill: {
       email: route.params.formData.email,
@@ -26,11 +39,31 @@ const BookingDetails = ({ navigation, route}: { navigation: any, route: any}) =>
     },
     theme: {color: '#9600FF'}
   }
-  RazorpayCheckout.open(options).then((data: any) => {
+  RazorpayCheckout.open(options).then(async (data: any) => {
     // handle success
-    // Alert.alert(`Success: ${data.razorpay_payment_id}`);
-    ToastAndroid.show('Package Book successfully', ToastAndroid.LONG)
-    navigation.navigate('BookedPackges', {successId: data.razorpay_payment_id})
+    let userInfo = await AsyncStorage.getItem("@loginUser");
+    userInfo = JSON.parse(userInfo || "");
+    const payload = {
+      packageName: route.params.package_name,
+      userId: userInfo.id,
+      userName: route.params.formData.name,
+      email: route.params.formData.email, 
+      persons: route.params.formData.numberOfPersons,
+      joinUs: route.params.formData.joinUsFrom,
+      date: route.params.formData.date,
+      phoneNumber: route.params.formData.phoneNumber,
+      address: route.params.formData.address
+    }
+    console.log("booked package payload ", payload);
+    
+    const res = await api('/v1/package/book', payload, 'post', 'token');
+    if(res.status === 200){
+      ToastAndroid.show('Package Book successfully', ToastAndroid.LONG)
+      navigation.navigate('BookedPackges', {successId: data.razorpay_payment_id})
+    }
+    else{
+      Alert.alert("Package Booking", "Sorry your package has not book now, please contact us directly.", [{ text: 'Ok' }])
+    }
   }).catch((error: any) => {
     // handle failure
     Alert.prompt(`Error: ${error.code} | ${error.description}`);
@@ -66,7 +99,7 @@ const BookingDetails = ({ navigation, route}: { navigation: any, route: any}) =>
 
           <View style={styles.field}>
             <Text style={styles.fieldName}> Total Amount </Text>
-            <Text style={styles.fieldValue}>{route.params.package_amount * route.params.formData.numberOfPersons}</Text>
+            <Text style={styles.fieldValue}>{route.params.formData.amount}</Text>
             <View style={styles.hr}></View>
           </View>
 
@@ -125,7 +158,8 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
   },
   btn: {
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.secondary,
+    color: Colors.white,
     paddingVertical: 15,
     borderRadius: 30,
     paddingHorizontal: 20,

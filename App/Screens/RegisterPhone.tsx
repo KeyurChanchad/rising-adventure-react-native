@@ -13,6 +13,7 @@ import {
 import Colors from '../Resources/styles/Colors';
 import CustomButton from '../Components/CustomButton';
 import { api } from '../RestAPI/RestAPIHandler';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const screenWidth = Math.floor(Dimensions.get('window').width);
 const screenHeight = Math.floor(Dimensions.get('window').height);
@@ -76,16 +77,16 @@ const RegisterPhone = ({route, navigation }: { route: any, navigation: any }) =>
     console.log("on blur is called");
   };
 
-  const verifyOTP = (text: string) => {
+  const verifyOTP = async (text: string) => {
     console.log('Verifing opt ', text);
     setEnteredOtp(text);
     boxArray = text.split("", text.length);
     console.log(otp , enteredOtp, boxArray);
     
-    
     if(text.length === maximumCodeLength ){
       if(otp === text){
         setValidation({ message: 'Verified!', validate: true});
+        await AsyncStorage.setItem('@emailVerified', 'true');
         setTimeout(()=>{
           console.log("verified successfully ");
           boxArray = Array(maximumCodeLength).fill('');

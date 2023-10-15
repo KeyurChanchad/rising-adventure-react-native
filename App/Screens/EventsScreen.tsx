@@ -6,8 +6,9 @@ import {
   FlatList,
   Dimensions,
   ScrollView,
+  BackHandler,
 } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Colors from '../Resources/styles/Colors';
 import {SliderBox} from 'react-native-image-slider-box';
 import Footer from '../Components/Footer';
@@ -46,6 +47,19 @@ const images = [
 ];
 
 const EventsScreen = ({ navigation }: { navigation: any }) => {
+  useEffect(()=>{
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', ()=> {
+      console.log("~~~~~~``` Go to Back ~~~~~~~~");
+      
+      if (navigation.canGoBack()) {
+        navigation.goBack();
+      }
+      else{
+        BackHandler.exitApp();
+      }
+      return true;
+    });
+  }, [])
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>

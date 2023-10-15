@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   Dimensions,
   TextInput,
+  BackHandler,
 } from 'react-native';
 import {Dropdown} from 'react-native-element-dropdown';
 import Colors from '../Resources/styles/Colors';
@@ -29,7 +30,7 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
     phoneNumber: '',
     numberOfPersons: '1',
     email: '',
-    amount: (route.params.package_amount * 1).toString(),
+    amount: '',
   });
 
   const [focusData, setFocusData] = useState({
@@ -66,16 +67,22 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
       await getJoinUsPlace();
       await getAvailableDates();
     })();
+
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', ()=> {
+      console.log("~~~~~~``` Go to Back ~~~~~~~~");
+      navigation.goBack();
+      return true;
+    });
   }, []);
 
   const getEmail = async ()=> {
     let USER_INFO: any = await AsyncStorage.getItem('@loginUser');
     USER_INFO  = USER_INFO && JSON.parse(USER_INFO);
-    console.log('Email logged in is ', USER_INFO.user.email);
+    console.log('Email logged in is ', USER_INFO.email);
     setFormData((prev)=> (
       {
         ...prev,
-        ['email']: USER_INFO.user.email,
+        ['email']: USER_INFO.email,
       }
     ))
   }
@@ -86,7 +93,7 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
         packageId: route.params.packageId
       }
       const res = await api('/v1/getJoinUsPlaces', payload, 'post', 'token');
-      console.log("join us places ", res);
+      // console.log("join us places ", res);
       setJoinUsData(res.data);
     } catch (error) {
       console.log("Error getting joinus places ", error);
@@ -100,7 +107,7 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
         packageId: route.params.packageId
       }
       const res = await api('/v1/getAvailableDates', payload, 'post', 'token');
-      console.log("available dates ", res);
+      // console.log("available dates ", res);
       setDateData(res.data);
     } catch (error) {
       console.log("Error getting available dates ", error);
@@ -188,10 +195,10 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
     }
   }
   const handleBookingForm = async () => {
-    console.log('check validatiaon');
+    console.log('check validatiaon ', formData);
     const validate = await checkValidation();
     console.log("VAlidation ", validate);
-    validate && navigation.navigate('ShowBookingDetails', { formData, package_amount: route.params.package_amount, package_name: route.params.package_name, })
+    validate && navigation.navigate('ShowBookingDetails', { formData, package_name: route.params.package_name, })
   }
 
   const onFieldFocus = (field: string) => {
@@ -236,14 +243,15 @@ const BookingForm = ({route, navigation}: {route: any, navigation: any}) => {
               search
               maxHeight={300}
               labelField="label"
-              valueField="value"
+              valueField="label"
               placeholder={'Select item'}
               searchPlaceholder="Search..."
               value={formData.joinUsFrom}
               onChange={item => {
                 setFormData(prev => ({
                   ...prev,
-                  ['joinUsFrom']: item.value,
+                  ['joinUsFrom']: item.label,
+                  ['amount']: (+item.value * +formData.numberOfPersons).toString(),
                 }));
               }}
               onFocus={()=> onFieldFocus('joinUsFrom')}

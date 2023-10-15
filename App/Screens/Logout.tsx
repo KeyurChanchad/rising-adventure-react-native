@@ -21,6 +21,7 @@ const Logout = ({ navigation }: { navigation: any}) => {
     try {
       await GoogleSignin.signOut();
       await AsyncStorage.removeItem('@loginUser'); 
+      await AsyncStorage.removeItem('@emailVerified'); 
       console.log('signout sucessfully..');
     } catch (error) {
       console.error(error);
