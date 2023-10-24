@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         borderColor: Colors.secondary,
         borderStyle: 'solid',
         borderRadius: 10,
-        height: 50
+        height: 40
     },
     btnText: {
         color: Colors.white,

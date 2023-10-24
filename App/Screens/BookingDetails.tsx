@@ -49,6 +49,7 @@ const BookingDetails = ({ navigation, route}: { navigation: any, route: any}) =>
       userName: route.params.formData.name,
       email: route.params.formData.email, 
       persons: route.params.formData.numberOfPersons,
+      amount: route.params.formData.amount,
       joinUs: route.params.formData.joinUsFrom,
       date: route.params.formData.date,
       phoneNumber: route.params.formData.phoneNumber,

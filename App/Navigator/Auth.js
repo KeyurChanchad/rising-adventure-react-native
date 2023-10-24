@@ -60,7 +60,12 @@ const AuthStack = () => {
                         backgroundColor: Colors.primary,
                     },
                     headerTintColor: Colors.white,
-                    
+                    drawerItemStyle: {
+                        display: 'none'
+                    },
+                    drawerStyle: {
+                        display: 'none'
+                    }
                 }}
             />
 

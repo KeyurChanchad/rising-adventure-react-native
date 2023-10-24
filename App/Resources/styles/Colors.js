@@ -1,8 +1,8 @@
 const Colors = {
     sky: '#91C8E4',
     blue: '#4361EE',
-    primary: '#9600FF',
-    secondary: '#300552',
+    primary: '#4169e1',
+    secondary: '#FDD36A',
     white: '#ffffff',
     black: '#1c1c1c',
     red: '#ff0000',
